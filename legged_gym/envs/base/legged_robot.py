@@ -65,9 +65,8 @@ class LeggedRobot(BaseTask):
         clip_actions = self.cfg.normalization.clip_actions
         self.actions = torch.clip(actions, -clip_actions, clip_actions).to(self.device)
         # step physics and render each frame
-        vis = self.render(sync_frame_time=False)
-        if vis is not None:
-            self.extras["episode"]["vis"] = vis
+        self.render()
+
 
         for _ in range(self.cfg.control.decimation):
             self.torques = self._compute_torques(self.actions).view(self.torques.shape)

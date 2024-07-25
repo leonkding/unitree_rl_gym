@@ -34,6 +34,7 @@ import time
 import torch
 import wandb
 import statistics
+import cv2
 from collections import deque
 from datetime import datetime
 from .ppo import PPO
@@ -41,7 +42,11 @@ from .actor_critic import ActorCritic, Teaching_ActorCritic
 from .actor_critic_recurrent import ActorCriticRecurrent
 from legged_gym.algo.vec_env import VecEnv
 from torch.utils.tensorboard import SummaryWriter
-
+from datetime import datetime
+from legged_gym.envs import *
+from legged_gym import LEGGED_GYM_ROOT_DIR
+from isaacgym.torch_utils import *
+from isaacgym import gymapi
 
 class OnPolicyRunner:
 
@@ -127,9 +132,36 @@ class OnPolicyRunner:
 
     def learn(self, num_learning_iterations, init_at_random_ep_len=False):
         # initialize writer
+
+    #if RENDER:
+        camera_properties = gymapi.CameraProperties()
+        camera_properties.width = 1920
+        camera_properties.height = 1080
+        h1 = self.env.gym.create_camera_sensor(self.env.envs[0], camera_properties)
+        camera_offset = gymapi.Vec3(1, -1, 0.5)
+        camera_rotation = gymapi.Quat.from_axis_angle(gymapi.Vec3(-0.3, 0.2, 1),
+                                                    np.deg2rad(135))
+        actor_handle = self.env.gym.get_actor_handle(self.env.envs[0], 0)
+        body_handle = self.env.gym.get_actor_rigid_body_handle(self.env.envs[0], actor_handle, 0)
+        self.env.gym.attach_camera_to_body(
+            h1, self.env.envs[0], body_handle,
+            gymapi.Transform(camera_offset, camera_rotation),
+            gymapi.FOLLOW_POSITION)
+
+        fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+        video_dir = os.path.join(LEGGED_GYM_ROOT_DIR, 'videos')
+        experiment_dir = os.path.join(LEGGED_GYM_ROOT_DIR, 'videos', self.cfg["experiment_name"])
+        dir = os.path.join(experiment_dir, datetime.now().strftime('%b%d_%H-%M-%S')+ self.cfg["run_name"] + '.mp4')
+        if not os.path.exists(video_dir):
+            os.mkdir(video_dir)
+        if not os.path.exists(experiment_dir):
+            os.mkdir(experiment_dir)
+        video = cv2.VideoWriter(dir, fourcc, 50.0, (1920, 1080))
+
+
         if self.log_dir is not None and self.writer is None:
             wandb.init(
-                project="XBot",
+                project="X",
                 sync_tensorboard=True,
                 name=self.wandb_run_name,
                 config=self.all_cfg,
@@ -157,8 +189,39 @@ class OnPolicyRunner:
         )
 
         tot_iter = self.current_learning_iteration + num_learning_iterations
+
+        camera_properties = gymapi.CameraProperties()
+        camera_properties.width = 1920
+        camera_properties.height = 1080
+        h1 = self.env.gym.create_camera_sensor(self.env.envs[0], camera_properties)
+        camera_offset = gymapi.Vec3(1, -1, 0.5)
+        camera_rotation = gymapi.Quat.from_axis_angle(gymapi.Vec3(-0.3, 0.2, 1),
+                                                    np.deg2rad(135))
+        actor_handle = self.env.gym.get_actor_handle(self.env.envs[0], 0)
+        body_handle = self.env.gym.get_actor_rigid_body_handle(self.env.envs[0], actor_handle, 0)
+        self.env.gym.attach_camera_to_body(
+                    h1, self.env.envs[0], body_handle,
+                    gymapi.Transform(camera_offset, camera_rotation),
+                    gymapi.FOLLOW_POSITION)
+
+
         for it in range(self.current_learning_iteration, tot_iter):
             start = time.time()
+
+            if self.cfg["render"] and it % int(self.save_interval/2) == 0:
+
+
+                fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+                video_dir = os.path.join(LEGGED_GYM_ROOT_DIR, 'videos')
+                experiment_dir = os.path.join(LEGGED_GYM_ROOT_DIR, 'videos', self.cfg["experiment_name"])
+                dir = os.path.join(experiment_dir, datetime.now().strftime('%b%d_%H-%M-%S')+ self.cfg["run_name"] + '.mp4')
+                if not os.path.exists(video_dir):
+                    os.mkdir(video_dir)
+                if not os.path.exists(experiment_dir):
+                    os.mkdir(experiment_dir)
+                video = cv2.VideoWriter(dir, fourcc, 50.0, (1920, 1080))
+
+
             # Rollout
             with torch.inference_mode():
                 #print(self.policy_cfg["policy_type"])
@@ -179,6 +242,24 @@ class OnPolicyRunner:
                         dones.to(self.device),
                     )
                     self.alg.process_env_step(rewards, dones, infos)
+
+                    #print(self.cfg["render"])
+                    #print(it % int(self.save_interval/2)==0)
+                    # if self.cfg["render"] and it % int(self.save_interval/2) == 0:
+                    #     print('eee1')
+                    #     self.env.gym.fetch_results(self.env.sim, True)
+                    #     print('eee2')
+                    #     self.env.gym.step_graphics(self.env.sim)
+                    #     print('eee3')
+                    #     #self.env.gym.render_all_camera_sensors(self.env.sim)
+                    #     img = self.env.gym.get_camera_image(self.env.sim, self.env.envs[0], h1, gymapi.IMAGE_COLOR)
+                    #     img = np.reshape(img, (1080, 1920, 4))
+                    #     img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+                    #     print('eee')
+                    #     print(i)
+                    #     #cv2.imwrite('/home/ziluoding/unitree_rl_gym/'+str(i)+'.jpg', img)
+                    #     video.write(img[..., :3])
+                    #     print('ooo')
 
                     if self.log_dir is not None:
                         # Book keeping
@@ -204,6 +285,10 @@ class OnPolicyRunner:
                 start = stop
                 self.alg.compute_returns(critic_obs)
 
+            if self.cfg["render"] and it % int(self.save_interval/2) == 0:
+                print('ooooiiiiiui')
+                video.release()
+
             mean_value_loss, mean_surrogate_loss, mean_imitation_loss = self.alg.update()
             stop = time.time()
             learn_time = stop - start
@@ -220,6 +305,7 @@ class OnPolicyRunner:
             )
         )
 
+
     def log(self, locs, width=80, pad=35):
         self.tot_timesteps += self.num_steps_per_env * self.env.num_envs
         self.tot_time += locs["collection_time"] + locs["learn_time"]
@@ -228,8 +314,8 @@ class OnPolicyRunner:
         ep_string = f""
         if locs["ep_infos"]:
             for key in locs["ep_infos"][0]:
-                print('uuuuuu')
-                print(key)
+                #print('uuuuuu')
+                #print(key)
                 infotensor = torch.tensor([], device=self.device)
                 for ep_info in locs["ep_infos"]:
                     print(ep_info)

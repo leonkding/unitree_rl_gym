@@ -33,7 +33,7 @@ class H1RoughCfg( LeggedRobotCfg ):
         num_single_obs = 67 # 66 for global state, and 42 for obs
         use_privileged_obs = True
         num_actions = 10
-        num_observations = int(frame_stack * num_single_obs) # int(frame_stack * num_single_obs) for MLP, num_single_obs for Trans
+        num_observations = num_single_obs # int(frame_stack * num_single_obs) for MLP, num_single_obs for Trans
         num_teaching_observations = int(frame_stack * (num_single_obs-1))
         single_num_privileged_obs = 66
         num_privileged_obs = int(c_frame_stack * single_num_privileged_obs)
@@ -184,7 +184,7 @@ class H1RoughCfg( LeggedRobotCfg ):
 class H1RoughCfgPPO( LeggedRobotCfgPPO ):
     class policy( LeggedRobotCfgPPO.policy ):
         policy_type = 'moving' # standing, moving, and steering
-        architecture = 'MLP' # choose from 'Mix', 'Trans', 'MLP', and 'RNN'
+        architecture = 'Trans' # choose from 'Mix', 'Trans', 'MLP', and 'RNN'
         teaching_model_path = '/home/ziluoding/humanoid-gym/logs/h1/Jul11_16-30-02_/model_12000.pt'
         moving_model_path = '/home/ziluoding/humanoid-gym/logs/h1/Jul11_16-30-02_/model_12000.pt'
         init_noise_std = 1.0
@@ -216,6 +216,7 @@ class H1RoughCfgPPO( LeggedRobotCfgPPO ):
         experiment_name = 'h1'
         policy_class_name = 'ActorCritic'
         algorithm_class_name = 'PPO'
+        render = True
         num_steps_per_env = 24 # per iteration
         max_iterations = 50000 # number of policy updates
 

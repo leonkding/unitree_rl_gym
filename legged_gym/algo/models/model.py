@@ -82,7 +82,7 @@ class PPOTransformerModel(nn.Module):
             - policy: (torch.Tensor): policy with shape (batch_size,num_action)
             - value: (torch.Tensor): value with shape (batch_size,1)
         """
-        self.obs_dim = 66
+        self.obs_dim = 67
         #self.act_dim = 10
         batch_size, seq_length = states.shape[0], int(states.shape[1]/self.obs_dim)
 
