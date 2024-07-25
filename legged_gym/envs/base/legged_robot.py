@@ -55,17 +55,20 @@ class LeggedRobot(BaseTask):
         self._prepare_reward_function()
         self.init_done = True
 
-    def step(self, actions):
+    def step(self, actions, status_warmup='moving'):
         """ Apply actions, simulate, call self.post_physics_step()
 
         Args:
             actions (torch.Tensor): Tensor of shape (num_envs, num_actions_per_env)
         """
-
+        self.status = status_warmup
         clip_actions = self.cfg.normalization.clip_actions
         self.actions = torch.clip(actions, -clip_actions, clip_actions).to(self.device)
         # step physics and render each frame
-        self.render()
+        vis = self.render(sync_frame_time=False)
+        if vis is not None:
+            self.extras["episode"]["vis"] = vis
+
         for _ in range(self.cfg.control.decimation):
             self.torques = self._compute_torques(self.actions).view(self.torques.shape)
             self.gym.set_dof_actuation_force_tensor(self.sim, gymtorch.unwrap_tensor(self.torques))
@@ -500,6 +503,7 @@ class LeggedRobot(BaseTask):
         self.contact_forces = gymtorch.wrap_tensor(net_contact_forces).view(self.num_envs, -1, 3) # shape: num_envs, num_bodies, xyz axis
         self.rigid_state = gymtorch.wrap_tensor(rigid_body_state).view(self.num_envs, 11, 13) # shape: num_envs, num_bodies,
         self.base_euler_xyz = get_euler_xyz_tensor(self.base_quat)
+        self.last_last_actions = torch.zeros(self.num_envs, self.num_actions, dtype=torch.float, device=self.device, requires_grad=False)
         # initialize some data used later on
         self.common_step_counter = 0
         self.extras = {}
@@ -682,6 +686,8 @@ class LeggedRobot(BaseTask):
         self.base_init_state = to_torch(base_init_state_list, device=self.device, requires_grad=False)
         start_pose = gymapi.Transform()
         start_pose.p = gymapi.Vec3(*self.base_init_state[:3])
+        self.env_frictions = torch.zeros(self.num_envs, 1, dtype=torch.float32, device=self.device)
+        self.body_mass = torch.zeros(self.num_envs, 1, dtype=torch.float32, device=self.device, requires_grad=False)
 
         self._get_env_origins()
         env_lower = gymapi.Vec3(0., 0., 0.)
@@ -752,6 +758,7 @@ class LeggedRobot(BaseTask):
         self.dt = self.cfg.control.decimation * self.sim_params.dt
         self.obs_scales = self.cfg.normalization.obs_scales
         self.reward_scales = class_to_dict(self.cfg.rewards.scales)
+        self.standing_reward_scales = class_to_dict(self.cfg.rewards.stand_scales)
         self.command_ranges = class_to_dict(self.cfg.commands.ranges)
         if self.cfg.terrain.mesh_type not in ['heightfield', 'trimesh']:
             self.cfg.terrain.curriculum = False     

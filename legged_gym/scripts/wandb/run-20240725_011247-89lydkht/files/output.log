@@ -1,0 +1,2510 @@
+
+[34m[1mwandb[39m[22m: [33mWARNING[39m Found log directory outside of given root_logdir, dropping given root_logdir for event file in /home/ziluoding/unitree_rl_gym/logs/test/Jul25_01-12-43_h1
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                      [1m Learning iteration 0/50000 
+                       Computation: 46821 steps/s (collection: 1.754s, learning 0.296s)
+               Value function loss: 0.0163
+                    Surrogate loss: 0.2068
+                    Imitation loss: 0.0000
+             Mean action noise std: 1.00
+                       Mean reward: 0.04
+               Mean episode length: 23.75
+      Mean episode rew_action_rate: -0.0008
+       Mean episode rew_ang_vel_xy: -0.0450
+      Mean episode rew_base_height: 0.0001
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0002
+   Mean episode rew_dof_pos_limits: -0.0002
+    Mean episode rew_feet_air_time: -0.0003
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0018
+        Mean episode rew_joint_pos: -0.0004
+        Mean episode rew_lin_vel_z: -0.0041
+      Mean episode rew_orientation: 0.0009
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0017
+ Mean episode rew_tracking_lin_vel: 0.0013
+        Mean episode terrain_level: 1.6674
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 96000
+                    Iteration time: 2.05s
+                        Total time: 2.05s
+                               ETA: 102517.5s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                      [1m Learning iteration 1/50000 
+                       Computation: 48702 steps/s (collection: 1.725s, learning 0.246s)
+               Value function loss: 0.0048
+                    Surrogate loss: -0.0010
+                    Imitation loss: 0.0000
+             Mean action noise std: 1.00
+                       Mean reward: 0.10
+               Mean episode length: 43.77
+      Mean episode rew_action_rate: -0.0027
+       Mean episode rew_ang_vel_xy: -0.1302
+      Mean episode rew_base_height: 0.0005
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0005
+   Mean episode rew_dof_pos_limits: -0.0062
+    Mean episode rew_feet_air_time: -0.0007
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0052
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0083
+      Mean episode rew_orientation: 0.0014
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0038
+ Mean episode rew_tracking_lin_vel: 0.0046
+        Mean episode terrain_level: 1.3985
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 192000
+                    Iteration time: 1.97s
+                        Total time: 4.02s
+                               ETA: 100535.6s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                      [1m Learning iteration 2/50000 
+                       Computation: 51515 steps/s (collection: 1.604s, learning 0.259s)
+               Value function loss: 0.0038
+                    Surrogate loss: -0.0070
+                    Imitation loss: 0.0000
+             Mean action noise std: 1.00
+                       Mean reward: 0.11
+               Mean episode length: 40.46
+      Mean episode rew_action_rate: -0.0030
+       Mean episode rew_ang_vel_xy: -0.1046
+      Mean episode rew_base_height: 0.0006
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0006
+   Mean episode rew_dof_pos_limits: -0.0068
+    Mean episode rew_feet_air_time: -0.0008
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0062
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0091
+      Mean episode rew_orientation: 0.0014
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0046
+ Mean episode rew_tracking_lin_vel: 0.0048
+        Mean episode terrain_level: 1.0217
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 288000
+                    Iteration time: 1.86s
+                        Total time: 5.89s
+                               ETA: 98080.0s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                      [1m Learning iteration 3/50000 
+                       Computation: 46528 steps/s (collection: 1.820s, learning 0.244s)
+               Value function loss: 0.0033
+                    Surrogate loss: -0.0091
+                    Imitation loss: 0.0000
+             Mean action noise std: 1.00
+                       Mean reward: 0.18
+               Mean episode length: 47.15
+      Mean episode rew_action_rate: -0.0029
+       Mean episode rew_ang_vel_xy: -0.0810
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0006
+   Mean episode rew_dof_pos_limits: -0.0028
+    Mean episode rew_feet_air_time: -0.0008
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0061
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0057
+      Mean episode rew_orientation: 0.0014
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0049
+ Mean episode rew_tracking_lin_vel: 0.0056
+        Mean episode terrain_level: 0.7589
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 384000
+                    Iteration time: 2.06s
+                        Total time: 7.95s
+                               ETA: 99347.9s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                      [1m Learning iteration 4/50000 
+                       Computation: 41831 steps/s (collection: 1.999s, learning 0.296s)
+               Value function loss: 0.0037
+                    Surrogate loss: -0.0080
+                    Imitation loss: 0.0000
+             Mean action noise std: 1.00
+                       Mean reward: 0.16
+               Mean episode length: 44.67
+      Mean episode rew_action_rate: -0.0030
+       Mean episode rew_ang_vel_xy: -0.0785
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0006
+   Mean episode rew_dof_pos_limits: -0.0017
+    Mean episode rew_feet_air_time: -0.0008
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0063
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0054
+      Mean episode rew_orientation: 0.0015
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0050
+ Mean episode rew_tracking_lin_vel: 0.0057
+        Mean episode terrain_level: 0.5224
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 480000
+                    Iteration time: 2.29s
+                        Total time: 10.24s
+                               ETA: 102424.3s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                      [1m Learning iteration 5/50000 
+                       Computation: 31272 steps/s (collection: 2.688s, learning 0.382s)
+               Value function loss: 0.0040
+                    Surrogate loss: -0.0097
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.99
+                       Mean reward: 0.17
+               Mean episode length: 46.59
+      Mean episode rew_action_rate: -0.0030
+       Mean episode rew_ang_vel_xy: -0.0752
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0006
+   Mean episode rew_dof_pos_limits: -0.0015
+    Mean episode rew_feet_air_time: -0.0008
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0064
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0052
+      Mean episode rew_orientation: 0.0015
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0051
+ Mean episode rew_tracking_lin_vel: 0.0057
+        Mean episode terrain_level: 0.3341
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 576000
+                    Iteration time: 3.07s
+                        Total time: 13.31s
+                               ETA: 110930.8s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                      [1m Learning iteration 6/50000 
+                       Computation: 23224 steps/s (collection: 3.808s, learning 0.325s)
+               Value function loss: 0.0051
+                    Surrogate loss: -0.0092
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.99
+                       Mean reward: 0.24
+               Mean episode length: 44.71
+      Mean episode rew_action_rate: -0.0029
+       Mean episode rew_ang_vel_xy: -0.0730
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0006
+   Mean episode rew_dof_pos_limits: -0.0015
+    Mean episode rew_feet_air_time: -0.0008
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0064
+        Mean episode rew_joint_pos: -0.0013
+        Mean episode rew_lin_vel_z: -0.0050
+      Mean episode rew_orientation: 0.0016
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0051
+ Mean episode rew_tracking_lin_vel: 0.0057
+        Mean episode terrain_level: 0.1958
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 672000
+                    Iteration time: 4.13s
+                        Total time: 17.45s
+                               ETA: 124603.6s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                      [1m Learning iteration 7/50000 
+                       Computation: 21241 steps/s (collection: 3.966s, learning 0.554s)
+               Value function loss: 0.0045
+                    Surrogate loss: -0.0116
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.98
+                       Mean reward: 0.21
+               Mean episode length: 45.11
+      Mean episode rew_action_rate: -0.0030
+       Mean episode rew_ang_vel_xy: -0.0722
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0006
+   Mean episode rew_dof_pos_limits: -0.0016
+    Mean episode rew_feet_air_time: -0.0009
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0066
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0047
+      Mean episode rew_orientation: 0.0016
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0053
+ Mean episode rew_tracking_lin_vel: 0.0062
+        Mean episode terrain_level: 0.1015
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 768000
+                    Iteration time: 4.52s
+                        Total time: 21.97s
+                               ETA: 137268.7s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                      [1m Learning iteration 8/50000 
+                       Computation: 32190 steps/s (collection: 2.746s, learning 0.236s)
+               Value function loss: 0.0051
+                    Surrogate loss: -0.0099
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.98
+                       Mean reward: 0.22
+               Mean episode length: 46.75
+      Mean episode rew_action_rate: -0.0030
+       Mean episode rew_ang_vel_xy: -0.0703
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0006
+   Mean episode rew_dof_pos_limits: -0.0016
+    Mean episode rew_feet_air_time: -0.0008
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0066
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0048
+      Mean episode rew_orientation: 0.0017
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0053
+ Mean episode rew_tracking_lin_vel: 0.0058
+        Mean episode terrain_level: 0.0483
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 864000
+                    Iteration time: 2.98s
+                        Total time: 24.95s
+                               ETA: 138579.4s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                      [1m Learning iteration 9/50000 
+                       Computation: 3047 steps/s (collection: 31.223s, learning 0.277s)
+               Value function loss: 0.0061
+                    Surrogate loss: -0.0085
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.98
+                       Mean reward: 0.19
+               Mean episode length: 45.40
+      Mean episode rew_action_rate: -0.0030
+       Mean episode rew_ang_vel_xy: -0.0689
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0006
+   Mean episode rew_dof_pos_limits: -0.0016
+    Mean episode rew_feet_air_time: -0.0009
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0068
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0046
+      Mean episode rew_orientation: 0.0017
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0054
+ Mean episode rew_tracking_lin_vel: 0.0058
+        Mean episode terrain_level: 0.0185
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 960000
+                    Iteration time: 31.50s
+                        Total time: 56.45s
+                               ETA: 282187.9s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 10/50000 
+                       Computation: 19642 steps/s (collection: 4.516s, learning 0.371s)
+               Value function loss: 0.0059
+                    Surrogate loss: -0.0090
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.98
+                       Mean reward: 0.22
+               Mean episode length: 44.44
+      Mean episode rew_action_rate: -0.0031
+       Mean episode rew_ang_vel_xy: -0.0680
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0006
+   Mean episode rew_dof_pos_limits: -0.0015
+    Mean episode rew_feet_air_time: -0.0009
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0070
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0045
+      Mean episode rew_orientation: 0.0018
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0056
+ Mean episode rew_tracking_lin_vel: 0.0067
+        Mean episode terrain_level: 0.0074
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1056000
+                    Iteration time: 4.89s
+                        Total time: 61.33s
+                               ETA: 278739.6s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 11/50000 
+                       Computation: 19872 steps/s (collection: 4.556s, learning 0.275s)
+               Value function loss: 0.0062
+                    Surrogate loss: -0.0077
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.97
+                       Mean reward: 0.26
+               Mean episode length: 46.28
+      Mean episode rew_action_rate: -0.0030
+       Mean episode rew_ang_vel_xy: -0.0658
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0006
+   Mean episode rew_dof_pos_limits: -0.0016
+    Mean episode rew_feet_air_time: -0.0009
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0069
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0044
+      Mean episode rew_orientation: 0.0018
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0056
+ Mean episode rew_tracking_lin_vel: 0.0067
+        Mean episode terrain_level: 0.0025
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1152000
+                    Iteration time: 4.83s
+                        Total time: 66.17s
+                               ETA: 275629.6s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 12/50000 
+                       Computation: 29598 steps/s (collection: 2.985s, learning 0.258s)
+               Value function loss: 0.0071
+                    Surrogate loss: -0.0096
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.97
+                       Mean reward: 0.23
+               Mean episode length: 43.14
+      Mean episode rew_action_rate: -0.0031
+       Mean episode rew_ang_vel_xy: -0.0648
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0006
+   Mean episode rew_dof_pos_limits: -0.0014
+    Mean episode rew_feet_air_time: -0.0009
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0071
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0045
+      Mean episode rew_orientation: 0.0019
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0056
+ Mean episode rew_tracking_lin_vel: 0.0066
+        Mean episode terrain_level: 0.0011
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1248000
+                    Iteration time: 3.24s
+                        Total time: 69.41s
+                               ETA: 266893.9s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 13/50000 
+                       Computation: 31780 steps/s (collection: 2.724s, learning 0.296s)
+               Value function loss: 0.0086
+                    Surrogate loss: -0.0085
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.97
+                       Mean reward: 0.23
+               Mean episode length: 44.88
+      Mean episode rew_action_rate: -0.0031
+       Mean episode rew_ang_vel_xy: -0.0642
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0006
+   Mean episode rew_dof_pos_limits: -0.0014
+    Mean episode rew_feet_air_time: -0.0009
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0071
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0044
+      Mean episode rew_orientation: 0.0020
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0057
+ Mean episode rew_tracking_lin_vel: 0.0069
+        Mean episode terrain_level: 0.0008
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1344000
+                    Iteration time: 3.02s
+                        Total time: 72.43s
+                               ETA: 258610.7s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 14/50000 
+                       Computation: 32145 steps/s (collection: 2.740s, learning 0.246s)
+               Value function loss: 0.0088
+                    Surrogate loss: -0.0065
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.97
+                       Mean reward: 0.29
+               Mean episode length: 44.89
+      Mean episode rew_action_rate: -0.0031
+       Mean episode rew_ang_vel_xy: -0.0631
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0015
+    Mean episode rew_feet_air_time: -0.0009
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0073
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0043
+      Mean episode rew_orientation: 0.0020
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0058
+ Mean episode rew_tracking_lin_vel: 0.0071
+        Mean episode terrain_level: 0.0004
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1440000
+                    Iteration time: 2.99s
+                        Total time: 75.42s
+                               ETA: 251317.1s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 15/50000 
+                       Computation: 25359 steps/s (collection: 3.476s, learning 0.310s)
+               Value function loss: 0.0088
+                    Surrogate loss: -0.0082
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.96
+                       Mean reward: 0.28
+               Mean episode length: 46.01
+      Mean episode rew_action_rate: -0.0030
+       Mean episode rew_ang_vel_xy: -0.0616
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0006
+   Mean episode rew_dof_pos_limits: -0.0014
+    Mean episode rew_feet_air_time: -0.0009
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0073
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0043
+      Mean episode rew_orientation: 0.0020
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0058
+ Mean episode rew_tracking_lin_vel: 0.0074
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1536000
+                    Iteration time: 3.79s
+                        Total time: 79.20s
+                               ETA: 247431.5s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 16/50000 
+                       Computation: 19171 steps/s (collection: 4.409s, learning 0.599s)
+               Value function loss: 0.0103
+                    Surrogate loss: -0.0063
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.96
+                       Mean reward: 0.36
+               Mean episode length: 47.86
+      Mean episode rew_action_rate: -0.0031
+       Mean episode rew_ang_vel_xy: -0.0622
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0015
+    Mean episode rew_feet_air_time: -0.0009
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0074
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0043
+      Mean episode rew_orientation: 0.0021
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0059
+ Mean episode rew_tracking_lin_vel: 0.0075
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1632000
+                    Iteration time: 5.01s
+                        Total time: 84.21s
+                               ETA: 247594.9s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 17/50000 
+                       Computation: 18206 steps/s (collection: 5.000s, learning 0.273s)
+               Value function loss: 0.0098
+                    Surrogate loss: -0.0081
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.96
+                       Mean reward: 0.36
+               Mean episode length: 47.44
+      Mean episode rew_action_rate: -0.0031
+       Mean episode rew_ang_vel_xy: -0.0610
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0016
+    Mean episode rew_feet_air_time: -0.0009
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0075
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0043
+      Mean episode rew_orientation: 0.0021
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0060
+ Mean episode rew_tracking_lin_vel: 0.0078
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1728000
+                    Iteration time: 5.27s
+                        Total time: 89.48s
+                               ETA: 248477.0s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 18/50000 
+                       Computation: 30815 steps/s (collection: 2.895s, learning 0.220s)
+               Value function loss: 0.0098
+                    Surrogate loss: -0.0073
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.96
+                       Mean reward: 0.48
+               Mean episode length: 47.83
+      Mean episode rew_action_rate: -0.0031
+       Mean episode rew_ang_vel_xy: -0.0602
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0014
+    Mean episode rew_feet_air_time: -0.0009
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0074
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0042
+      Mean episode rew_orientation: 0.0021
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0059
+ Mean episode rew_tracking_lin_vel: 0.0080
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1824000
+                    Iteration time: 3.12s
+                        Total time: 92.60s
+                               ETA: 243589.8s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 19/50000 
+                       Computation: 32327 steps/s (collection: 2.740s, learning 0.230s)
+               Value function loss: 0.0103
+                    Surrogate loss: -0.0070
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.96
+                       Mean reward: 0.37
+               Mean episode length: 49.30
+      Mean episode rew_action_rate: -0.0031
+       Mean episode rew_ang_vel_xy: -0.0605
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0015
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0076
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0043
+      Mean episode rew_orientation: 0.0022
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0060
+ Mean episode rew_tracking_lin_vel: 0.0083
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1920000
+                    Iteration time: 2.97s
+                        Total time: 95.57s
+                               ETA: 238826.7s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 20/50000 
+                       Computation: 30855 steps/s (collection: 2.827s, learning 0.285s)
+               Value function loss: 0.0110
+                    Surrogate loss: -0.0087
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.95
+                       Mean reward: 0.42
+               Mean episode length: 46.80
+      Mean episode rew_action_rate: -0.0032
+       Mean episode rew_ang_vel_xy: -0.0602
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0015
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0077
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0043
+      Mean episode rew_orientation: 0.0023
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0061
+ Mean episode rew_tracking_lin_vel: 0.0081
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2016000
+                    Iteration time: 3.11s
+                        Total time: 98.68s
+                               ETA: 234854.4s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 21/50000 
+                       Computation: 33816 steps/s (collection: 2.610s, learning 0.228s)
+               Value function loss: 0.0111
+                    Surrogate loss: -0.0096
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.95
+                       Mean reward: 0.34
+               Mean episode length: 47.81
+      Mean episode rew_action_rate: -0.0032
+       Mean episode rew_ang_vel_xy: -0.0592
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0015
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0078
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0043
+      Mean episode rew_orientation: 0.0023
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0062
+ Mean episode rew_tracking_lin_vel: 0.0086
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2112000
+                    Iteration time: 2.84s
+                        Total time: 101.52s
+                               ETA: 230623.9s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 22/50000 
+                       Computation: 23933 steps/s (collection: 3.496s, learning 0.515s)
+               Value function loss: 0.0123
+                    Surrogate loss: -0.0088
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.95
+                       Mean reward: 0.43
+               Mean episode length: 48.10
+      Mean episode rew_action_rate: -0.0032
+       Mean episode rew_ang_vel_xy: -0.0597
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0015
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0078
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0044
+      Mean episode rew_orientation: 0.0024
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0062
+ Mean episode rew_tracking_lin_vel: 0.0088
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2208000
+                    Iteration time: 4.01s
+                        Total time: 105.53s
+                               ETA: 229308.3s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 23/50000 
+                       Computation: 18162 steps/s (collection: 4.935s, learning 0.351s)
+               Value function loss: 0.0134
+                    Surrogate loss: -0.0051
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.95
+                       Mean reward: 0.44
+               Mean episode length: 48.50
+      Mean episode rew_action_rate: -0.0032
+       Mean episode rew_ang_vel_xy: -0.0597
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0015
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0079
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0043
+      Mean episode rew_orientation: 0.0024
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0062
+ Mean episode rew_tracking_lin_vel: 0.0091
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2304000
+                    Iteration time: 5.29s
+                        Total time: 110.81s
+                               ETA: 230756.2s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 24/50000 
+                       Computation: 29637 steps/s (collection: 2.901s, learning 0.338s)
+               Value function loss: 0.0127
+                    Surrogate loss: -0.0092
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.95
+                       Mean reward: 0.41
+               Mean episode length: 48.83
+      Mean episode rew_action_rate: -0.0031
+       Mean episode rew_ang_vel_xy: -0.0587
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0015
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0079
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0041
+      Mean episode rew_orientation: 0.0025
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0062
+ Mean episode rew_tracking_lin_vel: 0.0089
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2400000
+                    Iteration time: 3.24s
+                        Total time: 114.05s
+                               ETA: 227996.7s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 25/50000 
+                       Computation: 30185 steps/s (collection: 2.960s, learning 0.220s)
+               Value function loss: 0.0124
+                    Surrogate loss: -0.0049
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.95
+                       Mean reward: 0.47
+               Mean episode length: 52.11
+      Mean episode rew_action_rate: -0.0032
+       Mean episode rew_ang_vel_xy: -0.0588
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0016
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0080
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0041
+      Mean episode rew_orientation: 0.0025
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0063
+ Mean episode rew_tracking_lin_vel: 0.0085
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2496000
+                    Iteration time: 3.18s
+                        Total time: 117.23s
+                               ETA: 225336.1s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 26/50000 
+                       Computation: 30905 steps/s (collection: 2.792s, learning 0.314s)
+               Value function loss: 0.0137
+                    Surrogate loss: -0.0069
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.94
+                       Mean reward: 0.51
+               Mean episode length: 52.26
+      Mean episode rew_action_rate: -0.0032
+       Mean episode rew_ang_vel_xy: -0.0588
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0016
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0081
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0042
+      Mean episode rew_orientation: 0.0025
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0064
+ Mean episode rew_tracking_lin_vel: 0.0090
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2592000
+                    Iteration time: 3.11s
+                        Total time: 120.34s
+                               ETA: 222735.4s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 27/50000 
+                       Computation: 33659 steps/s (collection: 2.632s, learning 0.220s)
+               Value function loss: 0.0136
+                    Surrogate loss: -0.0074
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.94
+                       Mean reward: 0.62
+               Mean episode length: 50.94
+      Mean episode rew_action_rate: -0.0032
+       Mean episode rew_ang_vel_xy: -0.0583
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0017
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0080
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0043
+      Mean episode rew_orientation: 0.0026
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0064
+ Mean episode rew_tracking_lin_vel: 0.0089
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2688000
+                    Iteration time: 2.85s
+                        Total time: 123.19s
+                               ETA: 219866.4s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 28/50000 
+                       Computation: 24917 steps/s (collection: 3.385s, learning 0.467s)
+               Value function loss: 0.0141
+                    Surrogate loss: -0.0078
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.94
+                       Mean reward: 0.56
+               Mean episode length: 51.33
+      Mean episode rew_action_rate: -0.0032
+       Mean episode rew_ang_vel_xy: -0.0600
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0016
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0082
+        Mean episode rew_joint_pos: -0.0014
+        Mean episode rew_lin_vel_z: -0.0045
+      Mean episode rew_orientation: 0.0027
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0065
+ Mean episode rew_tracking_lin_vel: 0.0095
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2784000
+                    Iteration time: 3.85s
+                        Total time: 127.04s
+                               ETA: 218919.6s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 29/50000 
+                       Computation: 16567 steps/s (collection: 5.381s, learning 0.413s)
+               Value function loss: 0.0147
+                    Surrogate loss: -0.0072
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.94
+                       Mean reward: 0.46
+               Mean episode length: 51.29
+      Mean episode rew_action_rate: -0.0033
+       Mean episode rew_ang_vel_xy: -0.0602
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0017
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0084
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0044
+      Mean episode rew_orientation: 0.0029
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0066
+ Mean episode rew_tracking_lin_vel: 0.0096
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2880000
+                    Iteration time: 5.79s
+                        Total time: 132.84s
+                               ETA: 221270.0s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 30/50000 
+                       Computation: 27553 steps/s (collection: 3.210s, learning 0.274s)
+               Value function loss: 0.0155
+                    Surrogate loss: -0.0071
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.93
+                       Mean reward: 0.59
+               Mean episode length: 51.71
+      Mean episode rew_action_rate: -0.0033
+       Mean episode rew_ang_vel_xy: -0.0606
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0016
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0085
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0047
+      Mean episode rew_orientation: 0.0029
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0066
+ Mean episode rew_tracking_lin_vel: 0.0099
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2976000
+                    Iteration time: 3.48s
+                        Total time: 136.32s
+                               ETA: 219744.1s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 31/50000 
+                       Computation: 31541 steps/s (collection: 2.808s, learning 0.236s)
+               Value function loss: 0.0165
+                    Surrogate loss: -0.0081
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.93
+                       Mean reward: 0.59
+               Mean episode length: 53.53
+      Mean episode rew_action_rate: -0.0033
+       Mean episode rew_ang_vel_xy: -0.0612
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0016
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0086
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0047
+      Mean episode rew_orientation: 0.0030
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0067
+ Mean episode rew_tracking_lin_vel: 0.0098
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3072000
+                    Iteration time: 3.04s
+                        Total time: 139.37s
+                               ETA: 217625.5s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 32/50000 
+                       Computation: 33105 steps/s (collection: 2.655s, learning 0.245s)
+               Value function loss: 0.0178
+                    Surrogate loss: -0.0076
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.93
+                       Mean reward: 0.73
+               Mean episode length: 53.38
+      Mean episode rew_action_rate: -0.0033
+       Mean episode rew_ang_vel_xy: -0.0618
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0018
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0086
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0047
+      Mean episode rew_orientation: 0.0031
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0069
+ Mean episode rew_tracking_lin_vel: 0.0105
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3168000
+                    Iteration time: 2.90s
+                        Total time: 142.27s
+                               ETA: 215417.5s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 33/50000 
+                       Computation: 30112 steps/s (collection: 2.955s, learning 0.233s)
+               Value function loss: 0.0218
+                    Surrogate loss: -0.0045
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.93
+                       Mean reward: 0.60
+               Mean episode length: 50.92
+      Mean episode rew_action_rate: -0.0033
+       Mean episode rew_ang_vel_xy: -0.0615
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0017
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0086
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0047
+      Mean episode rew_orientation: 0.0031
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0068
+ Mean episode rew_tracking_lin_vel: 0.0101
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3264000
+                    Iteration time: 3.19s
+                        Total time: 145.45s
+                               ETA: 213762.7s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 34/50000 
+                       Computation: 24863 steps/s (collection: 3.453s, learning 0.409s)
+               Value function loss: 0.0171
+                    Surrogate loss: -0.0075
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.93
+                       Mean reward: 0.65
+               Mean episode length: 53.75
+      Mean episode rew_action_rate: -0.0033
+       Mean episode rew_ang_vel_xy: -0.0616
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0017
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0088
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0045
+      Mean episode rew_orientation: 0.0031
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0068
+ Mean episode rew_tracking_lin_vel: 0.0096
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3360000
+                    Iteration time: 3.86s
+                        Total time: 149.32s
+                               ETA: 213163.1s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 35/50000 
+                       Computation: 16096 steps/s (collection: 5.570s, learning 0.394s)
+               Value function loss: 0.0150
+                    Surrogate loss: -0.0049
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.93
+                       Mean reward: 0.67
+               Mean episode length: 54.56
+      Mean episode rew_action_rate: -0.0033
+       Mean episode rew_ang_vel_xy: -0.0620
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0018
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0088
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0045
+      Mean episode rew_orientation: 0.0031
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0068
+ Mean episode rew_tracking_lin_vel: 0.0101
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3456000
+                    Iteration time: 5.96s
+                        Total time: 155.28s
+                               ETA: 215515.2s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 36/50000 
+                       Computation: 25997 steps/s (collection: 3.441s, learning 0.252s)
+               Value function loss: 0.0157
+                    Surrogate loss: -0.0087
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.92
+                       Mean reward: 0.62
+               Mean episode length: 54.12
+      Mean episode rew_action_rate: -0.0034
+       Mean episode rew_ang_vel_xy: -0.0619
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0019
+    Mean episode rew_feet_air_time: -0.0010
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0091
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0047
+      Mean episode rew_orientation: 0.0032
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0070
+ Mean episode rew_tracking_lin_vel: 0.0104
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3552000
+                    Iteration time: 3.69s
+                        Total time: 158.97s
+                               ETA: 214672.8s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 37/50000 
+                       Computation: 30532 steps/s (collection: 2.884s, learning 0.260s)
+               Value function loss: 0.0178
+                    Surrogate loss: -0.0081
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.92
+                       Mean reward: 0.54
+               Mean episode length: 53.09
+      Mean episode rew_action_rate: -0.0033
+       Mean episode rew_ang_vel_xy: -0.0621
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0019
+    Mean episode rew_feet_air_time: -0.0011
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0090
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0046
+      Mean episode rew_orientation: 0.0032
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0069
+ Mean episode rew_tracking_lin_vel: 0.0100
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3648000
+                    Iteration time: 3.14s
+                        Total time: 162.12s
+                               ETA: 213153.4s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 38/50000 
+                       Computation: 29199 steps/s (collection: 3.030s, learning 0.257s)
+               Value function loss: 0.0196
+                    Surrogate loss: -0.0053
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.92
+                       Mean reward: 0.53
+               Mean episode length: 52.62
+      Mean episode rew_action_rate: -0.0034
+       Mean episode rew_ang_vel_xy: -0.0628
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0020
+    Mean episode rew_feet_air_time: -0.0011
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0091
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0047
+      Mean episode rew_orientation: 0.0033
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0070
+ Mean episode rew_tracking_lin_vel: 0.0109
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3744000
+                    Iteration time: 3.29s
+                        Total time: 165.40s
+                               ETA: 211895.6s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 39/50000 
+                       Computation: 29821 steps/s (collection: 2.964s, learning 0.255s)
+               Value function loss: 0.0182
+                    Surrogate loss: -0.0083
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.92
+                       Mean reward: 0.67
+               Mean episode length: 52.13
+      Mean episode rew_action_rate: -0.0034
+       Mean episode rew_ang_vel_xy: -0.0629
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0020
+    Mean episode rew_feet_air_time: -0.0011
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0092
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0048
+      Mean episode rew_orientation: 0.0033
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0072
+ Mean episode rew_tracking_lin_vel: 0.0107
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3840000
+                    Iteration time: 3.22s
+                        Total time: 168.62s
+                               ETA: 210614.9s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 40/50000 
+                       Computation: 20116 steps/s (collection: 4.188s, learning 0.585s)
+               Value function loss: 0.0187
+                    Surrogate loss: -0.0040
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.92
+                       Mean reward: 0.59
+               Mean episode length: 53.94
+      Mean episode rew_action_rate: -0.0034
+       Mean episode rew_ang_vel_xy: -0.0637
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0020
+    Mean episode rew_feet_air_time: -0.0011
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0093
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0048
+      Mean episode rew_orientation: 0.0034
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0071
+ Mean episode rew_tracking_lin_vel: 0.0107
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3936000
+                    Iteration time: 4.77s
+                        Total time: 173.40s
+                               ETA: 211289.0s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 41/50000 
+                       Computation: 16354 steps/s (collection: 5.301s, learning 0.569s)
+               Value function loss: 0.0168
+                    Surrogate loss: -0.0092
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.92
+                       Mean reward: 0.80
+               Mean episode length: 54.94
+      Mean episode rew_action_rate: -0.0034
+       Mean episode rew_ang_vel_xy: -0.0639
+      Mean episode rew_base_height: 0.0004
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0022
+    Mean episode rew_feet_air_time: -0.0011
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0095
+        Mean episode rew_joint_pos: -0.0016
+        Mean episode rew_lin_vel_z: -0.0048
+      Mean episode rew_orientation: 0.0035
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0073
+ Mean episode rew_tracking_lin_vel: 0.0117
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 4032000
+                    Iteration time: 5.87s
+                        Total time: 179.27s
+                               ETA: 213236.5s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 42/50000 
+                       Computation: 32427 steps/s (collection: 2.722s, learning 0.239s)
+               Value function loss: 0.0181
+                    Surrogate loss: -0.0053
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.92
+                       Mean reward: 0.69
+               Mean episode length: 52.55
+      Mean episode rew_action_rate: -0.0034
+       Mean episode rew_ang_vel_xy: -0.0638
+      Mean episode rew_base_height: 0.0005
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0021
+    Mean episode rew_feet_air_time: -0.0011
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0093
+        Mean episode rew_joint_pos: -0.0015
+        Mean episode rew_lin_vel_z: -0.0049
+      Mean episode rew_orientation: 0.0035
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0071
+ Mean episode rew_tracking_lin_vel: 0.0107
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 4128000
+                    Iteration time: 2.96s
+                        Total time: 182.23s
+                               ETA: 211712.8s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 43/50000 
+                       Computation: 33576 steps/s (collection: 2.621s, learning 0.239s)
+               Value function loss: 0.0169
+                    Surrogate loss: -0.0088
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.91
+                       Mean reward: 0.63
+               Mean episode length: 52.55
+      Mean episode rew_action_rate: -0.0034
+       Mean episode rew_ang_vel_xy: -0.0633
+      Mean episode rew_base_height: 0.0005
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0022
+    Mean episode rew_feet_air_time: -0.0011
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0095
+        Mean episode rew_joint_pos: -0.0016
+        Mean episode rew_lin_vel_z: -0.0049
+      Mean episode rew_orientation: 0.0035
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0073
+ Mean episode rew_tracking_lin_vel: 0.0109
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 4224000
+                    Iteration time: 2.86s
+                        Total time: 185.09s
+                               ETA: 210143.3s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+################################################################################
+                     [1m Learning iteration 44/50000 
+                       Computation: 34293 steps/s (collection: 2.569s, learning 0.231s)
+               Value function loss: 0.0184
+                    Surrogate loss: -0.0087
+                    Imitation loss: 0.0000
+             Mean action noise std: 0.91
+                       Mean reward: 0.72
+               Mean episode length: 55.27
+      Mean episode rew_action_rate: -0.0035
+       Mean episode rew_ang_vel_xy: -0.0646
+      Mean episode rew_base_height: 0.0005
+        Mean episode rew_collision: 0.0000
+          Mean episode rew_dof_acc: -0.0007
+   Mean episode rew_dof_pos_limits: -0.0022
+    Mean episode rew_feet_air_time: -0.0011
+   Mean episode rew_feet_clearance: 0.0000
+Mean episode rew_feet_contact_number: 0.0096
+        Mean episode rew_joint_pos: -0.0016
+        Mean episode rew_lin_vel_z: -0.0051
+      Mean episode rew_orientation: 0.0035
+          Mean episode rew_torques: 0.0000
+ Mean episode rew_tracking_ang_vel: 0.0074
+ Mean episode rew_tracking_lin_vel: 0.0119
+        Mean episode terrain_level: 0.0000
+        Mean episode max_command_x: 2.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 4320000
+                    Iteration time: 2.80s
+                        Total time: 187.88s
+                               ETA: 208577.0s
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+Traceback (most recent call last):
+  File "train.py", line 20, in <module>
+    train(args)
+  File "train.py", line 15, in train
+    ppo_runner.learn(num_learning_iterations=train_cfg.runner.max_iterations, init_at_random_ep_len=True)
+  File "/home/ziluoding/unitree_rl_gym/legged_gym/algo/ppo/on_policy_runner.py", line 173, in learn
+    obs, privileged_obs, rewards, dones, infos = self.env.step(actions, self.policy_cfg['policy_type'])
+  File "/home/ziluoding/unitree_rl_gym/legged_gym/envs/base/legged_robot.py", line 82, in step
+    self.post_physics_step()
+  File "/home/ziluoding/unitree_rl_gym/legged_gym/envs/base/legged_robot.py", line 108, in post_physics_step
+    self.projected_gravity[:] = quat_rotate_inverse(self.base_quat, self.gravity_vec)
+KeyboardInterrupt
+torch.Size([4000, 67])
+torch.Size([4000, 67])
+torch.Size([4000, 67])

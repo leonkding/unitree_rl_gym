@@ -1,0 +1,94 @@
+wandb_version: 1
+
+algorithm:
+  desc: null
+  value:
+    clip_param: 0.2
+    desired_kl: 0.01
+    entropy_coef: 0.01
+    gamma: 0.99
+    imitation_coef: 100.0
+    lam: 0.95
+    learning_rate: 0.001
+    max_grad_norm: 0.2
+    num_learning_epochs: 5
+    num_mini_batches: 4
+    schedule: adaptive
+    use_clipped_value_loss: true
+    use_imitation_loss: true
+    value_loss_coef: 1.0
+init_member_classes:
+  desc: null
+  value: {}
+policy:
+  desc: null
+  value:
+    activation: elu
+    actor_hidden_dims:
+    - 512
+    - 256
+    - 128
+    architecture: MLP
+    critic_hidden_dims:
+    - 512
+    - 256
+    - 128
+    init_noise_std: 1.0
+    moving_model_path: /home/ziluoding/humanoid-gym/logs/h1/Jul11_16-30-02_/model_12000.pt
+    policy_type: moving
+    rnn_hidden_size: 512
+    rnn_num_layers: 1
+    rnn_type: lstm
+    teaching_model_path: /home/ziluoding/humanoid-gym/logs/h1/Jul11_16-30-02_/model_12000.pt
+runner:
+  desc: null
+  value:
+    algorithm_class_name: PPO
+    checkpoint: -1
+    experiment_name: test
+    load_run: -1
+    max_iterations: 50000
+    num_steps_per_env: 24
+    policy_class_name: ActorCritic
+    resume: false
+    resume_path: null
+    run_name: h1
+    save_interval: 1000
+runner_class_name:
+  desc: null
+  value: OnPolicyRunner
+seed:
+  desc: null
+  value: 1
+_wandb:
+  desc: null
+  value:
+    python_version: 3.8.19
+    cli_version: 0.17.0
+    framework: huggingface
+    huggingface_version: 4.1.0
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1721842815
+    t:
+      1:
+      - 1
+      - 11
+      - 53
+      - 55
+      2:
+      - 1
+      - 11
+      - 53
+      - 55
+      3:
+      - 13
+      - 16
+      - 23
+      - 35
+      4: 3.8.19
+      5: 0.17.0
+      6: 4.1.0
+      8:
+      - 5
+      13: linux-x86_64

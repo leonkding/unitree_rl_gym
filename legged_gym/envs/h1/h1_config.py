@@ -30,12 +30,12 @@ class H1RoughCfg( LeggedRobotCfg ):
         num_envs = 4000
         frame_stack = 15
         c_frame_stack = 3
-        num_single_obs = 66 # 66 for global state, and 42 for obs
+        num_single_obs = 67 # 66 for global state, and 42 for obs
         use_privileged_obs = True
         num_actions = 10
         num_observations = int(frame_stack * num_single_obs) # int(frame_stack * num_single_obs) for MLP, num_single_obs for Trans
         num_teaching_observations = int(frame_stack * (num_single_obs-1))
-        single_num_privileged_obs = 65
+        single_num_privileged_obs = 66
         num_privileged_obs = int(c_frame_stack * single_num_privileged_obs)
         use_ref_actions = False
         episode_length_s = 60  # episode length in seconds
@@ -128,7 +128,7 @@ class H1RoughCfg( LeggedRobotCfg ):
             # # base pos
              #default_joint_pos = 0.5 * 0
             orientation = 1.
-            base_height = 1
+            #base_height = 1
 #             base_acc = 0.2
             # # energy
 #             action_smoothness = -0.002
@@ -142,7 +142,7 @@ class H1RoughCfg( LeggedRobotCfg ):
             lin_vel_z = -2.0
             ang_vel_xy = -1.0
              #orientation = -1.0
-             #base_height = -100.0
+            base_height = -100.0
             dof_acc = -3.5e-8
             feet_air_time = 1.0
             collision = 0.0

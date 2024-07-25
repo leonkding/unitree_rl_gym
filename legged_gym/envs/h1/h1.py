@@ -95,17 +95,7 @@ class H1Env(LeggedRobot):
         self.ref_action = 2 * self.ref_dof_pos
 
     def _get_noise_scale_vec(self, cfg):
-         """ Sets a vector used to scale the noise added to the observations.
-             [NOTE]: Must be adapted when changing the observations structure
-
-         Args:
-             cfg (Dict): Environment config file
-
-         Returns:
-             [torch.Tensor]: Vector of scales used to multiply a uniform distribution in [-1, 1]
-         """
-        noise_vec = torch.zeros(
-             self.cfg.env.num_single_obs, device=self.device)
+        noise_vec = torch.zeros(self.cfg.env.num_single_obs, device=self.device)
         self.add_noise = self.cfg.noise.add_noise
         noise_scales = self.cfg.noise.noise_scales
         noise_vec[0: 5] = 0.  # commands
@@ -118,8 +108,6 @@ class H1Env(LeggedRobot):
 
 
     def compute_observations(self):
-        """ Computes observations
-        """
 
         phase = self._get_phase()
         self.compute_ref_state()

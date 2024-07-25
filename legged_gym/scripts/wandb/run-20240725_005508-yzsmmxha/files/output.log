@@ -1,0 +1,9 @@
+[34m[1mwandb[39m[22m: [33mWARNING[39m Found log directory outside of given root_logdir, dropping given root_logdir for event file in /home/ziluoding/unitree_rl_gym/logs/test/Jul25_00-55-06_h1
+Traceback (most recent call last):
+  File "train.py", line 20, in <module>
+    train(args)
+  File "train.py", line 15, in train
+    ppo_runner.learn(num_learning_iterations=train_cfg.runner.max_iterations, init_at_random_ep_len=True)
+  File "/home/ziluoding/unitree_rl_gym/legged_gym/algo/ppo/on_policy_runner.py", line 173, in learn
+    obs, privileged_obs, rewards, dones, infos = self.env.step(actions, self.policy_cfg['policy_type'])
+TypeError: step() takes 2 positional arguments but 3 were given

@@ -1,0 +1,232 @@
+2024-07-25 01:08:08,483 INFO    StreamThr :2377336 [internal.py:wandb_internal():85] W&B internal server running at pid: 2377336, started at: 2024-07-25 01:08:08.478729
+2024-07-25 01:08:08,484 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: status
+2024-07-25 01:08:08,486 INFO    WriterThread:2377336 [datastore.py:open_for_write():87] open: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/run-qkxuhyt6.wandb
+2024-07-25 01:08:08,497 DEBUG   SenderThread:2377336 [sender.py:send():378] send: header
+2024-07-25 01:08:08,597 DEBUG   SenderThread:2377336 [sender.py:send():378] send: run
+2024-07-25 01:08:09,509 INFO    SenderThread:2377336 [dir_watcher.py:__init__():211] watching files in: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files
+2024-07-25 01:08:09,509 INFO    SenderThread:2377336 [sender.py:_start_run_threads():1123] run started: qkxuhyt6 with start time 1721840888.478511
+2024-07-25 01:08:09,522 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: check_version
+2024-07-25 01:08:09,523 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: check_version
+2024-07-25 01:08:14,523 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: keepalive
+2024-07-25 01:08:14,524 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:08:14,533 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: run_start
+2024-07-25 01:08:14,722 DEBUG   HandlerThread:2377336 [system_info.py:__init__():26] System info init
+2024-07-25 01:08:14,722 DEBUG   HandlerThread:2377336 [system_info.py:__init__():41] System info init done
+2024-07-25 01:08:14,722 INFO    HandlerThread:2377336 [system_monitor.py:start():194] Starting system monitor
+2024-07-25 01:08:14,726 INFO    SystemMonitor:2377336 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-07-25 01:08:14,726 INFO    HandlerThread:2377336 [system_monitor.py:probe():214] Collecting system info
+2024-07-25 01:08:14,731 INFO    SystemMonitor:2377336 [interfaces.py:start():188] Started cpu monitoring
+2024-07-25 01:08:14,763 INFO    SystemMonitor:2377336 [interfaces.py:start():188] Started disk monitoring
+2024-07-25 01:08:14,768 INFO    SystemMonitor:2377336 [interfaces.py:start():188] Started gpu monitoring
+2024-07-25 01:08:14,773 INFO    SystemMonitor:2377336 [interfaces.py:start():188] Started memory monitoring
+2024-07-25 01:08:14,777 INFO    SystemMonitor:2377336 [interfaces.py:start():188] Started network monitoring
+2024-07-25 01:08:16,573 DEBUG   HandlerThread:2377336 [system_info.py:probe():150] Probing system
+2024-07-25 01:08:16,593 DEBUG   HandlerThread:2377336 [system_info.py:_probe_git():135] Probing git
+2024-07-25 01:08:16,669 DEBUG   HandlerThread:2377336 [system_info.py:_probe_git():143] Probing git done
+2024-07-25 01:08:16,670 DEBUG   HandlerThread:2377336 [system_info.py:probe():198] Probing system done
+2024-07-25 01:08:16,670 DEBUG   HandlerThread:2377336 [system_monitor.py:probe():223] {'os': 'Linux-5.4.0-113-generic-x86_64-with-glibc2.10', 'python': '3.8.19', 'heartbeatAt': '2024-07-24T17:08:16.573318', 'startedAt': '2024-07-24T17:08:08.284272', 'docker': None, 'cuda': None, 'args': ('--headless', '--sim_device=cuda:5', '--rl_device=cuda:5', '--task', 'h1'), 'state': 'running', 'program': 'train.py', 'codePathLocal': 'train.py', 'codePath': 'legged_gym/scripts/train.py', 'git': {'remote': 'https://github.com/leonkding/unitree_rl_gym.git', 'commit': '860d58d8361057a7cf6478a86bce9a81732469a2'}, 'email': None, 'root': '/home/ziluoding/unitree_rl_gym', 'host': 'job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0', 'username': 'root', 'executable': '/opt/conda/envs/T/bin/python3', 'cpu_count': 128, 'cpu_count_logical': 256, 'cpu_freq': {'current': 3174.2933750000043, 'min': 1500.0, 'max': 2250.0}, 'cpu_freq_per_core': [{'current': 3225.954, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.052, 'min': 1500.0, 'max': 2250.0}, {'current': 3203.861, 'min': 1500.0, 'max': 2250.0}, {'current': 3204.68, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.677, 'min': 1500.0, 'max': 2250.0}, {'current': 3192.53, 'min': 1500.0, 'max': 2250.0}, {'current': 3192.091, 'min': 1500.0, 'max': 2250.0}, {'current': 3133.894, 'min': 1500.0, 'max': 2250.0}, {'current': 3207.455, 'min': 1500.0, 'max': 2250.0}, {'current': 3206.808, 'min': 1500.0, 'max': 2250.0}, {'current': 3197.26, 'min': 1500.0, 'max': 2250.0}, {'current': 3204.473, 'min': 1500.0, 'max': 2250.0}, {'current': 3210.66, 'min': 1500.0, 'max': 2250.0}, {'current': 3213.607, 'min': 1500.0, 'max': 2250.0}, {'current': 3207.962, 'min': 1500.0, 'max': 2250.0}, {'current': 3209.561, 'min': 1500.0, 'max': 2250.0}, {'current': 3201.77, 'min': 1500.0, 'max': 2250.0}, {'current': 3207.993, 'min': 1500.0, 'max': 2250.0}, {'current': 3298.797, 'min': 1500.0, 'max': 2250.0}, {'current': 3206.902, 'min': 1500.0, 'max': 2250.0}, {'current': 3206.364, 'min': 1500.0, 'max': 2250.0}, {'current': 3215.926, 'min': 1500.0, 'max': 2250.0}, {'current': 3216.951, 'min': 1500.0, 'max': 2250.0}, {'current': 3203.474, 'min': 1500.0, 'max': 2250.0}, {'current': 3209.697, 'min': 1500.0, 'max': 2250.0}, {'current': 3214.891, 'min': 1500.0, 'max': 2250.0}, {'current': 3209.313, 'min': 1500.0, 'max': 2250.0}, {'current': 3220.827, 'min': 1500.0, 'max': 2250.0}, {'current': 3202.145, 'min': 1500.0, 'max': 2250.0}, {'current': 3203.129, 'min': 1500.0, 'max': 2250.0}, {'current': 3209.389, 'min': 1500.0, 'max': 2250.0}, {'current': 3201.486, 'min': 1500.0, 'max': 2250.0}, {'current': 3182.354, 'min': 1500.0, 'max': 2250.0}, {'current': 3121.658, 'min': 1500.0, 'max': 2250.0}, {'current': 3184.374, 'min': 1500.0, 'max': 2250.0}, {'current': 3184.991, 'min': 1500.0, 'max': 2250.0}, {'current': 3206.989, 'min': 1500.0, 'max': 2250.0}, {'current': 3215.358, 'min': 1500.0, 'max': 2250.0}, {'current': 3206.786, 'min': 1500.0, 'max': 2250.0}, {'current': 3210.924, 'min': 1500.0, 'max': 2250.0}, {'current': 3207.028, 'min': 1500.0, 'max': 2250.0}, {'current': 3208.478, 'min': 1500.0, 'max': 2250.0}, {'current': 3207.282, 'min': 1500.0, 'max': 2250.0}, {'current': 3207.63, 'min': 1500.0, 'max': 2250.0}, {'current': 3211.611, 'min': 1500.0, 'max': 2250.0}, {'current': 3211.224, 'min': 1500.0, 'max': 2250.0}, {'current': 3209.425, 'min': 1500.0, 'max': 2250.0}, {'current': 3213.497, 'min': 1500.0, 'max': 2250.0}, {'current': 3214.401, 'min': 1500.0, 'max': 2250.0}, {'current': 3207.426, 'min': 1500.0, 'max': 2250.0}, {'current': 3218.814, 'min': 1500.0, 'max': 2250.0}, {'current': 3217.11, 'min': 1500.0, 'max': 2250.0}, {'current': 3215.378, 'min': 1500.0, 'max': 2250.0}, {'current': 3211.762, 'min': 1500.0, 'max': 2250.0}, {'current': 3210.421, 'min': 1500.0, 'max': 2250.0}, {'current': 3212.214, 'min': 1500.0, 'max': 2250.0}, {'current': 3190.541, 'min': 1500.0, 'max': 2250.0}, {'current': 3190.306, 'min': 1500.0, 'max': 2250.0}, {'current': 3195.545, 'min': 1500.0, 'max': 2250.0}, {'current': 3204.301, 'min': 1500.0, 'max': 2250.0}, {'current': 3061.945, 'min': 1500.0, 'max': 2250.0}, {'current': 3165.128, 'min': 1500.0, 'max': 2250.0}, {'current': 3157.25, 'min': 1500.0, 'max': 2250.0}, {'current': 3098.102, 'min': 1500.0, 'max': 2250.0}, {'current': 3255.141, 'min': 1500.0, 'max': 2250.0}, {'current': 3259.608, 'min': 1500.0, 'max': 2250.0}, {'current': 3256.853, 'min': 1500.0, 'max': 2250.0}, {'current': 3258.964, 'min': 1500.0, 'max': 2250.0}, {'current': 3258.886, 'min': 1500.0, 'max': 2250.0}, {'current': 3256.987, 'min': 1500.0, 'max': 2250.0}, {'current': 3256.592, 'min': 1500.0, 'max': 2250.0}, {'current': 3255.99, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.437, 'min': 1500.0, 'max': 2250.0}, {'current': 3245.125, 'min': 1500.0, 'max': 2250.0}, {'current': 3184.733, 'min': 1500.0, 'max': 2250.0}, {'current': 3184.878, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.964, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.807, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.01, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.829, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.52, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.654, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.558, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.692, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.439, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.27, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.375, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.492, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.741, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.853, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.69, 'min': 1500.0, 'max': 2250.0}, {'current': 3185.984, 'min': 1500.0, 'max': 2250.0}, {'current': 3185.255, 'min': 1500.0, 'max': 2250.0}, {'current': 3185.295, 'min': 1500.0, 'max': 2250.0}, {'current': 3185.396, 'min': 1500.0, 'max': 2250.0}, {'current': 3185.341, 'min': 1500.0, 'max': 2250.0}, {'current': 3183.568, 'min': 1500.0, 'max': 2250.0}, {'current': 3183.765, 'min': 1500.0, 'max': 2250.0}, {'current': 3183.47, 'min': 1500.0, 'max': 2250.0}, {'current': 3183.452, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.673, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.613, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.526, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.857, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.311, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.34, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.084, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.365, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.977, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.108, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.119, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.058, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.317, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.33, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.245, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.437, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.21, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.239, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.331, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.357, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.655, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.855, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.684, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.881, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.778, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.71, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.716, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.74, 'min': 1500.0, 'max': 2250.0}, {'current': 3163.676, 'min': 1500.0, 'max': 2250.0}, {'current': 3163.528, 'min': 1500.0, 'max': 2250.0}, {'current': 3163.71, 'min': 1500.0, 'max': 2250.0}, {'current': 3163.567, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.081, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.112, 'min': 1500.0, 'max': 2250.0}, {'current': 3160.965, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.077, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.045, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.162, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.263, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.282, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.317, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.346, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.363, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.15, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.587, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.778, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.786, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.656, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.865, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.733, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.66, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.85, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.542, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.731, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.667, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.618, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.738, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.844, 'min': 1500.0, 'max': 2250.0}, {'current': 3163.013, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.961, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.993, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.945, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.955, 'min': 1500.0, 'max': 2250.0}, {'current': 3163.06, 'min': 1500.0, 'max': 2250.0}, {'current': 3163.019, 'min': 1500.0, 'max': 2250.0}, {'current': 3163.037, 'min': 1500.0, 'max': 2250.0}, {'current': 3163.126, 'min': 1500.0, 'max': 2250.0}, {'current': 3163.153, 'min': 1500.0, 'max': 2250.0}, {'current': 3163.135, 'min': 1500.0, 'max': 2250.0}, {'current': 3163.236, 'min': 1500.0, 'max': 2250.0}, {'current': 3163.246, 'min': 1500.0, 'max': 2250.0}, {'current': 3162.47, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.864, 'min': 1500.0, 'max': 2250.0}, {'current': 3161.261, 'min': 1500.0, 'max': 2250.0}, {'current': 3160.872, 'min': 1500.0, 'max': 2250.0}, {'current': 3159.985, 'min': 1500.0, 'max': 2250.0}, {'current': 3157.192, 'min': 1500.0, 'max': 2250.0}, {'current': 3157.373, 'min': 1500.0, 'max': 2250.0}, {'current': 3157.212, 'min': 1500.0, 'max': 2250.0}, {'current': 3157.314, 'min': 1500.0, 'max': 2250.0}, {'current': 3157.479, 'min': 1500.0, 'max': 2250.0}, {'current': 3157.432, 'min': 1500.0, 'max': 2250.0}, {'current': 3157.419, 'min': 1500.0, 'max': 2250.0}, {'current': 3157.372, 'min': 1500.0, 'max': 2250.0}, {'current': 3158.358, 'min': 1500.0, 'max': 2250.0}, {'current': 3158.375, 'min': 1500.0, 'max': 2250.0}, {'current': 3158.368, 'min': 1500.0, 'max': 2250.0}, {'current': 3158.32, 'min': 1500.0, 'max': 2250.0}, {'current': 3160.67, 'min': 1500.0, 'max': 2250.0}, {'current': 3160.76, 'min': 1500.0, 'max': 2250.0}, {'current': 3160.817, 'min': 1500.0, 'max': 2250.0}, {'current': 3160.76, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.33, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.51, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.354, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.486, 'min': 1500.0, 'max': 2250.0}, {'current': 3185.874, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.215, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.181, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.256, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.209, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.257, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.123, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.218, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.613, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.471, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.64, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.422, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.627, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.645, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.639, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.741, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.973, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.707, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.852, 'min': 1500.0, 'max': 2250.0}, {'current': 3190.001, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.546, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.481, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.503, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.719, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.657, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.615, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.748, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.706, 'min': 1500.0, 'max': 2250.0}, {'current': 3185.302, 'min': 1500.0, 'max': 2250.0}, {'current': 3185.442, 'min': 1500.0, 'max': 2250.0}, {'current': 3185.158, 'min': 1500.0, 'max': 2250.0}, {'current': 3185.124, 'min': 1500.0, 'max': 2250.0}, {'current': 3190.088, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.97, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.97, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.186, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.746, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.765, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.573, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.786, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.7, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.856, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.857, 'min': 1500.0, 'max': 2250.0}, {'current': 3188.742, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.718, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.738, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.737, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.814, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.776, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.788, 'min': 1500.0, 'max': 2250.0}, {'current': 3187.858, 'min': 1500.0, 'max': 2250.0}, {'current': 3186.829, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.92, 'min': 1500.0, 'max': 2250.0}, {'current': 3190.191, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.933, 'min': 1500.0, 'max': 2250.0}, {'current': 3190.205, 'min': 1500.0, 'max': 2250.0}, {'current': 3190.112, 'min': 1500.0, 'max': 2250.0}, {'current': 3190.06, 'min': 1500.0, 'max': 2250.0}, {'current': 3189.996, 'min': 1500.0, 'max': 2250.0}, {'current': 3190.011, 'min': 1500.0, 'max': 2250.0}], 'disk': {'/': {'total': 14305.431640625, 'used': 932.8862152099609}}, 'gpu': 'NVIDIA A100-SXM4-40GB', 'gpu_count': 8, 'gpu_devices': [{'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}], 'memory': {'total': 1007.6907653808594}}
+2024-07-25 01:08:16,672 INFO    HandlerThread:2377336 [system_monitor.py:probe():224] Finished collecting system info
+2024-07-25 01:08:16,672 INFO    HandlerThread:2377336 [system_monitor.py:probe():227] Publishing system info
+2024-07-25 01:08:16,672 DEBUG   HandlerThread:2377336 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-07-25 01:08:17,569 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_created():271] file/dir created: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/conda-environment.yaml
+2024-07-25 01:08:20,369 DEBUG   HandlerThread:2377336 [system_info.py:_save_conda():222] Saving conda packages done
+2024-07-25 01:08:20,373 INFO    HandlerThread:2377336 [system_monitor.py:probe():229] Finished publishing system info
+2024-07-25 01:08:20,379 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:08:20,379 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: keepalive
+2024-07-25 01:08:20,380 DEBUG   SenderThread:2377336 [sender.py:send():378] send: files
+2024-07-25 01:08:20,380 INFO    SenderThread:2377336 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-07-25 01:08:20,473 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: python_packages
+2024-07-25 01:08:20,473 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: python_packages
+2024-07-25 01:08:20,474 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:08:20,479 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:08:20,574 INFO    HandlerThread:2377336 [handler.py:handle_tbrecord():783] handling tbrecord: tbrecord {
+  log_dir: "/home/ziluoding/unitree_rl_gym/logs/test/Jul25_01-08-05_h1"
+  save: true
+}
+control {
+  relay_id: "bdbcbb989eae4f0d8e265bad3d1d92b5"
+}
+_info {
+  stream_id: "qkxuhyt6"
+}
+
+2024-07-25 01:08:20,575 DEBUG   HandlerThread:2377336 [config_util.py:dict_from_config_file():70] no default config file found in config-defaults.yaml
+2024-07-25 01:08:20,588 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/conda-environment.yaml
+2024-07-25 01:08:20,590 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_created():271] file/dir created: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/wandb-metadata.json
+2024-07-25 01:08:20,590 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_created():271] file/dir created: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/requirements.txt
+2024-07-25 01:08:21,093 DEBUG   SenderThread:2377336 [sender.py:send():378] send: telemetry
+2024-07-25 01:08:21,096 DEBUG   SenderThread:2377336 [sender.py:send():378] send: tbrecord
+2024-07-25 01:08:21,097 DEBUG   SenderThread:2377336 [sender.py:send():378] send: files
+2024-07-25 01:08:21,097 INFO    SenderThread:2377336 [sender.py:_save_file():1389] saving file events.out.tfevents.1721840900.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2376764.0 with policy live
+2024-07-25 01:08:21,590 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_created():271] file/dir created: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/output.log
+2024-07-25 01:08:21,590 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_created():271] file/dir created: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/events.out.tfevents.1721840900.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2376764.0
+2024-07-25 01:08:21,706 INFO    wandb-upload_0:2377336 [upload_job.py:push():130] Uploaded file /tmp/tmpypd4_grtwandb/eoe6u463-wandb-metadata.json
+2024-07-25 01:08:22,027 INFO    wandb-upload_1:2377336 [upload_job.py:push():130] Uploaded file /tmp/tmpypd4_grtwandb/w9k9z0qq-events.out.tfevents.1721840900.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2376764.0
+2024-07-25 01:08:23,595 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/events.out.tfevents.1721840900.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2376764.0
+2024-07-25 01:08:23,595 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/output.log
+2024-07-25 01:08:24,563 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:08:25,599 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/output.log
+2024-07-25 01:08:25,660 DEBUG   SenderThread:2377336 [sender.py:send():378] send: exit
+2024-07-25 01:08:25,660 INFO    SenderThread:2377336 [sender.py:send_exit():585] handling exit code: 255
+2024-07-25 01:08:25,660 INFO    SenderThread:2377336 [sender.py:send_exit():587] handling runtime: 11
+2024-07-25 01:08:25,663 INFO    SenderThread:2377336 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:08:25,663 INFO    SenderThread:2377336 [sender.py:send_exit():593] send defer
+2024-07-25 01:08:25,663 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:25,664 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 0
+2024-07-25 01:08:25,664 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:25,664 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 0
+2024-07-25 01:08:25,664 INFO    SenderThread:2377336 [sender.py:transition_state():613] send defer: 1
+2024-07-25 01:08:25,664 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:25,664 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 1
+2024-07-25 01:08:25,664 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:25,665 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 1
+2024-07-25 01:08:25,665 INFO    SenderThread:2377336 [sender.py:transition_state():613] send defer: 2
+2024-07-25 01:08:25,665 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:25,665 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 2
+2024-07-25 01:08:25,665 INFO    HandlerThread:2377336 [system_monitor.py:finish():203] Stopping system monitor
+2024-07-25 01:08:25,666 DEBUG   SystemMonitor:2377336 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-07-25 01:08:25,667 INFO    HandlerThread:2377336 [interfaces.py:finish():200] Joined cpu monitor
+2024-07-25 01:08:25,667 DEBUG   SystemMonitor:2377336 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-07-25 01:08:25,667 INFO    HandlerThread:2377336 [interfaces.py:finish():200] Joined disk monitor
+2024-07-25 01:08:25,667 DEBUG   SystemMonitor:2377336 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-07-25 01:08:26,538 INFO    HandlerThread:2377336 [interfaces.py:finish():200] Joined gpu monitor
+2024-07-25 01:08:26,539 INFO    HandlerThread:2377336 [interfaces.py:finish():200] Joined memory monitor
+2024-07-25 01:08:26,539 INFO    HandlerThread:2377336 [interfaces.py:finish():200] Joined network monitor
+2024-07-25 01:08:26,541 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:26,541 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 2
+2024-07-25 01:08:26,541 INFO    SenderThread:2377336 [sender.py:transition_state():613] send defer: 3
+2024-07-25 01:08:26,542 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:26,542 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 3
+2024-07-25 01:08:26,543 DEBUG   SenderThread:2377336 [sender.py:send():378] send: stats
+2024-07-25 01:08:26,546 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:26,546 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 3
+2024-07-25 01:08:26,546 INFO    SenderThread:2377336 [sender.py:transition_state():613] send defer: 4
+2024-07-25 01:08:26,546 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:26,546 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 4
+2024-07-25 01:08:26,602 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_created():271] file/dir created: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/wandb-summary.json
+2024-07-25 01:08:27,604 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/output.log
+2024-07-25 01:08:32,633 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:08:32,634 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:08:32,634 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:32,636 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: keepalive
+2024-07-25 01:08:32,637 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 4
+2024-07-25 01:08:32,637 INFO    SenderThread:2377336 [sender.py:transition_state():613] send defer: 5
+2024-07-25 01:08:32,638 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:08:32,638 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:32,638 DEBUG   SenderThread:2377336 [sender.py:send():378] send: history
+2024-07-25 01:08:32,638 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 5
+2024-07-25 01:08:32,639 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:08:32,642 INFO    SenderThread:2377336 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:08:32,643 DEBUG   SenderThread:2377336 [sender.py:send():378] send: history
+2024-07-25 01:08:32,643 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:08:32,644 INFO    SenderThread:2377336 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:08:32,644 DEBUG   SenderThread:2377336 [sender.py:send():378] send: summary
+2024-07-25 01:08:32,645 INFO    SenderThread:2377336 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:08:32,645 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:32,645 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 5
+2024-07-25 01:08:32,645 INFO    SenderThread:2377336 [sender.py:transition_state():613] send defer: 6
+2024-07-25 01:08:32,645 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:32,645 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 6
+2024-07-25 01:08:32,646 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:32,646 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 6
+2024-07-25 01:08:32,650 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:08:32,665 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:08:32,894 INFO    SenderThread:2377336 [sender.py:transition_state():613] send defer: 7
+2024-07-25 01:08:32,894 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:08:32,894 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:32,895 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 7
+2024-07-25 01:08:32,895 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:32,895 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 7
+2024-07-25 01:08:33,618 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/config.yaml
+2024-07-25 01:08:33,618 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/wandb-summary.json
+2024-07-25 01:08:33,666 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:08:35,132 INFO    SenderThread:2377336 [sender.py:transition_state():613] send defer: 8
+2024-07-25 01:08:35,133 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:08:35,133 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:35,133 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 8
+2024-07-25 01:08:35,133 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:35,133 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 8
+2024-07-25 01:08:35,134 INFO    SenderThread:2377336 [job_builder.py:build():432] Attempting to build job artifact
+2024-07-25 01:08:35,135 INFO    SenderThread:2377336 [job_builder.py:_get_source_type():565] is repo sourced job
+2024-07-25 01:08:35,203 INFO    SenderThread:2377336 [job_builder.py:build():541] adding wandb-job metadata file
+2024-07-25 01:08:35,205 INFO    SenderThread:2377336 [sender.py:transition_state():613] send defer: 9
+2024-07-25 01:08:35,206 DEBUG   SenderThread:2377336 [sender.py:send():378] send: artifact
+2024-07-25 01:08:35,206 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:35,209 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 9
+2024-07-25 01:08:35,625 INFO    Thread-12 :2377336 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/output.log
+2024-07-25 01:08:35,669 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:08:36,711 INFO    wandb-upload_0:2377336 [upload_job.py:push():85] Skipped uploading /root/.local/share/wandb/artifacts/staging/tmplizjf1o4
+2024-07-25 01:08:36,988 INFO    wandb-upload_1:2377336 [upload_job.py:push():88] Uploaded file /tmp/tmpn8b87klf/wandb-job.json
+2024-07-25 01:08:38,421 INFO    SenderThread:2377336 [sender.py:send_artifact():1467] sent artifact job-https___github.com_leonkding_unitree_rl_gym.git_legged_gym_scripts_train.py - {'id': 'QXJ0aWZhY3Q6MTAzMTY1MjQ3OA==', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjMxNzQzMTkwNw==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MTAzMTYwMTQ3OQ==', 'versionIndex': 0}}}
+2024-07-25 01:08:38,421 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:38,422 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 9
+2024-07-25 01:08:38,422 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:08:38,422 INFO    SenderThread:2377336 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-07-25 01:08:38,628 INFO    SenderThread:2377336 [dir_watcher.py:finish():388] scan: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files
+2024-07-25 01:08:38,629 INFO    SenderThread:2377336 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/wandb-metadata.json wandb-metadata.json
+2024-07-25 01:08:38,629 INFO    SenderThread:2377336 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/conda-environment.yaml conda-environment.yaml
+2024-07-25 01:08:38,630 INFO    SenderThread:2377336 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/requirements.txt requirements.txt
+2024-07-25 01:08:38,630 INFO    SenderThread:2377336 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/output.log output.log
+2024-07-25 01:08:38,636 INFO    SenderThread:2377336 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/config.yaml config.yaml
+2024-07-25 01:08:38,639 INFO    SenderThread:2377336 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/wandb-summary.json wandb-summary.json
+2024-07-25 01:08:38,642 INFO    SenderThread:2377336 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/events.out.tfevents.1721840900.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2376764.0 events.out.tfevents.1721840900.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2376764.0
+2024-07-25 01:08:38,645 INFO    SenderThread:2377336 [sender.py:transition_state():613] send defer: 10
+2024-07-25 01:08:38,646 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:08:38,646 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:38,646 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 10
+2024-07-25 01:08:38,647 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:38,647 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 10
+2024-07-25 01:08:38,647 INFO    SenderThread:2377336 [file_pusher.py:finish():169] shutting down file pusher
+2024-07-25 01:08:38,671 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:08:38,672 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:08:39,175 INFO    wandb-upload_1:2377336 [upload_job.py:push():130] Uploaded file /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/requirements.txt
+2024-07-25 01:08:39,193 INFO    wandb-upload_0:2377336 [upload_job.py:push():130] Uploaded file /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/conda-environment.yaml
+2024-07-25 01:08:39,529 INFO    wandb-upload_4:2377336 [upload_job.py:push():130] Uploaded file /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/wandb-summary.json
+2024-07-25 01:08:39,560 INFO    wandb-upload_2:2377336 [upload_job.py:push():130] Uploaded file /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/output.log
+2024-07-25 01:08:39,672 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:08:39,673 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:08:39,985 INFO    wandb-upload_3:2377336 [upload_job.py:push():130] Uploaded file /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/files/config.yaml
+2024-07-25 01:08:40,017 INFO    wandb-upload_5:2377336 [upload_job.py:push():130] Uploaded file /tmp/tmpypd4_grtwandb/k7vm0fiy-events.out.tfevents.1721840900.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2376764.0
+2024-07-25 01:08:40,217 INFO    Thread-11 :2377336 [sender.py:transition_state():613] send defer: 11
+2024-07-25 01:08:40,218 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:40,218 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 11
+2024-07-25 01:08:40,218 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:40,218 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 11
+2024-07-25 01:08:40,218 INFO    SenderThread:2377336 [file_pusher.py:join():175] waiting for file pusher
+2024-07-25 01:08:40,219 INFO    SenderThread:2377336 [sender.py:transition_state():613] send defer: 12
+2024-07-25 01:08:40,219 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:40,219 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 12
+2024-07-25 01:08:40,219 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:40,219 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 12
+2024-07-25 01:08:40,219 INFO    SenderThread:2377336 [file_stream.py:finish():601] file stream finish called
+2024-07-25 01:08:40,446 INFO    SenderThread:2377336 [file_stream.py:finish():605] file stream finish is done
+2024-07-25 01:08:40,446 INFO    SenderThread:2377336 [sender.py:transition_state():613] send defer: 13
+2024-07-25 01:08:40,446 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:40,446 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 13
+2024-07-25 01:08:40,447 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:40,447 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 13
+2024-07-25 01:08:40,447 INFO    SenderThread:2377336 [sender.py:transition_state():613] send defer: 14
+2024-07-25 01:08:40,447 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:08:40,447 DEBUG   SenderThread:2377336 [sender.py:send():378] send: final
+2024-07-25 01:08:40,448 INFO    HandlerThread:2377336 [handler.py:handle_request_defer():184] handle defer: 14
+2024-07-25 01:08:40,448 DEBUG   SenderThread:2377336 [sender.py:send():378] send: footer
+2024-07-25 01:08:40,448 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:08:40,448 INFO    SenderThread:2377336 [sender.py:send_request_defer():609] handle sender defer: 14
+2024-07-25 01:08:40,449 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:08:40,449 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:08:40,449 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:08:40,450 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:08:40,450 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: server_info
+2024-07-25 01:08:40,450 DEBUG   SenderThread:2377336 [sender.py:send_request():405] send_request: server_info
+2024-07-25 01:08:40,453 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: get_summary
+2024-07-25 01:08:40,454 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: sampled_history
+2024-07-25 01:08:40,455 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-25 01:08:40,879 INFO    MainThread:2377336 [wandb_run.py:_footer_history_summary_info():3994] rendering history
+2024-07-25 01:08:40,879 INFO    MainThread:2377336 [wandb_run.py:_footer_history_summary_info():4026] rendering summary
+2024-07-25 01:08:40,880 INFO    MainThread:2377336 [wandb_run.py:_footer_sync_info():3953] logging synced files
+2024-07-25 01:08:40,880 DEBUG   HandlerThread:2377336 [handler.py:handle_request():158] handle_request: shutdown
+2024-07-25 01:08:40,880 INFO    HandlerThread:2377336 [handler.py:finish():882] shutting down handler
+2024-07-25 01:08:41,450 INFO    WriterThread:2377336 [datastore.py:close():296] close: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_010808-qkxuhyt6/run-qkxuhyt6.wandb
+2024-07-25 01:08:41,879 INFO    SenderThread:2377336 [sender.py:finish():1545] shutting down sender
+2024-07-25 01:08:41,879 INFO    SenderThread:2377336 [file_pusher.py:finish():169] shutting down file pusher
+2024-07-25 01:08:41,879 INFO    SenderThread:2377336 [file_pusher.py:join():175] waiting for file pusher

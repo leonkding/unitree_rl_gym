@@ -1,0 +1,597 @@
+2024-07-25 01:12:48,589 INFO    StreamThr :2378558 [internal.py:wandb_internal():85] W&B internal server running at pid: 2378558, started at: 2024-07-25 01:12:48.585560
+2024-07-25 01:12:48,603 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status
+2024-07-25 01:12:48,608 INFO    WriterThread:2378558 [datastore.py:open_for_write():87] open: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/run-89lydkht.wandb
+2024-07-25 01:12:48,623 DEBUG   SenderThread:2378558 [sender.py:send():378] send: header
+2024-07-25 01:12:48,991 DEBUG   SenderThread:2378558 [sender.py:send():378] send: run
+2024-07-25 01:12:49,887 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: check_version
+2024-07-25 01:12:49,986 INFO    SenderThread:2378558 [dir_watcher.py:__init__():211] watching files in: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files
+2024-07-25 01:12:49,986 INFO    SenderThread:2378558 [sender.py:_start_run_threads():1123] run started: 89lydkht with start time 1721841168.577632
+2024-07-25 01:12:49,986 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: check_version
+2024-07-25 01:12:52,685 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: run_start
+2024-07-25 01:12:52,832 DEBUG   HandlerThread:2378558 [system_info.py:__init__():26] System info init
+2024-07-25 01:12:52,832 DEBUG   HandlerThread:2378558 [system_info.py:__init__():41] System info init done
+2024-07-25 01:12:52,832 INFO    HandlerThread:2378558 [system_monitor.py:start():194] Starting system monitor
+2024-07-25 01:12:52,833 INFO    SystemMonitor:2378558 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-07-25 01:12:52,863 INFO    HandlerThread:2378558 [system_monitor.py:probe():214] Collecting system info
+2024-07-25 01:12:52,868 INFO    SystemMonitor:2378558 [interfaces.py:start():188] Started cpu monitoring
+2024-07-25 01:12:52,885 INFO    SystemMonitor:2378558 [interfaces.py:start():188] Started disk monitoring
+2024-07-25 01:12:52,890 INFO    SystemMonitor:2378558 [interfaces.py:start():188] Started gpu monitoring
+2024-07-25 01:12:52,894 INFO    SystemMonitor:2378558 [interfaces.py:start():188] Started memory monitoring
+2024-07-25 01:12:52,899 INFO    SystemMonitor:2378558 [interfaces.py:start():188] Started network monitoring
+2024-07-25 01:12:53,104 DEBUG   HandlerThread:2378558 [system_info.py:probe():150] Probing system
+2024-07-25 01:12:53,130 DEBUG   HandlerThread:2378558 [system_info.py:_probe_git():135] Probing git
+2024-07-25 01:12:53,334 DEBUG   HandlerThread:2378558 [system_info.py:_probe_git():143] Probing git done
+2024-07-25 01:12:53,335 DEBUG   HandlerThread:2378558 [system_info.py:probe():198] Probing system done
+2024-07-25 01:12:53,335 DEBUG   HandlerThread:2378558 [system_monitor.py:probe():223] {'os': 'Linux-5.4.0-113-generic-x86_64-with-glibc2.10', 'python': '3.8.19', 'heartbeatAt': '2024-07-24T17:12:53.104281', 'startedAt': '2024-07-24T17:12:47.766742', 'docker': None, 'cuda': None, 'args': ('--headless', '--sim_device=cuda:5', '--rl_device=cuda:5', '--task', 'h1'), 'state': 'running', 'program': 'train.py', 'codePathLocal': 'train.py', 'codePath': 'legged_gym/scripts/train.py', 'git': {'remote': 'https://github.com/leonkding/unitree_rl_gym.git', 'commit': '860d58d8361057a7cf6478a86bce9a81732469a2'}, 'email': None, 'root': '/home/ziluoding/unitree_rl_gym', 'host': 'job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0', 'username': 'root', 'executable': '/opt/conda/envs/T/bin/python3', 'cpu_count': 128, 'cpu_count_logical': 256, 'cpu_freq': {'current': 3231.460300781252, 'min': 1500.0, 'max': 2250.0}, 'cpu_freq_per_core': [{'current': 3240.279, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.32, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.223, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.268, 'min': 1500.0, 'max': 2250.0}, {'current': 3242.76, 'min': 1500.0, 'max': 2250.0}, {'current': 3242.83, 'min': 1500.0, 'max': 2250.0}, {'current': 3242.776, 'min': 1500.0, 'max': 2250.0}, {'current': 3242.68, 'min': 1500.0, 'max': 2250.0}, {'current': 3229.069, 'min': 1500.0, 'max': 2250.0}, {'current': 3229.067, 'min': 1500.0, 'max': 2250.0}, {'current': 3229.02, 'min': 1500.0, 'max': 2250.0}, {'current': 3229.049, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.744, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.732, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.677, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.55, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.309, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.424, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.214, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.329, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.733, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.922, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.786, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.772, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.974, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.958, 'min': 1500.0, 'max': 2250.0}, {'current': 3209.847, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.892, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.732, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.758, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.746, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.781, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.086, 'min': 1500.0, 'max': 2250.0}, {'current': 3213.744, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.058, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.092, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.005, 'min': 1500.0, 'max': 2250.0}, {'current': 3227.047, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.869, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.937, 'min': 1500.0, 'max': 2250.0}, {'current': 3234.928, 'min': 1500.0, 'max': 2250.0}, {'current': 3234.837, 'min': 1500.0, 'max': 2250.0}, {'current': 3234.902, 'min': 1500.0, 'max': 2250.0}, {'current': 3234.895, 'min': 1500.0, 'max': 2250.0}, {'current': 3258.86, 'min': 1500.0, 'max': 2250.0}, {'current': 3234.849, 'min': 1500.0, 'max': 2250.0}, {'current': 3234.84, 'min': 1500.0, 'max': 2250.0}, {'current': 3234.886, 'min': 1500.0, 'max': 2250.0}, {'current': 3237.8, 'min': 1500.0, 'max': 2250.0}, {'current': 3237.748, 'min': 1500.0, 'max': 2250.0}, {'current': 3237.737, 'min': 1500.0, 'max': 2250.0}, {'current': 3237.741, 'min': 1500.0, 'max': 2250.0}, {'current': 3242.75, 'min': 1500.0, 'max': 2250.0}, {'current': 3242.822, 'min': 1500.0, 'max': 2250.0}, {'current': 3242.721, 'min': 1500.0, 'max': 2250.0}, {'current': 3242.75, 'min': 1500.0, 'max': 2250.0}, {'current': 3224.833, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.013, 'min': 1500.0, 'max': 2250.0}, {'current': 3224.977, 'min': 1500.0, 'max': 2250.0}, {'current': 3224.931, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.907, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.933, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.841, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.738, 'min': 1500.0, 'max': 2250.0}, {'current': 3206.711, 'min': 1500.0, 'max': 2250.0}, {'current': 3205.996, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.695, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.657, 'min': 1500.0, 'max': 2250.0}, {'current': 3204.285, 'min': 1500.0, 'max': 2250.0}, {'current': 3207.054, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.167, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.157, 'min': 1500.0, 'max': 2250.0}, {'current': 3246.813, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.63, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.613, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.566, 'min': 1500.0, 'max': 2250.0}, {'current': 3253.416, 'min': 1500.0, 'max': 2250.0}, {'current': 3253.46, 'min': 1500.0, 'max': 2250.0}, {'current': 3253.45, 'min': 1500.0, 'max': 2250.0}, {'current': 3213.863, 'min': 1500.0, 'max': 2250.0}, {'current': 3246.742, 'min': 1500.0, 'max': 2250.0}, {'current': 3246.652, 'min': 1500.0, 'max': 2250.0}, {'current': 3246.712, 'min': 1500.0, 'max': 2250.0}, {'current': 3246.801, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.108, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.015, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.047, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.076, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.613, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.543, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.464, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.494, 'min': 1500.0, 'max': 2250.0}, {'current': 3252.929, 'min': 1500.0, 'max': 2250.0}, {'current': 3252.835, 'min': 1500.0, 'max': 2250.0}, {'current': 3252.866, 'min': 1500.0, 'max': 2250.0}, {'current': 3252.858, 'min': 1500.0, 'max': 2250.0}, {'current': 3244.359, 'min': 1500.0, 'max': 2250.0}, {'current': 3244.548, 'min': 1500.0, 'max': 2250.0}, {'current': 3244.374, 'min': 1500.0, 'max': 2250.0}, {'current': 3244.261, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.782, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.863, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.767, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.122, 'min': 1500.0, 'max': 2250.0}, {'current': 3245.32, 'min': 1500.0, 'max': 2250.0}, {'current': 3245.404, 'min': 1500.0, 'max': 2250.0}, {'current': 3245.327, 'min': 1500.0, 'max': 2250.0}, {'current': 3245.32, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.578, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.707, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.658, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.646, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.418, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.411, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.315, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.28, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.864, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.855, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.842, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.779, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.423, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.322, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.23, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.301, 'min': 1500.0, 'max': 2250.0}, {'current': 3253.198, 'min': 1500.0, 'max': 2250.0}, {'current': 3253.229, 'min': 1500.0, 'max': 2250.0}, {'current': 3253.133, 'min': 1500.0, 'max': 2250.0}, {'current': 3207.824, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.215, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.266, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.173, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.209, 'min': 1500.0, 'max': 2250.0}, {'current': 3241.419, 'min': 1500.0, 'max': 2250.0}, {'current': 3241.489, 'min': 1500.0, 'max': 2250.0}, {'current': 3241.44, 'min': 1500.0, 'max': 2250.0}, {'current': 3241.343, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.722, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.72, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.674, 'min': 1500.0, 'max': 2250.0}, {'current': 3228.708, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.239, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.227, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.176, 'min': 1500.0, 'max': 2250.0}, {'current': 3240.041, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.883, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.997, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.786, 'min': 1500.0, 'max': 2250.0}, {'current': 3225.903, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.194, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.386, 'min': 1500.0, 'max': 2250.0}, {'current': 3208.288, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.237, 'min': 1500.0, 'max': 2250.0}, {'current': 3203.495, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.419, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.402, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.35, 'min': 1500.0, 'max': 2250.0}, {'current': 3199.193, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.21, 'min': 1500.0, 'max': 2250.0}, {'current': 3199.951, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.23, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.541, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.525, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.512, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.546, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.34, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.387, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.208, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.272, 'min': 1500.0, 'max': 2250.0}, {'current': 3233.865, 'min': 1500.0, 'max': 2250.0}, {'current': 3233.77, 'min': 1500.0, 'max': 2250.0}, {'current': 3233.836, 'min': 1500.0, 'max': 2250.0}, {'current': 3233.832, 'min': 1500.0, 'max': 2250.0}, {'current': 3235.045, 'min': 1500.0, 'max': 2250.0}, {'current': 3234.995, 'min': 1500.0, 'max': 2250.0}, {'current': 3234.988, 'min': 1500.0, 'max': 2250.0}, {'current': 3235.03, 'min': 1500.0, 'max': 2250.0}, {'current': 3237.909, 'min': 1500.0, 'max': 2250.0}, {'current': 3237.868, 'min': 1500.0, 'max': 2250.0}, {'current': 3237.86, 'min': 1500.0, 'max': 2250.0}, {'current': 3237.865, 'min': 1500.0, 'max': 2250.0}, {'current': 3241.375, 'min': 1500.0, 'max': 2250.0}, {'current': 3241.446, 'min': 1500.0, 'max': 2250.0}, {'current': 3241.352, 'min': 1500.0, 'max': 2250.0}, {'current': 3241.379, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.028, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.196, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.155, 'min': 1500.0, 'max': 2250.0}, {'current': 3226.107, 'min': 1500.0, 'max': 2250.0}, {'current': 3246.445, 'min': 1500.0, 'max': 2250.0}, {'current': 3246.475, 'min': 1500.0, 'max': 2250.0}, {'current': 3246.381, 'min': 1500.0, 'max': 2250.0}, {'current': 3246.276, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.122, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.421, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.196, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.16, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.599, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.631, 'min': 1500.0, 'max': 2250.0}, {'current': 3249.678, 'min': 1500.0, 'max': 2250.0}, {'current': 3203.879, 'min': 1500.0, 'max': 2250.0}, {'current': 3218.675, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.214, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.195, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.148, 'min': 1500.0, 'max': 2250.0}, {'current': 3212.743, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.967, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.96, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.563, 'min': 1500.0, 'max': 2250.0}, {'current': 3245.77, 'min': 1500.0, 'max': 2250.0}, {'current': 3245.679, 'min': 1500.0, 'max': 2250.0}, {'current': 3245.739, 'min': 1500.0, 'max': 2250.0}, {'current': 3245.831, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.653, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.557, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.59, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.62, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.162, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.094, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.017, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.046, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.449, 'min': 1500.0, 'max': 2250.0}, {'current': 3205.851, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.381, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.372, 'min': 1500.0, 'max': 2250.0}, {'current': 3242.879, 'min': 1500.0, 'max': 2250.0}, {'current': 3243.064, 'min': 1500.0, 'max': 2250.0}, {'current': 3242.881, 'min': 1500.0, 'max': 2250.0}, {'current': 3242.78, 'min': 1500.0, 'max': 2250.0}, {'current': 3205.069, 'min': 1500.0, 'max': 2250.0}, {'current': 3250.377, 'min': 1500.0, 'max': 2250.0}, {'current': 3206.481, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.632, 'min': 1500.0, 'max': 2250.0}, {'current': 3243.817, 'min': 1500.0, 'max': 2250.0}, {'current': 3243.901, 'min': 1500.0, 'max': 2250.0}, {'current': 3238.147, 'min': 1500.0, 'max': 2250.0}, {'current': 3244.646, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.147, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.279, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.23, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.221, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.017, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.008, 'min': 1500.0, 'max': 2250.0}, {'current': 3246.913, 'min': 1500.0, 'max': 2250.0}, {'current': 3246.881, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.425, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.417, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.404, 'min': 1500.0, 'max': 2250.0}, {'current': 3248.345, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.95, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.855, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.764, 'min': 1500.0, 'max': 2250.0}, {'current': 3247.838, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.729, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.763, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.665, 'min': 1500.0, 'max': 2250.0}, {'current': 3251.656, 'min': 1500.0, 'max': 2250.0}], 'disk': {'/': {'total': 14305.431640625, 'used': 932.8846817016602}}, 'gpu': 'NVIDIA A100-SXM4-40GB', 'gpu_count': 8, 'gpu_devices': [{'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}, {'name': 'NVIDIA A100-SXM4-40GB', 'memory_total': 42505273344}], 'memory': {'total': 1007.6907653808594}}
+2024-07-25 01:12:53,336 INFO    HandlerThread:2378558 [system_monitor.py:probe():224] Finished collecting system info
+2024-07-25 01:12:53,336 INFO    HandlerThread:2378558 [system_monitor.py:probe():227] Publishing system info
+2024-07-25 01:12:53,336 DEBUG   HandlerThread:2378558 [system_info.py:_save_conda():207] Saving list of conda packages installed into the current environment
+2024-07-25 01:12:54,264 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_created():271] file/dir created: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/conda-environment.yaml
+2024-07-25 01:12:58,087 DEBUG   HandlerThread:2378558 [system_info.py:_save_conda():222] Saving conda packages done
+2024-07-25 01:12:58,216 INFO    HandlerThread:2378558 [system_monitor.py:probe():229] Finished publishing system info
+2024-07-25 01:12:58,221 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:12:58,221 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: keepalive
+2024-07-25 01:12:58,222 DEBUG   SenderThread:2378558 [sender.py:send():378] send: files
+2024-07-25 01:12:58,222 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-metadata.json with policy now
+2024-07-25 01:12:58,492 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/conda-environment.yaml
+2024-07-25 01:12:58,493 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_created():271] file/dir created: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-metadata.json
+2024-07-25 01:12:58,494 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: python_packages
+2024-07-25 01:12:58,494 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: python_packages
+2024-07-25 01:12:58,503 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:12:58,523 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:12:58,871 INFO    HandlerThread:2378558 [handler.py:handle_tbrecord():783] handling tbrecord: tbrecord {
+  log_dir: "/home/ziluoding/unitree_rl_gym/logs/test/Jul25_01-12-43_h1"
+  save: true
+}
+control {
+  relay_id: "0259e43f12e84192a0feadc1be5cc7d4"
+}
+_info {
+  stream_id: "89lydkht"
+}
+
+2024-07-25 01:12:58,873 DEBUG   HandlerThread:2378558 [config_util.py:dict_from_config_file():70] no default config file found in config-defaults.yaml
+2024-07-25 01:12:59,164 DEBUG   SenderThread:2378558 [sender.py:send():378] send: telemetry
+2024-07-25 01:12:59,165 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:12:59,202 DEBUG   SenderThread:2378558 [sender.py:send():378] send: tbrecord
+2024-07-25 01:12:59,211 DEBUG   SenderThread:2378558 [sender.py:send():378] send: files
+2024-07-25 01:12:59,211 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0 with policy live
+2024-07-25 01:12:59,573 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_created():271] file/dir created: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/requirements.txt
+2024-07-25 01:12:59,573 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_created():271] file/dir created: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:12:59,573 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_created():271] file/dir created: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:12:59,664 INFO    wandb-upload_0:2378558 [upload_job.py:push():130] Uploaded file /tmp/tmpoztslbjmwandb/w0rywu35-wandb-metadata.json
+2024-07-25 01:13:00,139 INFO    wandb-upload_1:2378558 [upload_job.py:push():130] Uploaded file /tmp/tmpoztslbjmwandb/z3iqpav9-events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:13:01,611 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:01,611 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:13:03,776 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:03,777 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:13:04,195 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:13:05,824 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:05,824 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:13:07,903 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:07,903 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:13:08,886 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:13:08,887 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:13:08,891 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:13:08,891 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:13:08,891 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:13:08,892 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:13:08,892 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:13:08,893 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:13:08,894 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:13:08,894 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:13:08,894 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:13:08,895 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:13:08,920 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_created():271] file/dir created: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:13:09,439 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:13:09,965 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:09,965 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:13:10,173 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:13:10,173 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:13:10,175 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:13:10,999 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:13:12,027 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:13,082 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:13:13,190 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:13:13,191 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:13:13,192 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:13:13,576 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:13:13,576 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:13:14,101 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:14,102 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:13:14,593 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:13:16,164 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:17,208 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:13:17,210 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:13:17,210 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:13:17,211 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:13:18,285 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:18,285 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:13:19,337 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:19,763 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:13:20,380 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/config.yaml
+2024-07-25 01:13:21,426 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:21,426 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:13:22,232 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:13:22,233 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:13:22,234 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:13:22,440 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:13:23,479 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:24,564 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:13:25,016 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:13:25,250 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:13:25,250 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:13:25,251 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:13:25,589 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:25,590 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:13:27,702 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:28,526 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:13:28,527 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:13:30,810 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:13:35,811 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:13:40,812 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:13:43,527 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:13:43,529 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:13:46,797 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:13:51,798 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:13:52,899 DEBUG   SystemMonitor:2378558 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-07-25 01:13:52,907 DEBUG   SenderThread:2378558 [sender.py:send():378] send: stats
+2024-07-25 01:13:56,339 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:56,339 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:13:56,374 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:13:56,374 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:13:56,376 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:13:56,833 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:13:57,384 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:13:58,415 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:13:58,602 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:13:58,603 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:13:59,430 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:01,397 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:01,398 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:01,399 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:01,534 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:01,535 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:01,535 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:02,008 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:14:03,519 INFO    wandb-upload_0:2378558 [upload_job.py:push():130] Uploaded file /tmp/tmpoztslbjmwandb/uui5x51r-events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:03,673 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:05,723 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:05,724 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:06,417 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:06,417 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:06,418 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:06,764 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:07,048 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:14:07,799 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:08,818 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:09,433 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:09,433 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:09,435 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:09,864 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:09,865 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:11,918 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:11,919 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:12,063 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:14:12,458 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:12,459 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:12,463 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:12,934 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:13,576 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:14:13,577 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:14:13,989 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:15,046 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:15,474 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:15,475 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:15,476 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:16,077 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:16,078 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:17,077 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:14:18,161 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:19,191 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:19,498 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:19,498 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:19,499 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:20,264 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:20,265 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:22,314 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:14:22,327 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:22,909 DEBUG   SenderThread:2378558 [sender.py:send():378] send: stats
+2024-07-25 01:14:24,406 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:24,407 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:24,516 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:24,517 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:24,518 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:25,475 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:26,524 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:27,372 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:14:27,583 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:28,573 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:14:28,573 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:14:29,537 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:29,538 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:29,541 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:29,620 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:29,620 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:29,620 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:31,691 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:32,575 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:32,575 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:32,576 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:14:32,577 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:32,711 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:32,711 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:33,752 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:35,589 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:35,590 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:35,591 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:35,856 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:35,857 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:35,857 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:37,585 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:14:37,996 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:38,606 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:38,606 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:38,608 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:39,019 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:39,019 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:40,036 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:41,075 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:41,622 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:41,623 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:41,628 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:42,116 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:42,117 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:42,683 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:14:43,634 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:14:43,635 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:14:44,218 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:45,273 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:45,677 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:45,677 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:45,678 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:46,300 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:46,301 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:47,774 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:14:48,397 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:50,450 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:50,450 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:50,699 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:50,700 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:50,702 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:51,490 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:52,526 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:52,876 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:14:52,913 DEBUG   SenderThread:2378558 [sender.py:send():378] send: stats
+2024-07-25 01:14:53,751 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:53,751 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:53,753 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:54,573 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:54,573 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:54,574 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:56,668 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:57,692 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:14:57,779 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:14:57,780 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:14:57,781 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:14:57,897 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:14:58,596 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:14:58,596 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:14:58,746 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:14:58,746 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:14:59,783 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:00,795 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:00,795 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:00,805 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:00,805 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:01,882 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:01,883 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:02,897 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:02,927 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:15:03,810 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:03,811 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:03,812 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:03,864 INFO    wandb-upload_1:2378558 [upload_job.py:push():130] Uploaded file /tmp/tmpoztslbjmwandb/zf72oivv-events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:03,940 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:03,941 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:06,064 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:06,827 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:06,828 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:06,830 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:07,105 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:07,106 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:08,084 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:15:08,163 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:10,269 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:12,306 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:12,883 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:12,884 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:12,886 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:13,125 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:15:13,364 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:13,364 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:13,665 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:15:13,666 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:15:14,420 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:16,523 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:16,523 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:16,916 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:16,916 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:16,918 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:17,545 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:18,143 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:15:18,581 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:19,606 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:19,931 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:19,931 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:19,933 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:20,630 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:20,631 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:22,672 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:22,672 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:22,916 DEBUG   SenderThread:2378558 [sender.py:send():378] send: stats
+2024-07-25 01:15:22,969 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:22,969 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:22,971 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:23,166 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:15:23,714 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:24,778 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:25,817 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:25,988 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:25,989 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:25,990 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:26,840 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:26,840 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:27,975 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:28,409 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:15:28,633 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:15:28,634 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:15:30,005 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:30,005 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:30,007 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:30,089 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:30,090 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:30,090 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:32,229 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:33,485 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:15:34,307 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:35,379 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:36,080 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:36,082 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:36,083 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:36,400 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:36,401 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:38,464 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:38,525 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:15:39,098 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:39,098 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:39,100 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:39,508 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:39,509 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:40,525 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:42,113 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:42,114 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:42,116 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:42,574 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:42,574 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:42,574 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:43,587 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:15:43,675 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:15:43,676 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:15:44,687 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:45,720 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:46,137 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:46,137 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:46,138 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:46,750 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:46,750 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:48,615 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:15:48,808 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:48,809 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:49,170 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:49,171 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:49,172 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:49,826 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:50,873 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:52,920 DEBUG   SenderThread:2378558 [sender.py:send():378] send: stats
+2024-07-25 01:15:52,983 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:53,682 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:15:54,017 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:54,017 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:54,192 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:54,192 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:54,193 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:15:55,064 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:15:56,078 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:58,188 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:15:58,664 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: stop_status
+2024-07-25 01:15:58,664 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: stop_status
+2024-07-25 01:15:58,933 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:15:59,213 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:15:59,223 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:15:59,223 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:15:59,225 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:16:00,247 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:16:00,247 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:16:02,238 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:16:02,239 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:16:02,240 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:16:02,359 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:16:02,359 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:16:02,359 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:16:03,983 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:16:04,437 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:16:05,257 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:16:05,257 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:16:05,258 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:16:05,476 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:16:05,477 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:16:06,466 INFO    wandb-upload_0:2378558 [upload_job.py:push():130] Uploaded file /tmp/tmpoztslbjmwandb/e2qx5iqv-events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:16:06,555 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:16:08,276 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:16:08,277 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:16:08,279 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:16:08,627 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:16:08,627 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:16:08,627 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:16:09,012 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:16:10,356 DEBUG   SenderThread:2378558 [sender.py:send():378] send: exit
+2024-07-25 01:16:10,356 INFO    SenderThread:2378558 [sender.py:send_exit():585] handling exit code: 255
+2024-07-25 01:16:10,357 INFO    SenderThread:2378558 [sender.py:send_exit():587] handling runtime: 197
+2024-07-25 01:16:10,358 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:16:10,358 INFO    SenderThread:2378558 [sender.py:send_exit():593] send defer
+2024-07-25 01:16:10,358 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:10,358 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 0
+2024-07-25 01:16:10,359 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:10,359 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 0
+2024-07-25 01:16:10,359 INFO    SenderThread:2378558 [sender.py:transition_state():613] send defer: 1
+2024-07-25 01:16:10,359 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:10,359 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 1
+2024-07-25 01:16:10,359 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:10,359 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 1
+2024-07-25 01:16:10,359 INFO    SenderThread:2378558 [sender.py:transition_state():613] send defer: 2
+2024-07-25 01:16:10,359 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:10,359 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 2
+2024-07-25 01:16:10,359 INFO    HandlerThread:2378558 [system_monitor.py:finish():203] Stopping system monitor
+2024-07-25 01:16:10,360 DEBUG   SystemMonitor:2378558 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-07-25 01:16:10,360 DEBUG   SystemMonitor:2378558 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-07-25 01:16:10,361 INFO    HandlerThread:2378558 [interfaces.py:finish():200] Joined cpu monitor
+2024-07-25 01:16:10,366 INFO    HandlerThread:2378558 [interfaces.py:finish():200] Joined disk monitor
+2024-07-25 01:16:10,681 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:16:10,681 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:16:11,132 INFO    HandlerThread:2378558 [interfaces.py:finish():200] Joined gpu monitor
+2024-07-25 01:16:11,133 INFO    HandlerThread:2378558 [interfaces.py:finish():200] Joined memory monitor
+2024-07-25 01:16:11,133 INFO    HandlerThread:2378558 [interfaces.py:finish():200] Joined network monitor
+2024-07-25 01:16:11,134 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:11,134 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 2
+2024-07-25 01:16:11,134 INFO    SenderThread:2378558 [sender.py:transition_state():613] send defer: 3
+2024-07-25 01:16:11,134 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:11,134 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 3
+2024-07-25 01:16:11,135 DEBUG   SenderThread:2378558 [sender.py:send():378] send: stats
+2024-07-25 01:16:11,137 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:11,137 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 3
+2024-07-25 01:16:11,137 INFO    SenderThread:2378558 [sender.py:transition_state():613] send defer: 4
+2024-07-25 01:16:11,137 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:11,137 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 4
+2024-07-25 01:16:11,705 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:16:12,783 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:16:17,277 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:16:17,277 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:16:17,277 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:17,278 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: keepalive
+2024-07-25 01:16:17,278 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 4
+2024-07-25 01:16:17,278 INFO    SenderThread:2378558 [sender.py:transition_state():613] send defer: 5
+2024-07-25 01:16:17,279 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:16:17,279 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:17,279 DEBUG   SenderThread:2378558 [sender.py:send():378] send: history
+2024-07-25 01:16:17,279 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 5
+2024-07-25 01:16:17,280 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: summary_record
+2024-07-25 01:16:17,285 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:16:17,286 DEBUG   SenderThread:2378558 [sender.py:send():378] send: summary
+2024-07-25 01:16:17,287 INFO    SenderThread:2378558 [sender.py:_save_file():1389] saving file wandb-summary.json with policy end
+2024-07-25 01:16:17,287 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:17,287 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 5
+2024-07-25 01:16:17,287 INFO    SenderThread:2378558 [sender.py:transition_state():613] send defer: 6
+2024-07-25 01:16:17,287 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:17,287 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 6
+2024-07-25 01:16:17,287 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:17,287 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 6
+2024-07-25 01:16:17,288 INFO    SenderThread:2378558 [sender.py:transition_state():613] send defer: 7
+2024-07-25 01:16:17,288 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: status_report
+2024-07-25 01:16:17,288 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:17,288 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 7
+2024-07-25 01:16:17,288 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:17,288 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 7
+2024-07-25 01:16:17,366 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:16:17,984 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:16:18,213 INFO    SenderThread:2378558 [sender.py:transition_state():613] send defer: 8
+2024-07-25 01:16:18,213 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:16:18,213 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:18,214 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 8
+2024-07-25 01:16:18,214 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:18,214 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 8
+2024-07-25 01:16:18,214 INFO    SenderThread:2378558 [job_builder.py:build():432] Attempting to build job artifact
+2024-07-25 01:16:18,232 INFO    SenderThread:2378558 [job_builder.py:_get_source_type():565] is repo sourced job
+2024-07-25 01:16:18,369 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:16:18,470 INFO    SenderThread:2378558 [job_builder.py:build():541] adding wandb-job metadata file
+2024-07-25 01:16:18,474 INFO    SenderThread:2378558 [sender.py:transition_state():613] send defer: 9
+2024-07-25 01:16:18,475 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:16:18,475 DEBUG   SenderThread:2378558 [sender.py:send():378] send: artifact
+2024-07-25 01:16:18,478 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:18,478 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 9
+2024-07-25 01:16:19,011 INFO    Thread-12 :2378558 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:16:19,369 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:16:20,263 INFO    SenderThread:2378558 [sender.py:send_artifact():1467] sent artifact job-https___github.com_leonkding_unitree_rl_gym.git_legged_gym_scripts_train.py - {'id': 'QXJ0aWZhY3Q6MTAzMTY1MjQ3OA==', 'state': 'COMMITTED', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjMxNzQzMTkwNw==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MTAzMTY1MjQ3OA==', 'versionIndex': 1}}}
+2024-07-25 01:16:20,264 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:20,264 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 9
+2024-07-25 01:16:20,264 INFO    SenderThread:2378558 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-07-25 01:16:21,033 INFO    SenderThread:2378558 [dir_watcher.py:finish():388] scan: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files
+2024-07-25 01:16:21,068 INFO    SenderThread:2378558 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-metadata.json wandb-metadata.json
+2024-07-25 01:16:21,068 INFO    SenderThread:2378558 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/conda-environment.yaml conda-environment.yaml
+2024-07-25 01:16:21,069 INFO    SenderThread:2378558 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/requirements.txt requirements.txt
+2024-07-25 01:16:21,069 INFO    SenderThread:2378558 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log output.log
+2024-07-25 01:16:21,069 INFO    SenderThread:2378558 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/config.yaml config.yaml
+2024-07-25 01:16:21,069 INFO    SenderThread:2378558 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json wandb-summary.json
+2024-07-25 01:16:21,070 INFO    SenderThread:2378558 [dir_watcher.py:finish():402] scan save: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0 events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:16:21,070 INFO    SenderThread:2378558 [sender.py:transition_state():613] send defer: 10
+2024-07-25 01:16:21,070 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:16:21,070 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:21,073 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 10
+2024-07-25 01:16:21,082 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:21,083 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 10
+2024-07-25 01:16:21,083 INFO    SenderThread:2378558 [file_pusher.py:finish():169] shutting down file pusher
+2024-07-25 01:16:21,371 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:16:21,371 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:16:21,625 INFO    wandb-upload_1:2378558 [upload_job.py:push():130] Uploaded file /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/conda-environment.yaml
+2024-07-25 01:16:21,668 INFO    wandb-upload_0:2378558 [upload_job.py:push():130] Uploaded file /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/requirements.txt
+2024-07-25 01:16:22,063 INFO    wandb-upload_4:2378558 [upload_job.py:push():130] Uploaded file /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/wandb-summary.json
+2024-07-25 01:16:22,372 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:16:22,372 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:16:22,403 INFO    wandb-upload_5:2378558 [upload_job.py:push():130] Uploaded file /tmp/tmpoztslbjmwandb/g9y4pyli-events.out.tfevents.1721841178.job-fe3a6053-096d-417b-8458-e4ec7c00de40-master-0.2377987.0
+2024-07-25 01:16:22,418 INFO    wandb-upload_3:2378558 [upload_job.py:push():130] Uploaded file /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/config.yaml
+2024-07-25 01:16:22,973 INFO    wandb-upload_2:2378558 [upload_job.py:push():130] Uploaded file /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/files/output.log
+2024-07-25 01:16:23,173 INFO    Thread-11 :2378558 [sender.py:transition_state():613] send defer: 11
+2024-07-25 01:16:23,174 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:23,176 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 11
+2024-07-25 01:16:23,177 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:23,177 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 11
+2024-07-25 01:16:23,177 INFO    SenderThread:2378558 [file_pusher.py:join():175] waiting for file pusher
+2024-07-25 01:16:23,177 INFO    SenderThread:2378558 [sender.py:transition_state():613] send defer: 12
+2024-07-25 01:16:23,177 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:23,177 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 12
+2024-07-25 01:16:23,177 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:23,177 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 12
+2024-07-25 01:16:23,178 INFO    SenderThread:2378558 [file_stream.py:finish():601] file stream finish called
+2024-07-25 01:16:23,373 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:16:23,894 INFO    SenderThread:2378558 [file_stream.py:finish():605] file stream finish is done
+2024-07-25 01:16:23,894 INFO    SenderThread:2378558 [sender.py:transition_state():613] send defer: 13
+2024-07-25 01:16:23,894 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:16:23,894 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:23,895 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 13
+2024-07-25 01:16:23,897 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:23,897 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 13
+2024-07-25 01:16:23,897 INFO    SenderThread:2378558 [sender.py:transition_state():613] send defer: 14
+2024-07-25 01:16:23,897 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: defer
+2024-07-25 01:16:23,897 DEBUG   SenderThread:2378558 [sender.py:send():378] send: final
+2024-07-25 01:16:23,898 INFO    HandlerThread:2378558 [handler.py:handle_request_defer():184] handle defer: 14
+2024-07-25 01:16:23,898 DEBUG   SenderThread:2378558 [sender.py:send():378] send: footer
+2024-07-25 01:16:23,898 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: defer
+2024-07-25 01:16:23,898 INFO    SenderThread:2378558 [sender.py:send_request_defer():609] handle sender defer: 14
+2024-07-25 01:16:23,899 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:16:23,899 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:16:23,900 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: poll_exit
+2024-07-25 01:16:23,900 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: poll_exit
+2024-07-25 01:16:23,901 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: server_info
+2024-07-25 01:16:23,901 DEBUG   SenderThread:2378558 [sender.py:send_request():405] send_request: server_info
+2024-07-25 01:16:23,904 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: get_summary
+2024-07-25 01:16:23,905 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: sampled_history
+2024-07-25 01:16:23,908 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: internal_messages
+2024-07-25 01:16:24,122 INFO    MainThread:2378558 [wandb_run.py:_footer_history_summary_info():3994] rendering history
+2024-07-25 01:16:24,125 INFO    MainThread:2378558 [wandb_run.py:_footer_history_summary_info():4026] rendering summary
+2024-07-25 01:16:24,126 INFO    MainThread:2378558 [wandb_run.py:_footer_sync_info():3953] logging synced files
+2024-07-25 01:16:24,126 DEBUG   HandlerThread:2378558 [handler.py:handle_request():158] handle_request: shutdown
+2024-07-25 01:16:24,126 INFO    HandlerThread:2378558 [handler.py:finish():882] shutting down handler
+2024-07-25 01:16:24,901 INFO    WriterThread:2378558 [datastore.py:close():296] close: /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_011247-89lydkht/run-89lydkht.wandb
+2024-07-25 01:16:25,122 INFO    SenderThread:2378558 [sender.py:finish():1545] shutting down sender
+2024-07-25 01:16:25,122 INFO    SenderThread:2378558 [file_pusher.py:finish():169] shutting down file pusher
+2024-07-25 01:16:25,122 INFO    SenderThread:2378558 [file_pusher.py:join():175] waiting for file pusher

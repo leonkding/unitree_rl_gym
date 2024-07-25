@@ -37,8 +37,8 @@ class LeggedRobotCfg(BaseConfig):
         slope_treshold = 0.75 # slopes above this threshold will be corrected to vertical surfaces
 
     class commands:
-        curriculum = False
-        max_curriculum = 1.
+        curriculum = True
+        max_curriculum = 5.
         num_commands = 4 # default: lin_vel_x, lin_vel_y, ang_vel_yaw, heading (in heading mode ang_vel_yaw is recomputed from heading error)
         resampling_time = 10. # time before command are changed[s]
         heading_command = True # if true: compute ang vel command from heading error
@@ -132,6 +132,7 @@ class LeggedRobotCfg(BaseConfig):
             dof_pos = 1.0
             dof_vel = 0.05
             height_measurements = 5.0
+            quat = 1.
         clip_observations = 100.
         clip_actions = 100.
 
@@ -144,6 +145,7 @@ class LeggedRobotCfg(BaseConfig):
             lin_vel = 0.1
             ang_vel = 0.2
             gravity = 0.05
+            quat = 0.03
             height_measurements = 0.1
 
     # viewer camera:

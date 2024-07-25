@@ -1,0 +1,29 @@
+2024-07-25 00:55:09,169 INFO    MainThread:2375506 [wandb_setup.py:_flush():76] Current SDK version is 0.17.0
+2024-07-25 00:55:09,170 INFO    MainThread:2375506 [wandb_setup.py:_flush():76] Configure stats pid to 2375506
+2024-07-25 00:55:09,170 INFO    MainThread:2375506 [wandb_setup.py:_flush():76] Loading settings from /root/.config/wandb/settings
+2024-07-25 00:55:09,170 INFO    MainThread:2375506 [wandb_setup.py:_flush():76] Loading settings from /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/settings
+2024-07-25 00:55:09,170 INFO    MainThread:2375506 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-07-25 00:55:09,170 INFO    MainThread:2375506 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-07-25 00:55:09,170 INFO    MainThread:2375506 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'legged_gym/scripts/train.py', 'program_abspath': '/home/ziluoding/unitree_rl_gym/legged_gym/scripts/train.py', 'program': 'train.py'}
+2024-07-25 00:55:09,170 INFO    MainThread:2375506 [wandb_setup.py:_flush():76] Applying login settings: {}
+2024-07-25 00:55:09,170 INFO    MainThread:2375506 [wandb_init.py:_log_setup():520] Logging user logs to /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_005508-yzsmmxha/logs/debug.log
+2024-07-25 00:55:09,170 INFO    MainThread:2375506 [wandb_init.py:_log_setup():521] Logging internal logs to /home/ziluoding/unitree_rl_gym/legged_gym/scripts/wandb/run-20240725_005508-yzsmmxha/logs/debug-internal.log
+2024-07-25 00:55:09,171 INFO    MainThread:2375506 [wandb_init.py:init():560] calling init triggers
+2024-07-25 00:55:09,171 INFO    MainThread:2375506 [wandb_init.py:init():567] wandb.init called with sweep_config: {}
+config: {'algorithm': {'clip_param': 0.2, 'desired_kl': 0.01, 'entropy_coef': 0.01, 'gamma': 0.99, 'imitation_coef': 100.0, 'lam': 0.95, 'learning_rate': 0.001, 'max_grad_norm': 0.2, 'num_learning_epochs': 5, 'num_mini_batches': 4, 'schedule': 'adaptive', 'use_clipped_value_loss': True, 'use_imitation_loss': True, 'value_loss_coef': 1.0}, 'init_member_classes': {}, 'policy': {'activation': 'elu', 'actor_hidden_dims': [512, 256, 128], 'architecture': 'MLP', 'critic_hidden_dims': [512, 256, 128], 'init_noise_std': 1.0, 'moving_model_path': '/home/ziluoding/humanoid-gym/logs/h1/Jul11_16-30-02_/model_12000.pt', 'policy_type': 'moving', 'rnn_hidden_size': 512, 'rnn_num_layers': 1, 'rnn_type': 'lstm', 'teaching_model_path': '/home/ziluoding/humanoid-gym/logs/h1/Jul11_16-30-02_/model_12000.pt'}, 'runner': {'algorithm_class_name': 'PPO', 'checkpoint': -1, 'experiment_name': 'test', 'load_run': -1, 'max_iterations': 50000, 'num_steps_per_env': 24, 'policy_class_name': 'ActorCritic', 'resume': False, 'resume_path': None, 'run_name': 'h1', 'save_interval': 1000}, 'runner_class_name': 'OnPolicyRunner', 'seed': 1}
+2024-07-25 00:55:09,171 INFO    MainThread:2375506 [wandb_init.py:init():610] starting backend
+2024-07-25 00:55:09,171 INFO    MainThread:2375506 [wandb_init.py:init():614] setting up manager
+2024-07-25 00:55:09,173 INFO    MainThread:2375506 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-07-25 00:55:09,175 INFO    MainThread:2375506 [wandb_init.py:init():622] backend started and connected
+2024-07-25 00:55:09,179 INFO    MainThread:2375506 [wandb_init.py:init():711] updated telemetry
+2024-07-25 00:55:09,443 INFO    MainThread:2375506 [wandb_init.py:init():744] communicating run to backend with 90.0 second timeout
+2024-07-25 00:55:10,437 INFO    MainThread:2375506 [wandb_run.py:_on_init():2396] communicating current version
+2024-07-25 00:55:15,441 INFO    MainThread:2375506 [wandb_run.py:_on_init():2405] got version response 
+2024-07-25 00:55:15,441 INFO    MainThread:2375506 [wandb_init.py:init():795] starting run threads in backend
+2024-07-25 00:55:19,857 INFO    MainThread:2375506 [wandb_run.py:_console_start():2374] atexit reg
+2024-07-25 00:55:19,857 INFO    MainThread:2375506 [wandb_run.py:_redirect():2229] redirect: wrap_raw
+2024-07-25 00:55:19,857 INFO    MainThread:2375506 [wandb_run.py:_redirect():2294] Wrapping output streams.
+2024-07-25 00:55:19,858 INFO    MainThread:2375506 [wandb_run.py:_redirect():2319] Redirects installed.
+2024-07-25 00:55:19,984 INFO    MainThread:2375506 [wandb_init.py:init():838] run started, returning control to user process
+2024-07-25 00:55:19,985 INFO    MainThread:2375506 [wandb_run.py:_tensorboard_callback():1538] tensorboard callback: /home/ziluoding/unitree_rl_gym/logs/test/Jul25_00-55-06_h1, True
+2024-07-25 00:55:36,468 WARNING MsgRouterThr:2375506 [router.py:message_loop():77] message_loop has been closed

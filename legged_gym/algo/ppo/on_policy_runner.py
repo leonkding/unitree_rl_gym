@@ -39,7 +39,7 @@ from datetime import datetime
 from .ppo import PPO
 from .actor_critic import ActorCritic, Teaching_ActorCritic
 from .actor_critic_recurrent import ActorCriticRecurrent
-from humanoid.algo.vec_env import VecEnv
+from legged_gym.algo.vec_env import VecEnv
 from torch.utils.tensorboard import SummaryWriter
 
 
@@ -228,8 +228,11 @@ class OnPolicyRunner:
         ep_string = f""
         if locs["ep_infos"]:
             for key in locs["ep_infos"][0]:
+                print('uuuuuu')
+                print(key)
                 infotensor = torch.tensor([], device=self.device)
                 for ep_info in locs["ep_infos"]:
+                    print(ep_info)
                     # handle scalar and zero dimensional tensor infos
                     if not isinstance(ep_info[key], torch.Tensor):
                         ep_info[key] = torch.Tensor([ep_info[key]])
@@ -281,6 +284,7 @@ class OnPolicyRunner:
                 statistics.mean(locs["lenbuffer"]),
                 self.tot_time,
             )
+
 
         str = f" \033[1m Learning iteration {locs['it']}/{self.current_learning_iteration + locs['num_learning_iterations']} \033[0m "
 

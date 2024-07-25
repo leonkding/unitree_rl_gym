@@ -43,7 +43,7 @@ setup(
                       'wandb',
                       'tensorboard',
                       'tqdm',
-                      'numpy==1.20.0',
+                      'numpy==1.23.5',
                       'opencv-python',
                       'mujoco==2.3.6',
                       'mujoco-python-viewer',

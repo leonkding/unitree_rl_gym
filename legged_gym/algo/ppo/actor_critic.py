@@ -32,8 +32,8 @@
 import torch
 import torch.nn as nn
 from torch.distributions import Normal
-from humanoid.algo.models.decision_transformer import DecisionTransformer
-from humanoid.algo.models.model import PPOTransformerModel
+from legged_gym.algo.models.decision_transformer import DecisionTransformer
+from legged_gym.algo.models.model import PPOTransformerModel
 
 
 class ActorCritic(nn.Module):

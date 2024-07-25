@@ -7,7 +7,7 @@ import torch
 import torch.nn as nn
 
 from .actor_critic import ActorCritic, get_activation
-from humanoid.utils.utils import unpad_trajectories
+from legged_gym.utils.utils import unpad_trajectories
 
 
 class ActorCriticRecurrent(ActorCritic):
