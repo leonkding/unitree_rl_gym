@@ -12,11 +12,11 @@ class LeggedRobotCfg(BaseConfig):
         test = False
 
     class terrain:
-        mesh_type = 'trimesh' # "heightfield" # none, plane, heightfield or trimesh
+        mesh_type = 'plane' # "heightfield" # none, plane, heightfield or trimesh
         horizontal_scale = 0.1 # [m]
         vertical_scale = 0.005 # [m]
         border_size = 25 # [m]
-        curriculum = True
+        curriculum = False
         static_friction = 1.0
         dynamic_friction = 1.0
         restitution = 0.
@@ -38,7 +38,7 @@ class LeggedRobotCfg(BaseConfig):
 
     class commands:
         curriculum = True
-        max_curriculum = 5.
+        max_curriculum = 4.
         num_commands = 4 # default: lin_vel_x, lin_vel_y, ang_vel_yaw, heading (in heading mode ang_vel_yaw is recomputed from heading error)
         resampling_time = 10. # time before command are changed[s]
         heading_command = True # if true: compute ang vel command from heading error
@@ -199,7 +199,7 @@ class LeggedRobotCfgPPO(BaseConfig):
         gamma = 0.99
         lam = 0.95
         desired_kl = 0.01
-        max_grad_norm = 1.
+        max_grad_norm = 1. #0.2
 
     class runner:
         policy_class_name = 'ActorCritic'

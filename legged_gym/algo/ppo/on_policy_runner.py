@@ -286,7 +286,7 @@ class OnPolicyRunner:
                 self.alg.compute_returns(critic_obs)
 
             if self.cfg["render"] and it % int(self.save_interval/2) == 0:
-                print('ooooiiiiiui')
+                #print('ooooiiiiiui')
                 video.release()
 
             mean_value_loss, mean_surrogate_loss, mean_imitation_loss = self.alg.update()
@@ -318,7 +318,7 @@ class OnPolicyRunner:
                 #print(key)
                 infotensor = torch.tensor([], device=self.device)
                 for ep_info in locs["ep_infos"]:
-                    print(ep_info)
+                    #print(ep_info)
                     # handle scalar and zero dimensional tensor infos
                     if not isinstance(ep_info[key], torch.Tensor):
                         ep_info[key] = torch.Tensor([ep_info[key]])
@@ -426,7 +426,7 @@ class OnPolicyRunner:
         )
 
     def load(self, path, load_optimizer=True):
-        loaded_dict = torch.load(path)
+        loaded_dict = torch.load(path, map_location='cuda:1')
         self.alg.actor_critic.load_state_dict(loaded_dict["model_state_dict"])
         if load_optimizer:
             self.alg.optimizer.load_state_dict(loaded_dict["optimizer_state_dict"])

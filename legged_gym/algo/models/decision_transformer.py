@@ -7,7 +7,7 @@ import transformers
 from .model import TrajectoryModel
 from .trajectory_gpt2 import GPT2Model
 
-from humanoid.envs.h1.h1_config import H1RoughCfg
+from legged_gym.envs.h1.h1_config import H1RoughCfg
 from .gru import *
 
 class DecisionTransformer(TrajectoryModel):

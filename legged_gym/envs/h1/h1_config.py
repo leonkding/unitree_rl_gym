@@ -41,6 +41,7 @@ class H1RoughCfg( LeggedRobotCfg ):
         episode_length_s = 60  # episode length in seconds
         #num_observations = 42
         #num_actions = 10
+        action_delay = 0.02
       
 
     class commands(LeggedRobotCfg.commands):
@@ -48,7 +49,7 @@ class H1RoughCfg( LeggedRobotCfg ):
         num_commands = 4
         resampling_time = 8.  # time before command are changed[s]
         heading_command = True  # if true: compute ang vel command from heading error
-        curriculum = True
+        curriculum = False
 
         class ranges:
             lin_vel_x = [-1.0, 2.0]  # min max [m/s]
@@ -90,16 +91,17 @@ class H1RoughCfg( LeggedRobotCfg ):
         knee_name = "knee"
         penalize_contacts_on = ["hip", "knee"]
         terminate_after_contacts_on = ["pelvis"]
-        self_collisions = 1 # 1 to disable, 0 to enable...bitwise filter
+        self_collisions = 0 # 1 to disable, 0 to enable...bitwise filter
         flip_visual_attachments = False
+        enable_vhacd = False
 
     class rewards:
-        min_dist = 0.2
+        min_dist = 0.3
         max_dist = 0.5
         # put some settings here for LLM parameter tuning
         target_joint_pos_scale = 0.17    # rad
-        target_feet_height = 0.06       # m
-        cycle_time = 0.64                # sec
+        target_feet_height = 0.06      # m
+        cycle_time = 0.64              # sec
         # if true negative total rewards are clipped at zero (avoids early termination problems)
         only_positive_rewards = True
         # tracking reward = exp(error*sigma)
@@ -109,26 +111,26 @@ class H1RoughCfg( LeggedRobotCfg ):
 
         class scales:
             # reference motion tracking
-            joint_pos = 1.6
-            feet_clearance = 1.
-            feet_contact_number = 1.2
+            joint_pos = 1.6 * 1
+            feet_clearance = 1. *1
+            feet_contact_number = 1.2 *1
             # # gait
-#             feet_air_time = 1.
-#             foot_slip = -0.05
-             #feet_distance = 1 * 0
-             #knee_distance = 1 * 0
+            #feet_air_time = 1.
+            foot_slip = -0.05 * 0
+            feet_distance = 1 * 0
+            knee_distance = 1 * 0
             # # contact
 #             feet_contact_forces = -0.01
 #             # vel tracking
-            tracking_lin_vel = 1.1 * 4
-            tracking_ang_vel = 1.1 * 2
+            tracking_lin_vel = 1. * 4
+            tracking_ang_vel = 1. * 8
 #             vel_mismatch_exp = 0.5 * 1 # lin_z; ang x,y
 #             low_speed = 0.2 * 1
 #             track_vel_hard = 0.5 * 1
             # # base pos
              #default_joint_pos = 0.5 * 0
             orientation = 1.
-            #base_height = 1
+            #base_height = 1 * 1
 #             base_acc = 0.2
             # # energy
 #             action_smoothness = -0.002
@@ -136,16 +138,19 @@ class H1RoughCfg( LeggedRobotCfg ):
 #             dof_vel = -5e-4
 #             dof_acc = -1e-7
              #collision = -1.
-
+            feet_parallel = -1 * 5 * 2
+            feet_apart_y = 0.4 * 5 * 1
+            knees_apart_y = 0.4 * 5 * 1
 #             tracking_lin_vel = 1.0
 #             tracking_ang_vel = 0.5
             lin_vel_z = -2.0
             ang_vel_xy = -1.0
              #orientation = -1.0
             base_height = -100.0
-            dof_acc = -3.5e-8
-            feet_air_time = 1.0
-            collision = 0.0
+            #dof_acc = -3.5e-8
+            #feet_air_time = 2.0
+            energy_substeps = -3e-7 * 1
+            collision = -0.0
             action_rate = -0.01
             torques = 0.0
             dof_pos_limits = -10.0
@@ -225,8 +230,8 @@ class H1RoughCfgPPO( LeggedRobotCfgPPO ):
         experiment_name = 'test'
         run_name = 'h1'
         # load and resume
-        resume = False
+        resume = True
         load_run = -1 # -1 = last run
         checkpoint = -1 # -1 = last saved model
-        resume_path = None # updated from load_run and chkpt
-  
+        resume_path = '/home/ziluoding/unitree_rl_gym/logs/test/Aug08_13-28-54_h1/model_3000.pt' # updated from load_run and chkpt
+        #resume_path = '/home/ziluoding/unitree_rl_gym/logs/test/Aug18_00-38-25_h1/model_3000.pt'

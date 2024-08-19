@@ -47,8 +47,12 @@ class H1Env(LeggedRobot):
 
     def  _get_phase(self):
         cycle_time = self.cfg.rewards.cycle_time
-        time_scale = 1#torch.sqrt(self.commands[:,0]**2 + self.commands[:,1]**2) 
-        phase = self.episode_length_buf * self.dt / cycle_time
+        #if torch.sqrt(self.commands[:,0]**2 + self.commands[:,1]**2) < 1:
+        #    time_scale = 1
+        #else:
+        time_scale = (torch.sqrt(self.commands[:,0]**2 + self.commands[:,1]**2)-1) / (2.236-1) + 1
+        time_scale = torch.where(time_scale<1, 1, time_scale)
+        phase = self.episode_length_buf * self.dt / (cycle_time/time_scale)
         return phase
 
     def _get_gait_phase(self):
@@ -82,13 +86,13 @@ class H1Env(LeggedRobot):
         # left foot stance phase set to default joint pos
         sin_pos_l[sin_pos_l > 0] = 0
         self.ref_dof_pos[:, 2] = sin_pos_l * scale_1
-        self.ref_dof_pos[:, 3] = sin_pos_l * scale_2
+        self.ref_dof_pos[:, 3] = -1 * sin_pos_l * scale_2
         self.ref_dof_pos[:, 4] = sin_pos_l * scale_1
         # right foot stance phase set to default joint pos
         sin_pos_r[sin_pos_r < 0] = 0
-        self.ref_dof_pos[:, 7] = sin_pos_r * scale_1
+        self.ref_dof_pos[:, 7] = -1 * sin_pos_r * scale_1
         self.ref_dof_pos[:, 8] = sin_pos_r * scale_2
-        self.ref_dof_pos[:, 9] = sin_pos_r * scale_1
+        self.ref_dof_pos[:, 9] = -1 * sin_pos_r * scale_1
         # Double support phase
         self.ref_dof_pos[torch.abs(sin_pos) < 0.1] = 0
 
@@ -205,11 +209,11 @@ class H1Env(LeggedRobot):
         """
         Calculates the reward based on the difference between the current joint positions and the target joint positions.
         """
-        joint_pos = self.dof_pos.clone()
+        joint_pos = self.dof_pos.clone() - self.default_joint_pd_target
         pos_target = self.ref_dof_pos.clone()
         diff = joint_pos - pos_target
         r = torch.exp(-2 * torch.norm(diff, dim=1)) - 0.2 * torch.norm(diff, dim=1).clamp(0, 0.5)
-        return r
+        return r #* (torch.norm(self.commands[:, :2], dim=1) < 0.1)
 
     def _reward_feet_distance(self):
         """
@@ -288,7 +292,7 @@ class H1Env(LeggedRobot):
         if self.status == 'standing':
             stance_mask[:] = 1
         reward = torch.where(contact == stance_mask, 1, -0.3)
-        return torch.mean(reward, dim=1)
+        return torch.mean(reward, dim=1) #* (torch.norm(self.commands[:, :2], dim=1) < 0.1)
 
     def _reward_orientation(self):
         """
@@ -304,31 +308,38 @@ class H1Env(LeggedRobot):
         Calculates the reward for keeping joint positions close to default positions, with a focus 
         on penalizing deviation in yaw and roll directions. Excludes yaw and roll from the main penalty.
         """
-        joint_diff = self.dof_pos - self.default_joint_pd_target
+        joint_diff = self.dof_pos - self.default_dof_pos
         left_yaw_roll = joint_diff[:, :2]
         right_yaw_roll = joint_diff[:, 5: 7]
         yaw_roll = torch.norm(left_yaw_roll, dim=1) + torch.norm(right_yaw_roll, dim=1)
         yaw_roll = torch.clamp(yaw_roll - 0.1, 0, 50)
         return torch.exp(-yaw_roll * 100) - 0.01 * torch.norm(joint_diff, dim=1)
 
-    # def _reward_base_height(self):
-    #     """
-    #     Calculates the reward based on the robot's base height. Penalizes deviation from a target base height.
-    #     The reward is computed based on the height difference between the robot's base and the average height 
-    #     of its feet when they are in contact with the ground.
-    #     """
-    #     stance_mask = self._get_gait_phase()
-    #     if self.status == 'standing':
-    #         stance_mask[:] = 1
-    #     measured_heights = torch.sum(
-    #         self.rigid_state[:, self.feet_indices, 2] * stance_mask, dim=1) / torch.sum(stance_mask, dim=1)
-    #     base_height = self.root_states[:, 2] - (measured_heights - 0.05)
-    #     return torch.exp(-torch.abs(base_height - self.cfg.rewards.base_height_target) * 100)
+#    def _reward_base_height(self):
+#        """
+#        Calculates the reward based on the robot's base height. Penalizes deviation from a target base height.
+#        The reward is computed based on the height difference between the robot's base and the average height
+#        of its feet when they are in contact with the ground.
+#        """
+#        stance_mask = self._get_gait_phase()
+#        if self.status == 'standing':
+#            stance_mask[:] = 1
+#        #print('ww')
+#        #print(self.feet_indices)
+#        #print(stance_mask)
+#        measured_heights = torch.sum(self.rigid_state[:, self.feet_indices, 2] * stance_mask, dim=1) / torch.sum(stance_mask, dim=1)
+#        #print(measured_heights)
+#        #print(self.root_states[:, 2])
+#        #print(measured_heights)
+#        base_height = self.root_states[:, 2] - (measured_heights - 0.05)
+#        #print(base_height)
+#        #print(self.cfg.rewards.base_height_target)
+#        return torch.exp(-torch.abs(base_height - self.cfg.rewards.base_height_target) * 100)
 
     def _reward_base_height(self):
-         # Penalize base height away from target
-         base_height = self.root_states[:, 2]
-         return torch.square(base_height - self.cfg.rewards.base_height_target)
+        # Penalize base height away from target
+        base_height = self.root_states[:, 2]
+        return torch.square(base_height - self.cfg.rewards.base_height_target)
 
     def _reward_base_acc(self):
         """
@@ -411,7 +422,7 @@ class H1Env(LeggedRobot):
         rew_pos = torch.abs(self.feet_height - self.cfg.rewards.target_feet_height) < 0.01
         rew_pos = torch.sum(rew_pos * swing_mask, dim=1)
         self.feet_height *= ~contact
-        return rew_pos
+        return rew_pos #* (torch.norm(self.commands[:, :2], dim=1) < 0.1)
 
     def _reward_low_speed(self):
         """
@@ -533,18 +544,73 @@ class H1Env(LeggedRobot):
         # penalize torques too close to the limit
         return torch.sum((torch.abs(self.torques) - self.torque_limits*self.cfg.rewards.soft_torque_limit).clip(min=0.), dim=1)
 
+        
+    def _reward_feet_parallel(self):
+        left_foot_quat = self.rigid_state[:, self.feet_indices[0], 3:7]
+        right_foot_quat = self.rigid_state[:, self.feet_indices[1], 3:7]
+
+        ankle_location = torch.zeros((self.num_envs, 3), device=self.device)
+
+        # ankle w.r.t wolrd
+        left_ankle_world = quat_rotate(left_foot_quat, ankle_location.clone())
+        right_ankle_world = quat_rotate(right_foot_quat, ankle_location.clone())
+
+        # ankle w.r.t base
+        left_ankle_base = quat_rotate_inverse(self.base_quat, left_ankle_world)
+        right_ankle_base = quat_rotate_inverse(self.base_quat, right_ankle_world)
+
+        ankle_location[:,0] = 0.2 # ankle to toe = 20 cm
+        toe_location = ankle_location
+
+        # toe w.r.t world
+        left_toe_world = quat_rotate(left_foot_quat, toe_location.clone())
+        right_toe_world = quat_rotate(right_foot_quat, toe_location.clone())
+        
+        # toe w.r.t base
+        left_toe_base = quat_rotate_inverse(self.base_quat, left_toe_world)
+        right_toe_base = quat_rotate_inverse(self.base_quat, right_toe_world)
+
+        # 脚在base坐标系的y坐标
+        left_foot_base_y = (left_toe_base - left_ankle_base)[:,1]
+        right_foot_base_y = (right_toe_base - right_ankle_base)[:,1]
+
+        feet_dir_y = torch.abs(left_foot_base_y) + torch.abs(right_foot_base_y)
+        return feet_dir_y
+    
+    def _reward_feet_apart_y(self):
+        left_foot = self.rigid_state[:, self.feet_indices[0], :3] - self.base_pos                       # left ankle
+        right_foot = self.rigid_state[:, self.feet_indices[1], :3] - self.base_pos                       # right ankle
+        
+        left_foot_y = quat_rotate_inverse(self.base_quat, left_foot)[:,1]
+        right_foot_y = quat_rotate_inverse(self.base_quat, right_foot)[:,1]
+
+        feet_distance = torch.abs(left_foot_y - right_foot_y)
+        max_feet_dis = feet_distance*0 + 0.3
+
+        return torch.min(feet_distance, max_feet_dis)
 
 
 
 
+    def _reward_knees_apart_y(self):
+        left_knees = self.rigid_state[:, self.knee_indices[0], :3] - self.base_pos                       # left ankle
+        right_knees = self.rigid_state[:, self.knee_indices[1], :3] - self.base_pos                       # right ankle
+        
+        left_knees_y = quat_rotate_inverse(self.base_quat, left_knees)[:,1]
+        right_knees_y = quat_rotate_inverse(self.base_quat, right_knees)[:,1]
+
+        feet_distance = torch.abs(left_knees_y - right_knees_y)
+        max_feet_dis = feet_distance*0 + 0.3
+
+        return torch.min(feet_distance, max_feet_dis)
 
 
 
-
-
-
-
-
+    def _reward_energy_substeps(self):
+        # (n_envs, n_substeps, n_dofs)
+        # square sum -> (n_envs, n_substeps)
+        # mean -> (n_envs,)
+        return torch.mean(torch.sum(torch.square(self.substep_torques * self.substep_dof_vel), dim=-1), dim=-1)
 
 
 
