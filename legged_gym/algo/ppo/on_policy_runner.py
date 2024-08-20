@@ -38,7 +38,7 @@ import cv2
 from collections import deque
 from datetime import datetime
 from .ppo import PPO
-from .actor_critic import ActorCritic, Teaching_ActorCritic
+from .actor_critic import ActorCritic, Teaching_ActorCritic, HumanPlus_ActorCritic
 from .actor_critic_recurrent import ActorCriticRecurrent
 from legged_gym.algo.vec_env import VecEnv
 from torch.utils.tensorboard import SummaryWriter
@@ -76,13 +76,13 @@ class OnPolicyRunner:
                 self.env.num_obs, num_critic_obs, self.env.num_actions, **self.policy_cfg
             ).to(self.device)
         else:
-            actor_critic_class = eval('ActorCritic')  # ActorCritic
+            actor_critic_class = eval('HumanPlus_ActorCritic')  # ActorCritic
             actor_critic: ActorCritic = actor_critic_class(
-                self.env.num_obs, num_critic_obs, self.env.num_actions, **self.policy_cfg
+                self.env.num_obs, num_critic_obs, self.env.num_actions, self.env.c_frame_stack, **self.policy_cfg
             ).to(self.device)
 
         if self.policy_cfg["architecture"] == 'Mix':
-            self.teaching_actorcritic = Teaching_ActorCritic(self.env.num_obs, self.env.num_teaching_obs, num_critic_obs, self.env.num_actions, **self.policy_cfg)
+            self.teaching_actorcritic = ActorCritic(self.env.num_obs, self.env.num_teaching_obs, num_critic_obs, self.env.num_actions, self.env.c_frame_stack, **self.policy_cfg)
             print('Loading Pretrained Teaching Model')
             self.teaching_actorcritic.load_state_dict(torch.load(self.policy_cfg["teaching_model_path"])["model_state_dict"])
             print('Pretrained Teaching Model Loaded')

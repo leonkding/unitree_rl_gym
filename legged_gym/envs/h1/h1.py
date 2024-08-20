@@ -125,14 +125,15 @@ class H1Env(LeggedRobot):
         self.command_input = torch.cat(
             (sin_pos, cos_pos, self.commands[:, :3] * self.commands_scale), dim=1)
 
-        #self.obs_buf = torch.cat((  self.base_lin_vel * self.obs_scales.lin_vel,
-        #                            self.base_ang_vel  * self.obs_scales.ang_vel,
-        #                            self.projected_gravity,
-        #                            self.commands[:, :3] * self.commands_scale,
-        #                            (self.dof_pos - self.default_dof_pos) * self.obs_scales.dof_pos,
-        #                            self.dof_vel * self.obs_scales.dof_vel,
-        #                            self.actions
-        #                            ),dim=-1)
+        self.obs_buf = torch.cat((  #self.base_lin_vel * self.obs_scales.lin_vel,
+                                    self.projected_gravity * self.obs_scales.pro_gravity,
+                                    self.base_ang_vel  * self.obs_scales.ang_vel,
+                                    #self.projected_gravity,
+                                    self.commands[:, :3] * self.commands_scale,
+                                    (self.dof_pos - self.default_dof_pos) * self.obs_scales.dof_pos,
+                                    self.dof_vel * self.obs_scales.dof_vel,
+                                    self.actions
+                                    ),dim=-1)
         # add perceptive inputs if not blind
         # add noise if needed
         #if self.add_noise:
@@ -163,14 +164,14 @@ class H1Env(LeggedRobot):
             contact_mask,  # 2
         ), dim=-1)
 
-        obs_buf = torch.cat((
-            self.command_input,  # 5 = 2D(sin cos) + 3D(vel_x, vel_y, aug_vel_yaw), 
-            q,    # 10D
-            dq,  # 10D   
-            self.actions, # 10D
-            self.base_ang_vel * self.obs_scales.ang_vel,  # 3
-            self.base_euler_xyz * self.obs_scales.quat,  # 3
-        ), dim=-1)
+        #obs_buf = torch.cat((
+        #    self.command_input,  # 5 = 2D(sin cos) + 3D(vel_x, vel_y, aug_vel_yaw), 
+        #    q,    # 10D
+        #    dq,  # 10D   
+        #    self.actions, # 10D
+        #    self.base_ang_vel * self.obs_scales.ang_vel,  # 3
+        #    self.base_euler_xyz * self.obs_scales.quat,  # 3
+        #), dim=-1)
 
         if self.cfg.terrain.measure_heights:
             heights = torch.clip(self.root_states[:, 2].unsqueeze(1) - 0.5 - self.measured_heights, -1, 1.) * self.obs_scales.height_measurements
@@ -187,6 +188,7 @@ class H1Env(LeggedRobot):
                 obs_now = obs_buf.clone()
 
         obs_now = torch.cat((phase[:, None], obs_now.clone()), dim=-1)
+        self.privileged_obs_buf = torch.cat((phase[:, None], self.privileged_obs_buf.clone()), dim=-1)
 
         self.obs_history.append(obs_now)
 
@@ -196,6 +198,7 @@ class H1Env(LeggedRobot):
                                    for i in range(self.obs_history.maxlen)], dim=1)  # N,T,K
 
         self.obs_buf = obs_buf_all.reshape(self.num_envs, -1)  # N, T*K
+        #self.teaching_buf = 
         self.privileged_obs_buf = torch.cat([self.critic_history[i] for i in range(self.cfg.env.c_frame_stack)], dim=1)
 
     def reset_idx(self, env_ids):

@@ -28,10 +28,10 @@ class H1RoughCfg( LeggedRobotCfg ):
       
     class env(LeggedRobotCfg.env):
         num_envs = 4000
-        frame_stack = 15
-        c_frame_stack = 3
+        frame_stack = 8
+        c_frame_stack = 15
         num_single_obs = 67 # 66 for global state, and 42 for obs
-        use_privileged_obs = True
+        use_privileged_obs = False
         num_actions = 10
         num_observations = num_single_obs # int(frame_stack * num_single_obs) for MLP, num_single_obs for Trans
         num_teaching_observations = int(frame_stack * (num_single_obs-1))
