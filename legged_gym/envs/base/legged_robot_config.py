@@ -131,7 +131,6 @@ class LeggedRobotCfg(BaseConfig):
             ang_vel = 0.25
             dof_pos = 1.0
             dof_vel = 0.05
-            pro_gravity = 1.0
             height_measurements = 5.0
             quat = 1.
         clip_observations = 100.

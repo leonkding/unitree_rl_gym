@@ -38,7 +38,7 @@ import cv2
 from collections import deque
 from datetime import datetime
 from .ppo import PPO
-from .actor_critic import ActorCritic, Teaching_ActorCritic, HumanPlus_ActorCritic
+from .actor_critic import ActorCritic, Teaching_ActorCritic
 from .actor_critic_recurrent import ActorCriticRecurrent
 from legged_gym.algo.vec_env import VecEnv
 from torch.utils.tensorboard import SummaryWriter
@@ -47,7 +47,8 @@ from legged_gym.envs import *
 from legged_gym import LEGGED_GYM_ROOT_DIR
 from isaacgym.torch_utils import *
 from isaacgym import gymapi
-
+from torchstat import stat
+import torchsummary
 class OnPolicyRunner:
 
     def __init__(self, env: VecEnv, train_cfg, log_dir=None, device="cpu"):
@@ -76,13 +77,15 @@ class OnPolicyRunner:
                 self.env.num_obs, num_critic_obs, self.env.num_actions, **self.policy_cfg
             ).to(self.device)
         else:
-            actor_critic_class = eval('HumanPlus_ActorCritic')  # ActorCritic
+            actor_critic_class = eval('ActorCritic')  # ActorCritic
             actor_critic: ActorCritic = actor_critic_class(
-                self.env.num_obs, num_critic_obs, self.env.num_actions, self.env.c_frame_stack, **self.policy_cfg
+                self.env.num_obs, num_critic_obs, self.env.num_actions, **self.policy_cfg
             ).to(self.device)
+            print(sum(p.numel() for p in actor_critic.parameters()))
+            #print(torchsummary.summary(actor_critic, (67),batch_size=-1))
 
         if self.policy_cfg["architecture"] == 'Mix':
-            self.teaching_actorcritic = ActorCritic(self.env.num_obs, self.env.num_teaching_obs, num_critic_obs, self.env.num_actions, self.env.c_frame_stack, **self.policy_cfg)
+            self.teaching_actorcritic = Teaching_ActorCritic(self.env.num_obs, self.env.num_teaching_obs, num_critic_obs, self.env.num_actions, **self.policy_cfg)
             print('Loading Pretrained Teaching Model')
             self.teaching_actorcritic.load_state_dict(torch.load(self.policy_cfg["teaching_model_path"])["model_state_dict"])
             print('Pretrained Teaching Model Loaded')
@@ -161,7 +164,7 @@ class OnPolicyRunner:
 
         if self.log_dir is not None and self.writer is None:
             wandb.init(
-                project="X",
+                project="X_final",
                 sync_tensorboard=True,
                 name=self.wandb_run_name,
                 config=self.all_cfg,
@@ -286,7 +289,6 @@ class OnPolicyRunner:
                 self.alg.compute_returns(critic_obs)
 
             if self.cfg["render"] and it % int(self.save_interval/2) == 0:
-                #print('ooooiiiiiui')
                 video.release()
 
             mean_value_loss, mean_surrogate_loss, mean_imitation_loss = self.alg.update()
@@ -426,7 +428,7 @@ class OnPolicyRunner:
         )
 
     def load(self, path, load_optimizer=True):
-        loaded_dict = torch.load(path, map_location='cuda:1')
+        loaded_dict = torch.load(path, map_location='cuda:3')
         self.alg.actor_critic.load_state_dict(loaded_dict["model_state_dict"])
         if load_optimizer:
             self.alg.optimizer.load_state_dict(loaded_dict["optimizer_state_dict"])

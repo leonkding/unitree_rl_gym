@@ -50,8 +50,9 @@ class H1Env(LeggedRobot):
         #if torch.sqrt(self.commands[:,0]**2 + self.commands[:,1]**2) < 1:
         #    time_scale = 1
         #else:
-        time_scale = (torch.sqrt(self.commands[:,0]**2 + self.commands[:,1]**2)-1) / (2.236-1) + 1
-        time_scale = torch.where(time_scale<1, 1, time_scale)
+        #time_scale = (torch.sqrt(self.commands[:,0]**2 + self.commands[:,1]**2)-1) / (2.236-1) + 1
+        #time_scale = torch.where(time_scale<1, 1, time_scale)
+        time_scale = 1
         phase = self.episode_length_buf * self.dt / (cycle_time/time_scale)
         return phase
 
@@ -78,8 +79,7 @@ class H1Env(LeggedRobot):
         sin_pos = torch.sin(2 * torch.pi * phase)
         sin_pos_l = sin_pos.clone()
         sin_pos_r = sin_pos.clone()
-        #print('ww')
-        #print(self.dof_pos.shape)
+ 
         self.ref_dof_pos = torch.zeros_like(self.dof_pos)
         scale_1 = self.cfg.rewards.target_joint_pos_scale
         scale_2 = 2 * scale_1
@@ -125,15 +125,14 @@ class H1Env(LeggedRobot):
         self.command_input = torch.cat(
             (sin_pos, cos_pos, self.commands[:, :3] * self.commands_scale), dim=1)
 
-        self.obs_buf = torch.cat((  #self.base_lin_vel * self.obs_scales.lin_vel,
-                                    self.projected_gravity * self.obs_scales.pro_gravity,
-                                    self.base_ang_vel  * self.obs_scales.ang_vel,
-                                    #self.projected_gravity,
-                                    self.commands[:, :3] * self.commands_scale,
-                                    (self.dof_pos - self.default_dof_pos) * self.obs_scales.dof_pos,
-                                    self.dof_vel * self.obs_scales.dof_vel,
-                                    self.actions
-                                    ),dim=-1)
+        #self.obs_buf = torch.cat((  self.base_lin_vel * self.obs_scales.lin_vel,
+        #                            self.base_ang_vel  * self.obs_scales.ang_vel,
+        #                            self.projected_gravity,
+        #                            self.commands[:, :3] * self.commands_scale,
+        #                            (self.dof_pos - self.default_dof_pos) * self.obs_scales.dof_pos,
+        #                            self.dof_vel * self.obs_scales.dof_vel,
+        #                            self.actions
+        #                            ),dim=-1)
         # add perceptive inputs if not blind
         # add noise if needed
         #if self.add_noise:
@@ -164,14 +163,14 @@ class H1Env(LeggedRobot):
             contact_mask,  # 2
         ), dim=-1)
 
-        #obs_buf = torch.cat((
-        #    self.command_input,  # 5 = 2D(sin cos) + 3D(vel_x, vel_y, aug_vel_yaw), 
-        #    q,    # 10D
-        #    dq,  # 10D   
-        #    self.actions, # 10D
-        #    self.base_ang_vel * self.obs_scales.ang_vel,  # 3
-        #    self.base_euler_xyz * self.obs_scales.quat,  # 3
-        #), dim=-1)
+        obs_buf = torch.cat((
+            self.command_input,  # 5 = 2D(sin cos) + 3D(vel_x, vel_y, aug_vel_yaw), 
+            q,    # 10D
+            dq,  # 10D   
+            self.actions, # 10D
+            self.base_ang_vel * self.obs_scales.ang_vel,  # 3
+            self.base_euler_xyz * self.obs_scales.quat,  # 3
+        ), dim=-1)
 
         if self.cfg.terrain.measure_heights:
             heights = torch.clip(self.root_states[:, 2].unsqueeze(1) - 0.5 - self.measured_heights, -1, 1.) * self.obs_scales.height_measurements
@@ -188,7 +187,6 @@ class H1Env(LeggedRobot):
                 obs_now = obs_buf.clone()
 
         obs_now = torch.cat((phase[:, None], obs_now.clone()), dim=-1)
-        self.privileged_obs_buf = torch.cat((phase[:, None], self.privileged_obs_buf.clone()), dim=-1)
 
         self.obs_history.append(obs_now)
 
@@ -198,7 +196,6 @@ class H1Env(LeggedRobot):
                                    for i in range(self.obs_history.maxlen)], dim=1)  # N,T,K
 
         self.obs_buf = obs_buf_all.reshape(self.num_envs, -1)  # N, T*K
-        #self.teaching_buf = 
         self.privileged_obs_buf = torch.cat([self.critic_history[i] for i in range(self.cfg.env.c_frame_stack)], dim=1)
 
     def reset_idx(self, env_ids):
@@ -295,7 +292,7 @@ class H1Env(LeggedRobot):
         if self.status == 'standing':
             stance_mask[:] = 1
         reward = torch.where(contact == stance_mask, 1, -0.3)
-        return torch.mean(reward, dim=1) #* (torch.norm(self.commands[:, :2], dim=1) < 0.1)
+        return torch.mean(reward, dim=1) * (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 3] > 0.1)
 
     def _reward_orientation(self):
         """
@@ -392,7 +389,10 @@ class H1Env(LeggedRobot):
         """
         lin_vel_error = torch.sum(torch.square(
             self.commands[:, :2] - self.base_lin_vel[:, :2]), dim=1)
-        return torch.exp(-lin_vel_error * self.cfg.rewards.tracking_sigma)
+        
+        v_scale = torch.where(torch.norm(self.commands[:, :2], dim=1) < 0.1, 2, 1)
+            
+        return torch.exp(-lin_vel_error * self.cfg.rewards.tracking_sigma) #* v_scale
 
     def _reward_tracking_ang_vel(self):
         """
@@ -425,7 +425,7 @@ class H1Env(LeggedRobot):
         rew_pos = torch.abs(self.feet_height - self.cfg.rewards.target_feet_height) < 0.01
         rew_pos = torch.sum(rew_pos * swing_mask, dim=1)
         self.feet_height *= ~contact
-        return rew_pos #* (torch.norm(self.commands[:, :2], dim=1) < 0.1)
+        return rew_pos * (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 3] > 0.1)
 
     def _reward_low_speed(self):
         """
@@ -507,7 +507,7 @@ class H1Env(LeggedRobot):
 
     def _reward_stand_still(self):
         # Penalize motion at zero commands
-        return torch.sum(torch.abs(self.dof_pos - self.default_dof_pos), dim=1) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)
+        return torch.sum(torch.abs(self.dof_pos - self.default_dof_pos), dim=1) * (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2] > 0.1)
 
     def _reward_feet_contact_forces(self):
         """
@@ -592,8 +592,15 @@ class H1Env(LeggedRobot):
 
         return torch.min(feet_distance, max_feet_dis)
 
+    def _reward_feet_symmetry(self):
+        left_foot = self.rigid_state[:, self.feet_indices[0], :3] - self.base_pos                       # left ankle
+        right_foot = self.rigid_state[:, self.feet_indices[1], :3] - self.base_pos                       # right ankle
 
+        left_foot_y = quat_rotate_inverse(self.base_quat, left_foot)[:,1]
+        right_foot_y = quat_rotate_inverse(self.base_quat, right_foot)[:,1]
 
+        feet_distance = (torch.abs(left_foot_y) - torch.abs(right_foot_y))**2
+        return feet_distance
 
     def _reward_knees_apart_y(self):
         left_knees = self.rigid_state[:, self.knee_indices[0], :3] - self.base_pos                       # left ankle

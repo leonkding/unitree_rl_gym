@@ -34,64 +34,7 @@ import torch.nn as nn
 from torch.distributions import Normal
 from legged_gym.algo.models.decision_transformer import DecisionTransformer
 from legged_gym.algo.models.model import PPOTransformerModel
-
-
-# a BERT-style transformer block
-class Transformer_Block(nn.Module):
-    def __init__(self, latent_dim, num_head, dropout_rate) -> None:
-        super().__init__()
-        self.num_head = num_head
-        self.latent_dim = latent_dim
-        self.ln_1 = nn.LayerNorm(latent_dim)
-        self.attn = nn.MultiheadAttention(latent_dim, num_head, dropout=dropout_rate, batch_first=True)
-        self.ln_2 = nn.LayerNorm(latent_dim)
-        self.mlp = nn.Sequential(
-            nn.Linear(latent_dim, 4 * latent_dim),
-            nn.GELU(),
-            nn.Linear(4 * latent_dim, latent_dim),
-            nn.Dropout(dropout_rate),
-        )
-    
-    def forward(self, x):
-        x = self.ln_1(x)
-        x = x + self.attn(x, x, x, need_weights=False)[0]
-        x = self.ln_2(x)
-        x = x + self.mlp(x)
-        
-        return x
-
-class Transformer(nn.Module):
-    def __init__(self, input_dim, output_dim, context_len, latent_dim=128, num_head=4, num_layer=4, dropout_rate=0.1) -> None:
-        super().__init__()
-        self.input_dim = input_dim
-        self.output_dim = output_dim
-        self.context_len = context_len
-        self.latent_dim = latent_dim
-        self.num_head = num_head
-        self.num_layer = num_layer
-        self.input_layer = nn.Sequential(
-            nn.Linear(input_dim, latent_dim),
-            nn.Dropout(dropout_rate),
-        )
-        self.weight_pos_embed = nn.Embedding(context_len, latent_dim)
-        self.attention_blocks = nn.Sequential(
-            *[Transformer_Block(latent_dim, num_head, dropout_rate) for _ in range(num_layer)],
-        )
-        self.output_layer = nn.Sequential(
-            nn.LayerNorm(latent_dim),
-            nn.Linear(latent_dim, output_dim),
-        )
-    
-    def forward(self, x):
-        x = self.input_layer(x)
-        x = x + self.weight_pos_embed(torch.arange(x.shape[1], device=x.device))
-        x = self.attention_blocks(x)
-
-        # take the last token
-        x = x[:, -1, :]
-        x = self.output_layer(x)
-
-        return x
+from torchstat import stat
 
 class ActorCritic(nn.Module):
     is_recurrent = False
@@ -99,7 +42,6 @@ class ActorCritic(nn.Module):
     def __init__(self,  num_actor_obs,
                         num_critic_obs,
                         num_actions,
-                        obs_context_len = None,
                         actor_hidden_dims=[256, 256, 256],
                         critic_hidden_dims=[256, 256, 256],
                         init_noise_std=1.0,
@@ -123,7 +65,8 @@ class ActorCritic(nn.Module):
                 "embed_dim": 384,
                 "memory_length":15,
             }}
-            self.actor = PPOTransformerModel(config, mlp_input_dim_a, num_actions) 
+            self.actor = PPOTransformerModel(config, mlp_input_dim_a, num_actions)
+            #print(stat(self.actor, (1, 15, 67)))
             #self.actor = DecisionTransformer(mlp_input_dim_a, num_actions, hidden_size = 192)
         else:
             actor_layers = []
@@ -151,110 +94,6 @@ class ActorCritic(nn.Module):
                 critic_layers.append(activation)
         #print(critic_layers)
         self.critic = nn.Sequential(*critic_layers)
-
-        print(f"Actor T: {self.actor}")
-        print(f"Critic MLP: {self.critic}")
-
-        # Action noise
-        self.std = nn.Parameter(init_noise_std * torch.ones(num_actions))
-        self.distribution = None
-        self.teaching_distribution = None
-        # disable args validation for speedup
-        Normal.set_default_validate_args = False
-        
-
-    @staticmethod
-    # not used at the moment
-    def init_weights(sequential, scales):
-        [torch.nn.init.orthogonal_(module.weight, gain=scales[idx]) for idx, module in
-         enumerate(mod for mod in sequential if isinstance(mod, nn.Linear))]
-
-
-    def reset(self, dones=None):
-        pass
-
-    def forward(self):
-        raise NotImplementedError
-    
-    @property
-    def action_mean(self):
-        return self.distribution.mean
-
-    @property
-    def action_std(self):
-        return self.distribution.stddev
-    
-    @property
-    def entropy(self):
-        return self.distribution.entropy().sum(dim=-1)
-
-    def update_distribution(self, observations):
-        mean = self.actor(observations)
-        return Normal(mean, mean*0. + self.std)
-
-    def act(self, observations, **kwargs):
-        #print('rrrrr')
-        #print(observations.shape)
-        self.distribution = self.update_distribution(observations)
-        return self.distribution.sample()  
-
-    def get_actions_log_prob(self, actions):
-        return self.distribution.log_prob(actions).sum(dim=-1)
-
-    def act_inference(self, observations):
-        actions_mean = self.actor(observations)
-        return actions_mean
-
-    def evaluate(self, critic_observations, **kwargs):
-        value = self.critic(critic_observations)
-        return value
-
-def get_activation(act_name):
-    if act_name == "elu":
-        return nn.ELU()
-    elif act_name == "selu":
-        return nn.SELU()
-    elif act_name == "relu":
-        return nn.ReLU()
-    elif act_name == "crelu":
-        return nn.CReLU()
-    elif act_name == "lrelu":
-        return nn.LeakyReLU()
-    elif act_name == "tanh":
-        return nn.Tanh()
-    elif act_name == "sigmoid":
-        return nn.Sigmoid()
-    else:
-        print("invalid activation function!")
-        return None
-
-class HumanPlusActorCritic(nn.Module):
-    is_recurrent = False
-    
-    def __init__(self,  num_actor_obs,
-                        num_critic_obs,
-                        num_actions,
-                        obs_context_len,
-                        actor_hidden_dims=[256, 256, 256],
-                        critic_hidden_dims=[256, 256, 256],
-                        init_noise_std=1.0,
-                        architecture='MLP',
-                        activation = 'elu',
-                        **kwargs):
-        if kwargs:
-            print("ActorCritic.__init__ got unexpected arguments, which will be ignored: " + str([key for key in kwargs.keys()]))
-        super(ActorCritic, self).__init__()
-
-        activation = get_activation(activation)
-        mlp_input_dim_a = num_actor_obs
-        mlp_input_dim_c = num_critic_obs
-        # Police
-        # Policy
-        self.actor = Transformer(num_actor_obs, num_actions, obs_context_len)
-        self.actor.output_layer[1].weight.data *= 0.01 # init last layer to be 100x smaller
-
-        # Value function
-        self.critic = Transformer(num_critic_obs, 1, obs_context_len)
 
         print(f"Actor T: {self.actor}")
         print(f"Critic MLP: {self.critic}")
