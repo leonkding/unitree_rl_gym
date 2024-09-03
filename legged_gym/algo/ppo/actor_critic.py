@@ -42,6 +42,7 @@ class ActorCritic(nn.Module):
     def __init__(self,  num_actor_obs,
                         num_critic_obs,
                         num_actions,
+                        obs_context_len,
                         actor_hidden_dims=[256, 256, 256],
                         critic_hidden_dims=[256, 256, 256],
                         init_noise_std=1.0,
@@ -53,6 +54,7 @@ class ActorCritic(nn.Module):
         super(ActorCritic, self).__init__()
 
         activation = get_activation(activation)
+        self.obs_context_len = obs_context_len
         mlp_input_dim_a = num_actor_obs
         mlp_input_dim_c = num_critic_obs
         # Police
@@ -132,12 +134,10 @@ class ActorCritic(nn.Module):
         return self.distribution.entropy().sum(dim=-1)
 
     def update_distribution(self, observations):
-        mean = self.actor(observations)
+        mean = self.actor(observations, self.obs_context_len)
         return Normal(mean, mean*0. + self.std)
 
     def act(self, observations, **kwargs):
-        #print('rrrrr')
-        #print(observations.shape)
         self.distribution = self.update_distribution(observations)
         return self.distribution.sample()  
 
@@ -145,7 +145,7 @@ class ActorCritic(nn.Module):
         return self.distribution.log_prob(actions).sum(dim=-1)
 
     def act_inference(self, observations):
-        actions_mean = self.actor(observations)
+        actions_mean = self.actor(observations, self.obs_context_len)
         return actions_mean
 
     def evaluate(self, critic_observations, **kwargs):

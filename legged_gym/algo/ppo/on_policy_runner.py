@@ -79,7 +79,7 @@ class OnPolicyRunner:
         else:
             actor_critic_class = eval('ActorCritic')  # ActorCritic
             actor_critic: ActorCritic = actor_critic_class(
-                self.env.num_obs, num_critic_obs, self.env.num_actions, **self.policy_cfg
+                self.env.num_obs, num_critic_obs, self.env.num_actions, self.env.frame_stack ,**self.policy_cfg
             ).to(self.device)
             print(sum(p.numel() for p in actor_critic.parameters()))
             #print(torchsummary.summary(actor_critic, (67),batch_size=-1))

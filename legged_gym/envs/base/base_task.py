@@ -32,6 +32,7 @@ class BaseTask():
         self.num_obs = cfg.env.num_observations
         self.num_teaching_obs = cfg.env.num_teaching_observations
         self.frame_stack = cfg.env.frame_stack
+        self.c_frame_stack = cfg.c_env.frame_stack
         self.num_privileged_obs = cfg.env.num_privileged_obs
         self.num_actions = cfg.env.num_actions
 

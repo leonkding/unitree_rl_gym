@@ -70,7 +70,7 @@ class PPOTransformerModel(nn.Module):
         torch.nn.init.constant_(layer.bias, bias_const)
         return layer
     
-    def forward(self,states,memory=None,memory_mask=None,memory_indices=None):
+    def forward(self,states,obs_context_len, memory=None,memory_mask=None,memory_indices=None):
         """
         Overview:
             Forward method.
@@ -82,14 +82,10 @@ class PPOTransformerModel(nn.Module):
             - policy: (torch.Tensor): policy with shape (batch_size,num_action)
             - value: (torch.Tensor): value with shape (batch_size,1)
         """
-        self.obs_dim = 67
-        #self.act_dim = 10
-        batch_size, seq_length = states.shape[0], int(states.shape[1]/self.obs_dim)
+        batch_size, seq_length = states.shape[0], obs_context_len
 
-        states = states.view(batch_size, seq_length, self.obs_dim)
-        #actions = states[:,:,26:26+self.act_dim]
-        #timesteps = states[:,:, 0].long()
-        #batch_size, seq_length, _ = state.shape
+        states = states.view(batch_size, seq_length, -1)
+
         if memory_mask is None:
             # attention mask for GPT: 1 if can be attended to, 0 if not
             memory_mask = torch.ones((batch_size, seq_length), dtype=torch.long).cuda()
