@@ -27,13 +27,13 @@ class H1RoughCfg( LeggedRobotCfg ):
     
       
     class env(LeggedRobotCfg.env):
-        num_envs = 4000
-        frame_stack = 15
-        c_frame_stack = 3
+        num_envs = 1000
+        frame_stack = 8
+        c_frame_stack = 15
         num_single_obs = 67 # 66 for global state, and 42 for obs
-        use_privileged_obs = True
+        use_privileged_obs = False
         num_actions = 10
-        num_observations = int(frame_stack * num_single_obs) # int(frame_stack * num_single_obs) for MLP, num_single_obs for Trans
+        num_observations = num_single_obs # int(frame_stack * num_single_obs) for MLP, num_single_obs for Trans
         num_teaching_observations = int(frame_stack * (num_single_obs-1))
         single_num_privileged_obs = 66
         num_privileged_obs = int(c_frame_stack * single_num_privileged_obs)
@@ -41,8 +41,7 @@ class H1RoughCfg( LeggedRobotCfg ):
         episode_length_s = 60  # episode length in seconds
         #num_observations = 42
         #num_actions = 10
-        action_delay = 0.00 #[0,0.2]
-      
+        action_delay = 0.02
 
     class commands(LeggedRobotCfg.commands):
         # Vers: lin_vel_x, lin_vel_y, ang_vel_yaw, heading (in heading mode ang_vel_yaw is recomputed from heading error)
@@ -52,7 +51,7 @@ class H1RoughCfg( LeggedRobotCfg ):
         curriculum = False
 
         class ranges:
-            lin_vel_x = [-1.0, 1.5]  # min max [m/s]
+            lin_vel_x = [-1.0, 2.0]  # min max [m/s]
             lin_vel_y = [-1.0, 1.0]   # min max [m/s]
             ang_vel_yaw = [-1.0, 1,0]    # min max [rad/s]
             heading = [-3.14, 3.14]
@@ -101,7 +100,7 @@ class H1RoughCfg( LeggedRobotCfg ):
         # put some settings here for LLM parameter tuning
         target_joint_pos_scale = 0.17    # rad
         target_feet_height = 0.06      # m
-        cycle_time = 1.              # sec
+        cycle_time = 0.64              # sec
         # if true negative total rewards are clipped at zero (avoids early termination problems)
         only_positive_rewards = True
         # tracking reward = exp(error*sigma)
@@ -111,19 +110,19 @@ class H1RoughCfg( LeggedRobotCfg ):
 
         class scales:
             # reference motion tracking
-            joint_pos = 1.6 * 0
-            feet_clearance = 1. * 0
-            feet_contact_number = 1.2 * 0
+            joint_pos = 1.6 * 1
+            feet_clearance = 1. *1
+            feet_contact_number = 1.2 *1
             # # gait
             #feet_air_time = 1.
-            foot_slip = -0.05 * 5
+            foot_slip = -0.05 * 0
             feet_distance = 1 * 0
             knee_distance = 1 * 0
             # # contact
 #             feet_contact_forces = -0.01
 #             # vel tracking
             tracking_lin_vel = 1. * 4
-            tracking_ang_vel = 1. * 4
+            tracking_ang_vel = 1. * 8
 #             vel_mismatch_exp = 0.5 * 1 # lin_z; ang x,y
 #             low_speed = 0.2 * 1
 #             track_vel_hard = 0.5 * 1
@@ -141,7 +140,6 @@ class H1RoughCfg( LeggedRobotCfg ):
             feet_parallel = -1 * 5 * 2
             feet_apart_y = 0.4 * 5 * 1
             knees_apart_y = 0.4 * 5 * 1
-            feet_symmetry = -1 * 5 * 2
 #             tracking_lin_vel = 1.0
 #             tracking_ang_vel = 0.5
             lin_vel_z = -2.0
@@ -155,7 +153,6 @@ class H1RoughCfg( LeggedRobotCfg ):
             action_rate = -0.01
             torques = 0.0
             dof_pos_limits = -10.0
-            stand_still = - 50 * 4
 
         class stand_scales:
             # reference motion tracking
@@ -191,7 +188,7 @@ class H1RoughCfg( LeggedRobotCfg ):
 class H1RoughCfgPPO( LeggedRobotCfgPPO ):
     class policy( LeggedRobotCfgPPO.policy ):
         policy_type = 'moving' # standing, moving, and steering
-        architecture = 'MLP' # choose from 'Mix', 'Trans', 'MLP', and 'RNN'
+        architecture = 'Trans' # choose from 'Mix', 'Trans', 'MLP', and 'RNN'
         teaching_model_path = '/home/ziluoding/humanoid-gym/logs/h1/Jul11_16-30-02_/model_12000.pt'
         moving_model_path = '/home/ziluoding/humanoid-gym/logs/h1/Jul11_16-30-02_/model_12000.pt'
         init_noise_std = 1.0
@@ -228,14 +225,12 @@ class H1RoughCfgPPO( LeggedRobotCfgPPO ):
         max_iterations = 50000 # number of policy updates
 
         # logging
-        save_interval = 200 # check for potential saves every this many iterations
+        save_interval = 1000 # check for potential saves every this many iterations
         experiment_name = 'test'
         run_name = 'h1'
         # load and resume
         resume = True
         load_run = -1 # -1 = last run
         checkpoint = -1 # -1 = last saved model
-        resume_path = '/home/ziluoding/unitree_rl_gym/logs/test/Aug08_13-28-54_h1/model_3000.pt' # collision disable
-        #resume_path = '/home/ziluoding/unitree_rl_gym/logs/test/Aug18_22-57-28_h1/model_2000.pt' # collision enable
+        resume_path = '/home/ziluoding/unitree_rl_gym/logs/test/Aug08_13-28-54_h1/model_3000.pt' # updated from load_run and chkpt
         #resume_path = '/home/ziluoding/unitree_rl_gym/logs/test/Aug18_00-38-25_h1/model_3000.pt'
-        #resume_path = '/home/ziluoding/unitree_rl_gym/logs/test/Aug23_13-56-44_h1/model_5000.pt'
