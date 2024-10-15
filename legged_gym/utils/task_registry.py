@@ -4,7 +4,7 @@ from typing import Tuple
 import torch
 import numpy as np
 import sys
-sys.path.append("/home/ziluoding/unitree_rl_gym/legged_gym")
+sys.path.append("/home/unitree/unitree_rl_gym/rsl_rl")
 
 from legged_gym.algo import VecEnv
 from legged_gym.algo import OnPolicyRunner
@@ -121,7 +121,7 @@ class TaskRegistry():
         resume = train_cfg.runner.resume
         if resume:
             # load previously trained model
-            resume_path = train_cfg.runner.resume_path#get_load_path(log_root, load_run=train_cfg.runner.load_run, checkpoint=train_cfg.runner.checkpoint)
+            resume_path = get_load_path(log_root, load_run=train_cfg.runner.load_run, checkpoint=train_cfg.runner.checkpoint)
             print(f"Loading model from: {resume_path}")
             runner.load(resume_path)
         return runner, train_cfg

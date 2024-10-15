@@ -29,10 +29,10 @@ class BaseTask():
             self.graphics_device_id = -1
 
         self.num_envs = cfg.env.num_envs
+        self.frame_stack = cfg.env.obs_context_len
         self.num_obs = cfg.env.num_observations
+        self.num_single_obs = cfg.env.num_observations_single
         self.num_teaching_obs = cfg.env.num_teaching_observations
-        self.frame_stack = cfg.env.frame_stack
-        self.c_frame_stack = cfg.c_env.frame_stack
         self.num_privileged_obs = cfg.env.num_privileged_obs
         self.num_actions = cfg.env.num_actions
 

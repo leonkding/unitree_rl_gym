@@ -1,5 +1,4 @@
 # SPDX-FileCopyrightText: Copyright (c) 2021 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
-# SPDX-FileCopyrightText: Copyright (c) 2021 ETH Zurich, Nikita Rudin
 # SPDX-License-Identifier: BSD-3-Clause
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -27,10 +26,13 @@
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# Copyright (c) 2024 Beijing RobotEra TECHNOLOGY CO.,LTD. All rights reserved.
-
+# Copyright (c) 2021 ETH Zurich, Nikita Rudin
 
 import torch
+import numpy as np
+
+#from rsl_rl.utils import split_and_pad_trajectories
+
 
 class RolloutStorage:
     class Transition:
@@ -58,6 +60,8 @@ class RolloutStorage:
         self.actions_shape = actions_shape
 
         # Core
+        print('ww')
+        print(self.obs_shape)
         self.observations = torch.zeros(num_transitions_per_env, num_envs, *obs_shape, device=self.device)
         if privileged_obs_shape[0] is not None:
             self.privileged_observations = torch.zeros(num_transitions_per_env, num_envs, *privileged_obs_shape, device=self.device)
@@ -180,3 +184,5 @@ class RolloutStorage:
                 old_sigma_batch = old_sigma[batch_idx]
                 yield obs_batch, critic_observations_batch, actions_batch, target_values_batch, advantages_batch, returns_batch, \
                        old_actions_log_prob_batch, old_mu_batch, old_sigma_batch, (None, None), None
+
+    # for RNNs only

@@ -147,17 +147,26 @@ def get_args():
         args.sim_device += f":{args.sim_device_id}"
     return args
 
-def export_policy_as_jit(actor_critic, path):
+def export_policy_as_jit(actor_critic, env_cfg, path):
     if hasattr(actor_critic, 'memory_a'):
         # assumes LSTM: TODO add GRU
         exporter = PolicyExporterLSTM(actor_critic)
         exporter.export(path)
     else: 
         os.makedirs(path, exist_ok=True)
-        path = os.path.join(path, 'policy_1.pt')
-        model = copy.deepcopy(actor_critic.actor).to('cpu')
-        traced_script_module = torch.jit.script(model)
-        traced_script_module.save(path) 
+        # path = os.path.join(path, 'policy_1.pt')
+        # model = copy.deepcopy(actor_critic.actor).to('cpu')
+        # traced_script_module = torch.jit.script(model)
+        # traced_script_module.save(path)
+
+
+        gru_path = os.path.join(path, 'walk.pt')
+        jit_gru = copy.deepcopy(actor_critic.actor).to('cuda')
+        input_tensor = torch.randn(2, env_cfg.env.obs_context_len, env_cfg.env.num_observations_single).cuda()
+        #hidden_tensor = torch.randn(1, 1, 64)
+        jit_trace = torch.jit.trace(jit_gru, (input_tensor, torch.tensor(env_cfg.env.obs_context_len)))
+        jit_trace.save(gru_path)
+
 
 class PolicyExporterLSTM(torch.nn.Module):
     def __init__(self, actor_critic):

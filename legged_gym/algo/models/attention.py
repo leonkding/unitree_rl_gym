@@ -39,6 +39,8 @@ class MultiHeadAttention(nn.Module):
             torch.tensor -- Attention weights
         """
         # Get number of training examples and sequence lengths
+        #print(values.shape)
+        #print(keys.shape)
         N = query.shape[0]
         value_len, key_len, query_len = values.shape[1], keys.shape[1], query.shape[1]
         # Split the embedding into self.num_heads different pieces

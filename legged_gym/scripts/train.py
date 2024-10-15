@@ -1,8 +1,9 @@
-import numpy as np
 import os
+unitree_rl_gym_path = os.path.abspath(__file__ + "../../../../")
+import numpy as np
 from datetime import datetime
 import sys
-sys.path.append("/home/ziluoding/unitree_rl_gym/")
+sys.path.append(unitree_rl_gym_path)
 
 import isaacgym
 from legged_gym.envs import *
@@ -16,5 +17,4 @@ def train(args):
 
 if __name__ == '__main__':
     args = get_args()
-    args.headless = False
     train(args)

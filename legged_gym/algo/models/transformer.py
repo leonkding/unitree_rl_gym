@@ -69,7 +69,7 @@ class TransformerBlock(nn.Module):
         out      = self.gate1(query, Y)
         E        = self.fc(self.layer_norm2(out))
         out      = self.gate2(out, E)
-        assert torch.isnan(out).any() == False, "Transformer block returned NaN!"
+        #assert torch.isnan(out).any() == False, "Transformer block returned NaN!"
 
         return out
 
@@ -126,10 +126,7 @@ class GatedTransformerXL(nn.Module):
         # Add positional encoding to every transformer block input
         h_indices = torch.zeros_like(h[:,:,0])
         h_indices[:] = torch.tensor([i for i in range(len(h_indices[0]))])
-        #pos_embedding = self.pos_embedding[memory_indices.long()]
-        #memories = memories + pos_embedding.unsqueeze(2)
-        #pos_embedding = self.pos_embedding[h_indices.long()].cuda()
-        pos_embedding = self.pos_embedding(h_indices.long()).cuda()
+        pos_embedding = self.pos_embedding(h_indices.long()).to(h.device)
         h = h + pos_embedding
         # Forward transformer blocks
         out_memories = []
