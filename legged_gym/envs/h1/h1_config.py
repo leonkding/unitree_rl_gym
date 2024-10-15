@@ -164,23 +164,12 @@ class H1RoughCfg( LeggedRobotCfg ):
         target_feet_height = 0.06
 
         class scales( LeggedRobotCfg.rewards.scales ):
-            # tracking_lin_vel = 1.2 #1.0
-            # tracking_ang_vel = 1.1 #0.5
-            # default_joint_pos = 0.5
-            # # feet_contact_number = 1.2
-            # lin_vel_z = -2.0
-            # ang_vel_xy = -1.0
-            # orientation = -1.0 #-1.0
-            # base_height = -100.0
-            # dof_acc = -3.5e-8
-            # feet_air_time = 1.0
-            # collision = -0.3 #-5e-2
-            # action_rate = -0.01
-            # action_smoothness = -0.01
-            # torques = -1e-5
-            # dof_pos_limits = -10.0
-            # dof_vel_limits = -10.0
-            # # torque_limits = -5.0
+            ## reference motion tracking
+            joint_pos = 1.6 * 4
+            feet_clearance = 1. * 2
+            feet_contact_number = 1.2 * 1
+            feet_air_time = 1.0 * 2
+            ## others
             feet_parallel = -1.0
             knee_distance = 0.2
             feet_distance = 0.2

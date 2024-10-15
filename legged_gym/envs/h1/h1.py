@@ -1238,3 +1238,63 @@ class H1Robot(BaseTask):
     def _reward_elbow(self):
         # Penalize motion at zero commands
         return torch.exp(-4 * (torch.abs(self.dof_pos[:,14] - self.default_dof_pos[:,14])+torch.abs(self.dof_pos[:,18] - self.default_dof_pos[:,18]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)
+
+    def _reward_joint_pos(self):
+        """
+        Calculates the reward based on the difference between the current joint positions and the target joint positions.
+        """
+        joint_pos = self.dof_pos.clone() - self.default_joint_pd_target
+        pos_target = self.ref_dof_pos.clone()
+        diff = joint_pos - pos_target
+        r = torch.exp(-2 * torch.norm(diff, dim=1)) - 0.2 * torch.norm(diff, dim=1).clamp(0, 0.5)
+        return r * (torch.abs(self.commands[:, 2], dim=1) < 0.2)#* (torch.norm(self.base_lin_vel[:, :2], dim=1) > 0.1)
+        
+    def _reward_foot_slip(self):
+        """
+        Calculates the reward for minimizing foot slip. The reward is based on the contact forces
+        and the speed of the feet. A contact threshold is used to determine if the foot is in contact
+        with the ground. The speed of the foot is calculated and scaled by the contact condition.
+        """
+        contact = self.contact_forces[:, self.feet_indices, 2] > 5.
+        foot_speed_norm = torch.norm(self.rigid_body_states[:, self.feet_indices, 10:12], dim=2)
+        rew = torch.sqrt(foot_speed_norm)
+        rew *= contact
+        return torch.sum(rew, dim=1)
+
+    def _reward_feet_contact_number(self):
+        """
+        Calculates a reward based on the number of feet contacts aligning with the gait phase.
+        Rewards or penalizes depending on whether the foot contact matches the expected gait phase.
+        """
+        contact = self.contact_forces[:, self.feet_indices, 2] > 5.
+        stance_mask = self._get_gait_phase()
+        #if self.status == 'standing':
+        #    stance_mask[:] = 1
+        reward = torch.where(contact == stance_mask, 1, -0.3)
+        return torch.mean(reward, dim=1)# * (torch.abs(self.base_lin_vel[:, :2], dim=1) > 0.1)
+        
+    def _reward_feet_clearance(self):
+        """
+        Calculates reward based on the clearance of the swing leg from the ground during movement.
+        Encourages appropriate lift of the feet during the swing phase of the gait.
+        """
+        # Compute feet contact mask
+        contact = self.contact_forces[:, self.feet_indices, 2] > 5.
+
+        # Get the z-position of the feet and compute the change in z-position
+        feet_z = self.rigid_body_states[:, self.feet_indices, 2] - 0.05
+        delta_z = feet_z - self.last_feet_z
+        self.feet_height += delta_z
+        self.last_feet_z = feet_z
+
+        # Compute swing mask
+        swing_mask = 1 - self._get_gait_phase()
+
+        # feet height should be closed to target feet height at the peak
+        rew_pos = torch.abs(self.feet_height - self.cfg.rewards.target_feet_height) < 0.01
+        rew_pos = torch.sum(rew_pos * swing_mask, dim=1)
+        self.feet_height *= ~contact
+        return rew_pos #* (torch.norm(self.base_lin_vel[:, :2], dim=1) > 0.1)
+
+
+
