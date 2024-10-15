@@ -324,28 +324,32 @@ class H1Robot(BaseTask):
                                     self.base_ang_vel  * self.obs_scales.ang_vel,
                                     self.projected_gravity,
                                     self.command_input,
-                                    (self.dof_pos - self.default_dof_pos) * self.obs_scales.dof_pos,
+                                    (self.dof_pos[:,:10] - self.default_dof_pos[:,:10]) * self.obs_scales.dof_pos,
+                                    (self.dof_pos[:,10:] - self.default_dof_pos[:,10:]) * self.obs_scales.dof_pos,
                                     #random_pos[:,:9].cuda() * self.obs_scales.dof_pos,
                                     self.dof_vel * self.obs_scales.dof_vel,
                                     #random_vel.cuda() * self.obs_scales.dof_vel,
-                                    self.actions,
-                                    random_pos[:,18:].cuda()
+                                    self.actions
+                                    #random_pos[:,18:].cuda()
                                     ),dim=-1)
-                                    
+               
+        obs_buf = torch.cat([obs_buf, self.delayed_obs_target_jt * self.obs_scales.dof_pos], dim=-1)
                                     
         privileged_obs_buf = torch.cat((
                                     self.base_lin_vel * self.obs_scales.lin_vel,
                                     self.base_ang_vel  * self.obs_scales.ang_vel,
                                     self.projected_gravity,
                                     self.command_input,
-                                    (self.dof_pos - self.default_dof_pos) * self.obs_scales.dof_pos,
+                                    (self.dof_pos[:,:10] - self.default_dof_pos[:,:10]) * self.obs_scales.dof_pos,
+                                    (self.dof_pos[:,10:] - self.default_dof_pos[:,10:]) * self.obs_scales.dof_pos,
                                     #random_pos[:,:9].cuda(),
                                     self.dof_vel * self.obs_scales.dof_vel,
                                     #random_vel.cuda(),
-                                    self.actions,
-                                    random_pos[:,18:].cuda()
+                                    self.actions
+                                    #random_pos[:,18:].cuda()
                                     ),dim=-1)
         
+        privileged_obs_buf = torch.cat([privileged_obs_buf, self.delayed_obs_target_jt * self.obs_scales.dof_pos], dim=-1)
         # add perceptive inputs if not blind
         # add noise if needed
         if self.add_noise:
