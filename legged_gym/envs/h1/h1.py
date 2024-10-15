@@ -1135,3 +1135,55 @@ class H1Robot(BaseTask):
         d_min = torch.clamp(foot_dist - fd, -0.5, 0.)
         d_max = torch.clamp(foot_dist - max_df, 0, 0.5)
         return (torch.exp(-torch.abs(d_min) * 100) + torch.exp(-torch.abs(d_max) * 100)) / 2
+
+    def _reward_target_jt(self):
+         # Penalize distance to target joint angles
+        target_jt_error = torch.mean(torch.abs(self.dof_pos[:,10:] - self.target_jt[:,10:]), dim=1)
+        return torch.exp(-4 * target_jt_error) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)
+
+    def _reward_target_lower_body(self):
+        # Penalize distance to target joint angles
+        target_jt_error = torch.mean((torch.abs(self.dof_pos[:,0:10] - self.default_joint_pd_target[:,0:10])), dim=1)
+        return torch.exp(-4 * target_jt_error) * (torch.norm(self.base_lin_vel[:, :2], dim=1) < 0.1)#, target_jt_error
+
+
+    def _reward_hip_yaw(self):
+        # Penalize motion at zero commands
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,0] - self.default_dof_pos[:,0])+torch.abs(self.dof_pos[:,5] - self.default_dof_pos[:,5]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
+
+    def _reward_hip_roll(self):
+        # Penalize motion at zero commands
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,1] - self.default_dof_pos[:,1])+torch.abs(self.dof_pos[:,6] - self.default_dof_pos[:,6]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)
+
+    def _reward_hip_pitch(self):
+        # Penalize motion at zero commands
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,2] - self.default_dof_pos[:,2])+torch.abs(self.dof_pos[:,7] - self.default_dof_pos[:,7]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
+
+    def _reward_knee(self):
+        # Penalize motion at zero commands
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,3] - self.default_dof_pos[:,3])+torch.abs(self.dof_pos[:,8] - self.default_dof_pos[:,8]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)
+
+
+    def _reward_ankle(self):
+        # Penalize motion at zero commands
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,4] - self.default_dof_pos[:,4])+torch.abs(self.dof_pos[:,9] - self.default_dof_pos[:,9]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
+
+    def _reward_torso(self):
+        # Penalize motion at zero commands
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,10] - self.default_dof_pos[:,10]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)
+        
+    def _reward_shoulder_yaw(self):
+        # Penalize motion at zero commands
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,13] - self.default_dof_pos[:,13])+torch.abs(self.dof_pos[:,17] - self.default_dof_pos[:,17]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1) #* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
+
+    def _reward_shoulder_roll(self):
+        # Penalize motion at zero commands
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,12] - self.default_dof_pos[:,12])+torch.abs(self.dof_pos[:,16] - self.default_dof_pos[:,16]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)  #* (self.commands[:, 2].abs() < 0.2)
+
+    def _reward_shoulder_pitch(self):
+        # Penalize motion at zero commands
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,11] - self.default_dof_pos[:,11])+torch.abs(self.dof_pos[:,15] - self.default_dof_pos[:,15]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1) #* (self.commands[:, 2].abs() < 0.2)#*
+        
+    def _reward_elbow(self):
+        # Penalize motion at zero commands
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,14] - self.default_dof_pos[:,14])+torch.abs(self.dof_pos[:,18] - self.default_dof_pos[:,18]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)

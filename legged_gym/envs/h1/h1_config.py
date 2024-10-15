@@ -204,6 +204,18 @@ class H1RoughCfg( LeggedRobotCfg ):
             torque_limits = -10.0
             stand_still = -1.0 * 4
             default_joint_pos = 0.5
+            target_jt = 1
+            target_lower_body = 1
+            hip_yaw = 1
+            hip_roll = 1
+            hip_pitch = 1
+            knee = 1
+            ankle = 1
+            torso = 1
+            shoulder_yaw = 1
+            shoulder_roll = 1
+            shoulder_pitch = 1
+            elbow = 1
     
     class normalization:
         class obs_scales:

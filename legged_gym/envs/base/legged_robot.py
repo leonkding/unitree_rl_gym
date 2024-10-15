@@ -47,6 +47,7 @@ class LeggedRobot(BaseTask):
             self.set_camera(self.cfg.viewer.pos, self.cfg.viewer.lookat)
         self._init_buffers()
         self._prepare_reward_function()
+        self._init_target_jt()
         self.init_done = True
 
     def step(self, actions):
