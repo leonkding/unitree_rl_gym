@@ -1,10 +1,12 @@
-Metadata-Version: 1.0
+Metadata-Version: 2.1
 Name: legged-gym
 Version: 1.0.0
 Summary: Isaac Gym environments for humanoid robot
 Home-page: UNKNOWN
 Author: ziluo
-Author-email: UNKNOWN
 License: BSD-3-Clause
-Description: UNKNOWN
 Platform: UNKNOWN
+License-File: LICENSE
+
+UNKNOWN
+

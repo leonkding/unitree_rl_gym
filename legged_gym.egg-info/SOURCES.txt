@@ -1,3 +1,4 @@
+LICENSE
 README.md
 setup.py
 legged_gym/__init__.py
@@ -19,8 +20,10 @@ legged_gym/envs/__init__.py
 legged_gym/utils/__init__.py
 legged_gym/utils/calculate_gait.py
 legged_gym/utils/helpers.py
+legged_gym/utils/human.py
 legged_gym/utils/isaacgym_utils.py
 legged_gym/utils/logger.py
 legged_gym/utils/math.py
 legged_gym/utils/task_registry.py
 legged_gym/utils/terrain.py
+legged_gym/utils/utils.py

@@ -170,3 +170,7 @@ wandb/
 
 # VSCode
 .vscode/
+
+# log
+logs/
+videos/
