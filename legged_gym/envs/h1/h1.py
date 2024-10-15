@@ -17,8 +17,13 @@ from legged_gym.utils.math import wrap_to_pi
 from legged_gym.utils.isaacgym_utils import get_euler_xyz as get_euler_xyz_in_tensor
 from legged_gym.utils.helpers import class_to_dict
 from .h1_config import H1RoughCfg
+from legged_gym.utils.human import load_target_jt
 from legged_gym.utils.terrain import Terrain
 
+def sample_int_from_float(x):
+    if int(x) == x:
+        return int(x)
+    return int(x) if np.random.rand() < (x - int(x)) else int(x) + 1
 
 class H1Robot(BaseTask):
     def __init__(self, cfg: H1RoughCfg, sim_params, physics_engine, sim_device, headless):
@@ -46,7 +51,48 @@ class H1Robot(BaseTask):
             self.set_camera(self.cfg.viewer.pos, self.cfg.viewer.lookat)
         self._init_buffers()
         self._prepare_reward_function()
+        self._init_target_jt()
         self.init_done = True
+
+    def _init_target_jt(self):
+        self.target_jt_seq, self.target_jt_seq_len = load_target_jt(self.device, self.cfg.human.filename, self.default_dof_pos)
+        self.num_target_jt_seq, self.max_target_jt_seq_len, self.dim_target_jt = self.target_jt_seq.shape
+        print(f"Loaded target joint trajectories of shape {self.target_jt_seq.shape}")
+        #assert(self.dim_target_jt == self.num_dofs)
+        self.target_jt_i = torch.randint(0, self.num_target_jt_seq, (self.num_envs,), device=self.device)
+        self.target_jt_j = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)
+        self.target_jt_dt = 1 / self.cfg.human.freq
+        self.target_jt_update_steps = self.target_jt_dt / self.dt # not necessary integer
+        assert(self.dt <= self.target_jt_dt)
+        self.target_jt_update_steps_int = sample_int_from_float(self.target_jt_update_steps)
+        self.target_jt = None
+        self.delayed_obs_target_jt = None
+        self.delayed_obs_target_jt_steps = self.cfg.human.delay / self.target_jt_dt
+        self.delayed_obs_target_jt_steps_int = sample_int_from_float(self.delayed_obs_target_jt_steps)
+        self.update_target_jt(torch.tensor([], dtype=torch.long, device=self.device))
+
+
+    def update_target_jt(self, reset_env_ids):
+        self.target_jt = self.target_jt_seq[self.target_jt_i, self.target_jt_j]
+        #self.commands[:,:3] = self.target_vel_seq[self.target_jt_i]
+        self.delayed_obs_target_jt = self.target_jt_seq[self.target_jt_i, torch.maximum(self.target_jt_j - self.delayed_obs_target_jt_steps_int, torch.tensor(0))]
+        resample_i = torch.zeros(self.num_envs, device=self.device, dtype=torch.bool)
+        if self.common_step_counter % self.target_jt_update_steps_int == 0:
+            self.target_jt_j += 1
+            # print('wwww')
+            # print(self.target_jt_seq_len)
+            # print(self.target_jt_i)
+            # print(self.target_jt_seq_len[self.target_jt_i])
+            jt_eps_end_bool = self.target_jt_j >= self.target_jt_seq_len[self.target_jt_i]
+            #print(jt_eps_end_bool)
+            self.target_jt_j = torch.where(jt_eps_end_bool, torch.zeros_like(self.target_jt_j), self.target_jt_j)
+            resample_i[jt_eps_end_bool.nonzero(as_tuple=False).flatten()] = True
+            self.target_jt_update_steps_int = sample_int_from_float(self.target_jt_update_steps)
+            self.delayed_obs_target_jt_steps_int = sample_int_from_float(self.delayed_obs_target_jt_steps)
+        if self.cfg.human.resample_on_env_reset:
+            self.target_jt_j[reset_env_ids] = 0
+            resample_i[reset_env_ids] = True
+        self.target_jt_i = torch.where(resample_i, torch.randint(0, self.num_target_jt_seq, (self.num_envs,), device=self.device), self.target_jt_i)
 
     def step(self, actions):
         """ Apply actions, simulate, call self.post_physics_step()
@@ -119,6 +165,7 @@ class H1Robot(BaseTask):
         self.compute_reward()
         env_ids = self.reset_buf.nonzero(as_tuple=False).flatten()
         self.reset_idx(env_ids)
+        self.update_target_jt(env_ids)
         self.compute_observations() # in some cases a simulation step might be required to refresh some obs (for example body positions)
 
         self.last_last_actions[:] = self.last_actions[:]
@@ -278,11 +325,11 @@ class H1Robot(BaseTask):
                                     self.projected_gravity,
                                     self.command_input,
                                     (self.dof_pos - self.default_dof_pos) * self.obs_scales.dof_pos,
-                                    random_pos[:,:9].cuda() * self.obs_scales.dof_pos,
+                                    #random_pos[:,:9].cuda() * self.obs_scales.dof_pos,
                                     self.dof_vel * self.obs_scales.dof_vel,
-                                    random_vel.cuda() * self.obs_scales.dof_vel,
+                                    #random_vel.cuda() * self.obs_scales.dof_vel,
                                     self.actions,
-                                    random_pos[:,9:].cuda()
+                                    random_pos[:,18:].cuda()
                                     ),dim=-1)
                                     
                                     
@@ -292,11 +339,11 @@ class H1Robot(BaseTask):
                                     self.projected_gravity,
                                     self.command_input,
                                     (self.dof_pos - self.default_dof_pos) * self.obs_scales.dof_pos,
-                                    random_pos[:,:9].cuda(),
+                                    #random_pos[:,:9].cuda(),
                                     self.dof_vel * self.obs_scales.dof_vel,
-                                    random_vel.cuda(),
+                                    #random_vel.cuda(),
                                     self.actions,
-                                    random_pos[:,9:].cuda()
+                                    random_pos[:,18:].cuda()
                                     ),dim=-1)
         
         # add perceptive inputs if not blind
@@ -614,10 +661,11 @@ class H1Robot(BaseTask):
 
         noise_vec[:3] = noise_scales.ang_vel * noise_level * self.obs_scales.ang_vel
         noise_vec[3:6] = noise_scales.gravity * noise_level
-        noise_vec[6:9] = 0. # commands
-        noise_vec[9:9+self.num_actions] = noise_scales.dof_pos * noise_level * self.obs_scales.dof_pos
-        noise_vec[9+self.num_actions:9+2*self.num_actions] = noise_scales.dof_vel * noise_level * self.obs_scales.dof_vel
-        noise_vec[9+2*self.num_actions:9+3*self.num_actions] = 0. # previous actions
+        noise_vec[6:11] = 0. # commands
+        noise_vec[11:11+self.num_actions] = noise_scales.dof_pos * noise_level * self.obs_scales.dof_pos
+        noise_vec[11+self.num_actions:11+2*self.num_actions] = noise_scales.dof_vel * noise_level * self.obs_scales.dof_vel
+        noise_vec[11+2*self.num_actions:11+3*self.num_actions] = 0. # previous actions
+        noise_vec[11+3*self.num_actions:11+4*self.num_actions] = 0.
 
         return noise_vec
 
@@ -1143,9 +1191,8 @@ class H1Robot(BaseTask):
 
     def _reward_target_lower_body(self):
         # Penalize distance to target joint angles
-        target_jt_error = torch.mean((torch.abs(self.dof_pos[:,0:10] - self.default_joint_pd_target[:,0:10])), dim=1)
+        target_jt_error = torch.mean((torch.abs(self.dof_pos[:,0:10] - self.default_dof_pos[:,0:10])), dim=1)
         return torch.exp(-4 * target_jt_error) * (torch.norm(self.base_lin_vel[:, :2], dim=1) < 0.1)#, target_jt_error
-
 
     def _reward_hip_yaw(self):
         # Penalize motion at zero commands

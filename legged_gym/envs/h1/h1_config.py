@@ -51,7 +51,7 @@ class H1RoughCfg( LeggedRobotCfg ):
         num_teaching_observations = 3 * num_observations_single
         # num_observations = 39
         # num_privileged_obs = 42
-        num_actions = 10
+        num_actions = 19
         
         action_delay = 0.02
         episode_length_s = 20

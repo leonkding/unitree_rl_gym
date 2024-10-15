@@ -124,7 +124,7 @@ class ActorCritic(nn.Module):
                 "embed_dim": 384,
                 "memory_length":15,
             }}
-            self.actor = PPOTransformerModel(config, mlp_input_dim_a, num_actions+9)
+            self.actor = PPOTransformerModel(config, mlp_input_dim_a, num_actions)
             #self.actor = DecisionTransformer(mlp_input_dim_a, num_actions, hidden_size = 192)
         else:
             actor_layers = []
@@ -157,7 +157,7 @@ class ActorCritic(nn.Module):
         print(f"Critic MLP: {self.critic}")
 
         # Action noise
-        self.std = nn.Parameter(init_noise_std * torch.ones(num_actions+9))
+        self.std = nn.Parameter(init_noise_std * torch.ones(num_actions))
         self.distribution = None
         self.teaching_distribution = None
         # disable args validation for speedup
@@ -191,8 +191,8 @@ class ActorCritic(nn.Module):
 
     def update_distribution(self, observations):
         mean = self.actor(observations, self.obs_context_len)
-        mean = mean[:,:10]
-        std = self.std[:10]
+        mean = mean#[:,:10]
+        std = self.std#[:10]
         return Normal(mean, mean*0. + std)
 
     def act(self, observations, **kwargs):
@@ -204,7 +204,7 @@ class ActorCritic(nn.Module):
 
     def act_inference(self, observations):
         actions_mean = self.actor(observations, self.obs_context_len)
-        actions_mean = actions_mean[:,:10]
+        actions_mean = actions_mean#[:,:10]
         return actions_mean
 
     def evaluate(self, critic_observations, **kwargs):
