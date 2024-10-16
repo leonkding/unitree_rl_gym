@@ -6,7 +6,7 @@ class H1RoughCfg( LeggedRobotCfg ):
         delay = 0.0 # delay in seconds
         freq = 30
         resample_on_env_reset = True
-        filename = '/home/ziluoding/h1_res.pkl'
+        filename = '/home/ps/Documents/codes/wbc_code/legged_gym/data/h1_res.pkl'
         #filename = '/home/ps/humanplus/HST/legged_gym/ACCAD_walk_10fps.npy'
 
     class init_state( LeggedRobotCfg.init_state ):
@@ -204,7 +204,7 @@ class H1RoughCfg( LeggedRobotCfg ):
             torque_limits = -10.0
             stand_still = -1.0 * 4
             default_joint_pos = 0.5
-            target_jt = 1
+            target_jt = 1 * 0.
             target_lower_body = 1
             hip_yaw = 1
             hip_roll = 1
@@ -256,7 +256,7 @@ class H1RoughCfgPPO( LeggedRobotCfgPPO ):
     class runner( LeggedRobotCfgPPO.runner ):
         run_name = ''
         experiment_name = 'h1'
-        render = True
+        render = False
         num_steps_per_env = 24 # per iteration
 
   

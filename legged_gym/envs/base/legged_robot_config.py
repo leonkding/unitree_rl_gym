@@ -1,9 +1,10 @@
 from .base_config import BaseConfig
 
+
 class LeggedRobotCfg(BaseConfig):
     class env:
         obs_context_len = 1
-        num_envs = 4000 #4096
+        num_envs = 1000 #4096
         num_observations_single = 48
         num_privileged_obs_single = 48
         num_observations = num_observations_single * obs_context_len
@@ -56,10 +57,10 @@ class LeggedRobotCfg(BaseConfig):
         resampling_time = 10. # time before command are changed[s]
         heading_command = False # if true: compute ang vel command from heading error
         class ranges:
-            lin_vel_x = [-1.0, 1.0] # min max [m/s]
-            lin_vel_y = [-1.0, 1.0]   # min max [m/s]
+            lin_vel_x = [-0.5, 0.5] # min max [m/s]
+            lin_vel_y = [-0.5, 0.5]   # min max [m/s]
             ang_vel_yaw = [-1.0, 1.0]    # min max [rad/s]
-            heading = [-3.14, 3.14]
+            heading = [-0., 0.]
 
     class init_state:
         pos = [0.0, 0.0, 1.] # x,y,z [m]
@@ -237,7 +238,7 @@ class LeggedRobotCfgPPO(BaseConfig):
     class runner:
         policy_class_name = 'ActorCritic'
         algorithm_class_name = 'PPO'
-        num_steps_per_env = 24 # per iteration
+        num_steps_per_env = 48 # per iteration
         max_iterations = 15000 # number of policy updates
 
         # logging

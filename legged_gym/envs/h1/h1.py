@@ -1190,7 +1190,7 @@ class H1Robot(BaseTask):
 
     def _reward_target_jt(self):
          # Penalize distance to target joint angles
-        target_jt_error = torch.mean(torch.abs(self.dof_pos[:,10:] - self.target_jt[:,10:]), dim=1)
+        target_jt_error = torch.mean(torch.abs(self.dof_pos[:,10:] - self.default_dof_pos[:,10:]), dim=1)
         return torch.exp(-4 * target_jt_error) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)
 
     def _reward_target_lower_body(self):
@@ -1213,7 +1213,6 @@ class H1Robot(BaseTask):
     def _reward_knee(self):
         # Penalize motion at zero commands
         return torch.exp(-4 * (torch.abs(self.dof_pos[:,3] - self.default_dof_pos[:,3])+torch.abs(self.dof_pos[:,8] - self.default_dof_pos[:,8]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)
-
 
     def _reward_ankle(self):
         # Penalize motion at zero commands
