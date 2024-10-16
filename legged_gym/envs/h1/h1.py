@@ -1243,11 +1243,11 @@ class H1Robot(BaseTask):
         """
         Calculates the reward based on the difference between the current joint positions and the target joint positions.
         """
-        joint_pos = self.dof_pos.clone() - self.default_joint_pd_target
+        joint_pos = self.dof_pos.clone() - self.default_dof_pos
         pos_target = self.ref_dof_pos.clone()
         diff = joint_pos - pos_target
         r = torch.exp(-2 * torch.norm(diff, dim=1)) - 0.2 * torch.norm(diff, dim=1).clamp(0, 0.5)
-        return r * (torch.abs(self.commands[:, 2], dim=1) < 0.2)#* (torch.norm(self.base_lin_vel[:, :2], dim=1) > 0.1)
+        return r * (torch.abs(self.commands[:, 2]) < 0.2)#* (torch.norm(self.base_lin_vel[:, :2], dim=1) > 0.1)
         
     def _reward_foot_slip(self):
         """
