@@ -151,7 +151,7 @@ class H1RoughCfg( LeggedRobotCfg ):
         soft_dof_vel_limit = 0.9
         soft_torque_limit = 0.9
         base_height_target = 0.98
-        only_positive_rewards = False # if true negative total rewards are clipped at zero (avoids early termination problems)
+        only_positive_rewards = True # if true negative total rewards are clipped at zero (avoids early termination problems)
         
         # for knee and ankle distance keeping
         min_dist = 0.3
@@ -205,17 +205,17 @@ class H1RoughCfg( LeggedRobotCfg ):
             stand_still = -1.0 * 4
             default_joint_pos = 0.5
             target_jt = 1 * 0.
-            target_lower_body = 1
-            hip_yaw = 1
-            hip_roll = 1
-            hip_pitch = 1
-            knee = 1
-            ankle = 1
-            torso = 1
-            shoulder_yaw = 1
-            shoulder_roll = 1
-            shoulder_pitch = 1
-            elbow = 1
+            target_lower_body = 1.
+            hip_yaw = 1.
+            hip_roll = 1.
+            hip_pitch = 1.
+            knee = 1.
+            ankle = 1.
+            torso = 1.
+            shoulder_yaw = 1.
+            shoulder_roll = 1.
+            shoulder_pitch = 1.
+            elbow = 1.
     
     class normalization:
         class obs_scales:

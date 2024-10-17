@@ -157,12 +157,12 @@ def export_policy_as_jit(actor_critic, env_cfg, path):
         # path = os.path.join(path, 'policy_1.pt')
         # model = copy.deepcopy(actor_critic.actor).to('cpu')
         # traced_script_module = torch.jit.script(model)
-        # traced_script_module.save(path)
+        # traced_script_module.save(path)s
 
 
         gru_path = os.path.join(path, 'walk.pt')
-        jit_gru = copy.deepcopy(actor_critic.actor).to('cuda')
-        input_tensor = torch.randn(2, env_cfg.env.obs_context_len, env_cfg.env.num_observations_single).cuda()
+        jit_gru = copy.deepcopy(actor_critic.actor).to('cpu')
+        input_tensor = torch.randn(2, env_cfg.env.obs_context_len, env_cfg.env.num_observations_single)
         #hidden_tensor = torch.randn(1, 1, 64)
         jit_trace = torch.jit.trace(jit_gru, (input_tensor, torch.tensor(env_cfg.env.obs_context_len)))
         jit_trace.save(gru_path)
