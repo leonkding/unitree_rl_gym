@@ -191,7 +191,7 @@ class H1RoughCfg( LeggedRobotCfg ):
             dof_pos_limits = -10.0
             dof_vel_limits = -10.0
             torque_limits = -10.0
-            stand_still = -1.0 * 4
+            stand_still = -1.0 * 0
             default_joint_pos = 0.5
             target_jt = 1
             target_lower_body = 1
