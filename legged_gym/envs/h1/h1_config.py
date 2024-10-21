@@ -3,7 +3,7 @@ from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobot
 class H1RoughCfg( LeggedRobotCfg ):
 
     class human:
-        delay = 0.0 # delay in seconds
+        delay = 0.02 # delay in seconds
         freq = 30
         resample_on_env_reset = True
         filename = '/home/ziluoding/h1_res.pkl'
@@ -41,8 +41,21 @@ class H1RoughCfg( LeggedRobotCfg ):
             'joint_vel': 10,
             'action': 10,
         }
+
+    class commands:
+        curriculum = True
+        max_curriculum = 1.
+        num_commands = 4 # default: lin_vel_x, lin_vel_y, ang_vel_yaw, heading (in heading mode ang_vel_yaw is recomputed from heading error)
+        resampling_time = 10. # time before command are changed[s]
+        heading_command = True # if true: compute ang vel command from heading error
+        class ranges:
+            lin_vel_x = [-0.0, 0.5] # min max [m/s]
+            lin_vel_y = [-0.5, 0.0]   # min max [m/s]
+            ang_vel_yaw = [-0.0, 0.0]    # min max [rad/s]
+            heading = [0,0]#[-3.14, 3.14]
     
     class env(LeggedRobotCfg.env):
+        num_envs = 1000 #4096
         obs_context_len = 15
         num_observations_single = 87
         num_privileged_obs_single = 90 #42, 58
@@ -128,7 +141,8 @@ class H1RoughCfg( LeggedRobotCfg ):
         added_mass_range = [-3., 1.]
         push_robots = True
         push_interval_s = 10
-        max_push_vel_xy = 0.5
+        max_push_vel_xy = 1
+        max_push_ang_vel = 0.4
         
         randomize_gravity = False
         gravity_range = [-1.0, 1.0]
@@ -151,7 +165,7 @@ class H1RoughCfg( LeggedRobotCfg ):
         soft_dof_vel_limit = 0.9
         soft_torque_limit = 0.9
         base_height_target = 0.98
-        only_positive_rewards = False # if true negative total rewards are clipped at zero (avoids early termination problems)
+        only_positive_rewards = True # if true negative total rewards are clipped at zero (avoids early termination problems)
         
         # for knee and ankle distance keeping
         min_dist = 0.3
@@ -159,52 +173,74 @@ class H1RoughCfg( LeggedRobotCfg ):
 
         tracking_sigma = 0.25 # tracking reward = exp(-error^2/sigma)
         max_contact_force = 600. # forces above this value are penalized
-        cycle_time = 0.68
+        cycle_time = 0.4
         target_joint_pos_scale = 0.17
         target_feet_height = 0.06
 
         class scales( LeggedRobotCfg.rewards.scales ):
+            # tracking_lin_vel = 1.2 #1.0
+            # tracking_ang_vel = 1.1 #0.5
+            # default_joint_pos = 0.5
+            # # feet_contact_number = 1.2
+            # lin_vel_z = -2.0
+            # ang_vel_xy = -1.0
+            # orientation = -1.0 #-1.0
+            # base_height = -100.0
+            # dof_acc = -3.5e-8
+            # feet_air_time = 1.0
+            # collision = -0.3 #-5e-2
+            # action_rate = -0.01
+            # action_smoothness = -0.01
+            # torques = -1e-5
+            # dof_pos_limits = -10.0
+            # dof_vel_limits = -10.0
+            # # torque_limits = -5.0
             ## reference motion tracking
             joint_pos = 1.6 * 4
             feet_clearance = 1. * 2
             feet_contact_number = 1.2 * 1
             feet_air_time = 1.0 * 2
-            ## others
+            foot_slip = -0.1
+            ## feet reg
             feet_parallel = -1.0
+            feet_symmetry = -1.0
             knee_distance = 0.2
             feet_distance = 0.2
             stumble = -2.0
-            feet_contact_forces = -3e-6
-            tracking_lin_vel = 1.5 * 4
-            tracking_ang_vel = 1.0 * 4
+            stand_still = -1.0 * 0
+            default_joint_pos = 0.5 * 4
+            ## command
+            tracking_lin_vel = 1.5 * 6
+            tracking_ang_vel = 1.0 * 6
+            base_height = -1000.0
+            orientation = -1.0
+            target_jt = 0
+            target_lower_body = 0
+            hip_yaw = 0
+            hip_roll = 0
+            hip_pitch = 0
+            knee = 0
+            ankle = 0
+            torso = 1
+            shoulder_yaw = 1 * 10
+            shoulder_roll = 1 * 10
+            shoulder_pitch = 1 * 10
+            elbow = 1 * 10
+            ## limit
+            feet_contact_forces = -3e-6 * 1
             lin_vel_z = -2.0
             ang_vel_xy = -1.0
-            orientation = -1.0
-            base_height = -1000.0
             dof_acc = -5e-8
-            feet_air_time = 1.0
             collision = -1.0
             action_rate = -0.01 * 1
             action_smoothness = -0.01 * 1
+            feet_contact_forces = -3e-6 * 10
             energy = -3e-7
             torques = 0.0
             dof_pos_limits = -10.0
             dof_vel_limits = -10.0
             torque_limits = -10.0
-            stand_still = -1.0 * 0
-            default_joint_pos = 0.5
-            target_jt = 1
-            target_lower_body = 1
-            hip_yaw = 1
-            hip_roll = 1
-            hip_pitch = 1
-            knee = 1
-            ankle = 1
-            torso = 1
-            shoulder_yaw = 1
-            shoulder_roll = 1
-            shoulder_pitch = 1
-            elbow = 1
+            
     
     class normalization:
         class obs_scales:
@@ -214,7 +250,7 @@ class H1RoughCfg( LeggedRobotCfg ):
             dof_vel = 0.05
             height_measurements = 5.0
         clip_observations = 18.
-        clip_actions = 18.
+        clip_actions = 100.
 
     class sim(LeggedRobotCfg.sim):
         dt = 0.002  # 500 Hz
@@ -224,7 +260,7 @@ class H1RoughCfgPPO( LeggedRobotCfgPPO ):
     class policy( LeggedRobotCfgPPO.policy ):
         policy_type = 'moving' # standing, moving, and steering
         architecture = 'Trans' # choose from 'Mix', 'Trans', 'MLP', and 'RNN'
-        teaching_model_path = '/home/ziluoding/unitree_rl_gym/logs/Sep06_19-03-45_/model_13000.pt'#'/home/ps/unitree_rl_gym_o/legged_gym/model/Aug29_17-48-05_h1/model_10000.pt'
+        teaching_model_path = '/home/ziluoding/unitree_rl_gym_wbc/logs/h1/Oct17_21-00-42_gait_ref4_clear2_air2_still0_cycle.4_defpos4_slip_feetsym_heading00_lv6/model_4000.pt'#'/home/ps/unitree_rl_gym_o/legged_gym/model/Aug29_17-48-05_h1/model_10000.pt'
         moving_model_path = '/home/ziluoding/humanoid-gym/logs/h1/Jul11_16-30-02_/model_12000.pt'
         init_noise_std = 1.0
         actor_hidden_dims = [512, 256, 128]
@@ -235,7 +271,8 @@ class H1RoughCfgPPO( LeggedRobotCfgPPO ):
         rnn_num_layers = 1
     class algorithm( LeggedRobotCfgPPO.algorithm ):
         entropy_coef = 0.01
-        learning_rate = 1e-4
+        learning_rate = 5.e-4 #5.e-4
+        schedule = 'fixed'
         num_learning_epochs = 2
         gamma = 0.99
         lam = 0.95
@@ -247,5 +284,16 @@ class H1RoughCfgPPO( LeggedRobotCfgPPO ):
         experiment_name = 'h1'
         render = True
         num_steps_per_env = 24 # per iteration
+        #logging
+        save_interval = 1000 # check for potential saves every this many iterations
+        experiment_name = 'h1'
+        run_name = ''
+        # load and resume
+        resume = True
+        load_run = 'Oct21_01-56-26_0.3'#'Oct19_12-01-54_all100' # -1 = last run
+        checkpoint = -1 # -1 = last saved model
+        resume_path = None # updated from load_run and chkpt
+        
+        #gait_ref4_clear2_air2_still0_cycle.4_defpos4_slip_feetsym_heading00_lv6
 
   

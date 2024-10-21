@@ -50,6 +50,7 @@ class PPO:
                  value_loss_coef=1.0,
                  entropy_coef=0.0,
                  imitation_coef = 0.02,
+                 supervised_coef = 10,
                  learning_rate=1e-3,
                  min_learning_rate=7e-5,
                  max_learning_rate=1e-2,
@@ -85,6 +86,7 @@ class PPO:
         self.num_mini_batches = num_mini_batches
         self.value_loss_coef = value_loss_coef
         self.imitation_coef = imitation_coef
+        self.supervised_coef = supervised_coef
         self.entropy_coef = entropy_coef
         self.gamma = gamma
         self.lam = lam
@@ -133,6 +135,7 @@ class PPO:
         mean_value_loss = 0
         mean_surrogate_loss = 0
         mean_imitation_loss = 0
+        mean_supervised_loss = 0
 
         generator = self.storage.mini_batch_generator(self.num_mini_batches, self.num_learning_epochs)
         for obs_batch, critic_obs_batch, actions_batch, target_values_batch, advantages_batch, returns_batch, old_actions_log_prob_batch, \
@@ -180,15 +183,22 @@ class PPO:
                 else:
                     value_loss = (returns_batch - value_batch).pow(2).mean()
 
-                # Imitation Loss
-                #teaching_distribution = self.teaching_actor_critic.distribution
-                #distribution = self.actor_critic.distribution
-                #teaching_stddev = teaching_distribution.stddev.detach().clone()
-                #teaching_mean = teaching_distribution.mean.detach().clone()
-                #imitation_loss = torch.mean(torch.log(teaching_stddev/distribution.stddev) + (distribution.stddev**2 + (distribution.mean - teaching_mean)**2) / (2*teaching_stddev**2) - 0.5)
-                imitation_loss = torch.tensor(0)
 
-                loss = surrogate_loss + self.value_loss_coef * value_loss - self.entropy_coef * entropy_batch.mean() + self.imitation_coef * imitation_loss
+                
+                # Imitation Loss
+                #teaching_distribution = self.teaching_actor_critic.distribution#[:,:10]
+                distribution = self.actor_critic.distribution#[:,:10]
+                #teaching_stddev = teaching_distribution.stddev.detach().clone()[:,:10]
+                #teaching_mean = teaching_distribution.mean.detach().clone()[:,:10]
+                #imitation_loss = torch.mean(torch.log(teaching_stddev/distribution.stddev[:,:10]) + (distribution.stddev[:,:10]**2 + (distribution.mean[:,:10] - teaching_mean)**2) / (2*teaching_stddev**2) - 0.5)
+                imitation_loss = torch.tensor(0)
+                
+                # Supervised Loss
+                MSELoss = nn.MSELoss()
+                supervised_loss = MSELoss(distribution.mean[:,-8:] * 0.2, obs_batch.detach().clone()[:,-8:])
+                #supervised_loss = torch.tensor(0)
+
+                loss = surrogate_loss + self.value_loss_coef * value_loss - self.entropy_coef * entropy_batch.mean() + self.imitation_coef * imitation_loss + self.supervised_coef * supervised_loss
 
                 # Gradient step
                 self.optimizer.zero_grad()
@@ -199,12 +209,14 @@ class PPO:
                 mean_value_loss += value_loss.item()
                 mean_surrogate_loss += surrogate_loss.item()
                 mean_imitation_loss += imitation_loss.item()
+                mean_supervised_loss += supervised_loss.item()
 
         num_updates = self.num_learning_epochs * self.num_mini_batches
         mean_value_loss /= num_updates
         mean_surrogate_loss /= num_updates
         mean_imitation_loss /= num_updates
+        mean_supervised_loss /= num_updates
         #mean_imitation_loss = 0
         self.storage.clear()
 
-        return mean_value_loss, mean_surrogate_loss, mean_imitation_loss
+        return mean_value_loss, mean_surrogate_loss, mean_imitation_loss, mean_supervised_loss

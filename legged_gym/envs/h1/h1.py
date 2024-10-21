@@ -44,6 +44,7 @@ class H1Robot(BaseTask):
         self.height_samples = None
         self.debug_viz = False
         self.init_done = False
+        self.target_jt_scale = 0.6
         self._parse_cfg(self.cfg)
         super().__init__(self.cfg, sim_params, physics_engine, sim_device, headless)
 
@@ -324,8 +325,8 @@ class H1Robot(BaseTask):
                                     self.base_ang_vel  * self.obs_scales.ang_vel,
                                     self.projected_gravity,
                                     self.command_input,
-                                    (self.dof_pos[:,:10] - self.default_dof_pos[:,:10]) * self.obs_scales.dof_pos,
-                                    (self.dof_pos[:,10:] - self.default_dof_pos[:,10:]) * self.obs_scales.dof_pos,
+                                    (self.dof_pos[:,:11] - self.default_dof_pos[:,:11]) * self.obs_scales.dof_pos,
+                                    (self.dof_pos[:,11:] - self.target_jt[:,11:]*self.target_jt_scale) * self.obs_scales.dof_pos,
                                     #random_pos[:,:9].cuda() * self.obs_scales.dof_pos,
                                     self.dof_vel * self.obs_scales.dof_vel,
                                     #random_vel.cuda() * self.obs_scales.dof_vel,
@@ -333,15 +334,15 @@ class H1Robot(BaseTask):
                                     #random_pos[:,18:].cuda()
                                     ),dim=-1)
                
-        obs_buf = torch.cat([obs_buf, self.delayed_obs_target_jt * self.obs_scales.dof_pos], dim=-1)
+        obs_buf = torch.cat([obs_buf, self.delayed_obs_target_jt*self.target_jt_scale * self.obs_scales.dof_pos], dim=-1)
                                     
         privileged_obs_buf = torch.cat((
                                     self.base_lin_vel * self.obs_scales.lin_vel,
                                     self.base_ang_vel  * self.obs_scales.ang_vel,
                                     self.projected_gravity,
                                     self.command_input,
-                                    (self.dof_pos[:,:10] - self.default_dof_pos[:,:10]) * self.obs_scales.dof_pos,
-                                    (self.dof_pos[:,10:] - self.default_dof_pos[:,10:]) * self.obs_scales.dof_pos,
+                                    (self.dof_pos[:,:11] - self.default_dof_pos[:,:11]) * self.obs_scales.dof_pos,
+                                    (self.dof_pos[:,11:] - self.target_jt[:,11:]*self.target_jt_scale) * self.obs_scales.dof_pos,
                                     #random_pos[:,:9].cuda(),
                                     self.dof_vel * self.obs_scales.dof_vel,
                                     #random_vel.cuda(),
@@ -349,7 +350,7 @@ class H1Robot(BaseTask):
                                     #random_pos[:,18:].cuda()
                                     ),dim=-1)
         
-        privileged_obs_buf = torch.cat([privileged_obs_buf, self.delayed_obs_target_jt * self.obs_scales.dof_pos], dim=-1)
+        privileged_obs_buf = torch.cat([privileged_obs_buf, self.delayed_obs_target_jt*self.target_jt_scale * self.obs_scales.dof_pos], dim=-1)
         # add perceptive inputs if not blind
         # add noise if needed
         if self.add_noise:
@@ -440,6 +441,8 @@ class H1Robot(BaseTask):
             self.dof_pos_limits = torch.zeros(self.num_dof, 2, dtype=torch.float, device=self.device, requires_grad=False)
             self.dof_vel_limits = torch.zeros(self.num_dof, dtype=torch.float, device=self.device, requires_grad=False)
             self.torque_limits = torch.zeros(self.num_dof, dtype=torch.float, device=self.device, requires_grad=False)
+            print('dididi')
+            print(len(props))
             for i in range(len(props)):
                 self.dof_pos_limits[i, 0] = props["lower"][i].item() * self.cfg.safety.pos_limit
                 self.dof_pos_limits[i, 1] = props["upper"][i].item() * self.cfg.safety.pos_limit
@@ -622,11 +625,19 @@ class H1Robot(BaseTask):
         self.gym.set_sim_params(self.sim, sim_params)
     
     def _push_robots(self):
-        """ Random pushes the robots. Emulates an impulse by setting a randomized base velocity. 
+        """ Random pushes the robots. Emulates an impulse by setting a randomized base velocity.
         """
         max_vel = self.cfg.domain_rand.max_push_vel_xy
-        self.root_states[:, 7:9] = torch_rand_float(-max_vel, max_vel, (self.num_envs, 2), device=self.device) # lin vel x/y
-        self.gym.set_actor_root_state_tensor(self.sim, gymtorch.unwrap_tensor(self.root_states))
+        max_push_angular = self.cfg.domain_rand.max_push_ang_vel
+  
+        self.root_states[:, 7:9] = torch_rand_float(
+            -max_vel, max_vel, (self.num_envs, 2), device=self.device)  # lin vel x/y
+
+        self.root_states[:, 10:13] = torch_rand_float(
+            -max_push_angular, max_push_angular, (self.num_envs, 3), device=self.device)
+
+        self.gym.set_actor_root_state_tensor(
+            self.sim, gymtorch.unwrap_tensor(self.root_states))
 
     def update_command_curriculum(self, env_ids):
         """ Implements a curriculum of increasing commands
@@ -1072,7 +1083,7 @@ class H1Robot(BaseTask):
         self.last_contacts = contact
         first_contact = (self.feet_air_time > 0.) * contact_filt
         self.feet_air_time += self.dt
-        rew_airTime = torch.sum((self.feet_air_time - 0.2) * first_contact, dim=1) # reward only on first contact with the ground，0.2s at least for reward
+        rew_airTime = torch.sum((self.feet_air_time - 0.5) * first_contact, dim=1) # reward only on first contact with the ground
         rew_airTime *= torch.norm(self.commands[:, :2], dim=1) > 0.1 #no reward for zero command
         self.feet_air_time *= ~contact_filt
         return rew_airTime
@@ -1105,7 +1116,7 @@ class H1Robot(BaseTask):
         Calculates the reward for keeping joint positions close to default positions, with a focus 
         on penalizing deviation in yaw and roll directions. Excludes yaw and roll from the main penalty.
         """
-        joint_diff = self.dof_pos - self.default_dof_pos
+        joint_diff = self.dof_pos[:,:10] - self.default_dof_pos[:,:10]
         left_yaw_roll = joint_diff[:, :2]
         right_yaw_roll = joint_diff[:, 5: 7]
         yaw_roll = torch.norm(left_yaw_roll, dim=1) + torch.norm(right_yaw_roll, dim=1)
@@ -1190,54 +1201,54 @@ class H1Robot(BaseTask):
 
     def _reward_target_jt(self):
          # Penalize distance to target joint angles
-        target_jt_error = torch.mean(torch.abs(self.dof_pos[:,10:] - self.target_jt[:,10:]), dim=1)
-        return torch.exp(-4 * target_jt_error) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)
+        target_jt_error = torch.mean(torch.abs(self.dof_pos[:,11:] - self.target_jt[:,11:]), dim=1)
+        return torch.exp(-4 * target_jt_error)# * (torch.norm(self.commands[:, :2], dim=1) < 0.1)
 
     def _reward_target_lower_body(self):
         # Penalize distance to target joint angles
         target_jt_error = torch.mean((torch.abs(self.dof_pos[:,0:10] - self.default_dof_pos[:,0:10])), dim=1)
-        return torch.exp(-4 * target_jt_error) * (torch.norm(self.base_lin_vel[:, :2], dim=1) < 0.1)#, target_jt_error
+        return torch.exp(-4 * target_jt_error) #* (torch.norm(self.base_lin_vel[:, :2], dim=1) < 0.1)#, target_jt_error
 
     def _reward_hip_yaw(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,0] - self.default_dof_pos[:,0])+torch.abs(self.dof_pos[:,5] - self.default_dof_pos[:,5]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,0] - self.default_dof_pos[:,0])+torch.abs(self.dof_pos[:,5] - self.default_dof_pos[:,5])))# * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
 
     def _reward_hip_roll(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,1] - self.default_dof_pos[:,1])+torch.abs(self.dof_pos[:,6] - self.default_dof_pos[:,6]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,1] - self.default_dof_pos[:,1])+torch.abs(self.dof_pos[:,6] - self.default_dof_pos[:,6]))) #* (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)
 
     def _reward_hip_pitch(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,2] - self.default_dof_pos[:,2])+torch.abs(self.dof_pos[:,7] - self.default_dof_pos[:,7]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,2] - self.default_dof_pos[:,2])+torch.abs(self.dof_pos[:,7] - self.default_dof_pos[:,7]))) #* (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
 
     def _reward_knee(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,3] - self.default_dof_pos[:,3])+torch.abs(self.dof_pos[:,8] - self.default_dof_pos[:,8]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,3] - self.default_dof_pos[:,3])+torch.abs(self.dof_pos[:,8] - self.default_dof_pos[:,8]))) #* (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)
 
 
     def _reward_ankle(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,4] - self.default_dof_pos[:,4])+torch.abs(self.dof_pos[:,9] - self.default_dof_pos[:,9]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,4] - self.default_dof_pos[:,4])+torch.abs(self.dof_pos[:,9] - self.default_dof_pos[:,9]))) #* (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
 
     def _reward_torso(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,10] - self.default_dof_pos[:,10]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,10] - self.default_dof_pos[:,10]))) #* (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)
         
     def _reward_shoulder_yaw(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,13] - self.default_dof_pos[:,13])+torch.abs(self.dof_pos[:,17] - self.default_dof_pos[:,17]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1) #* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,13] - self.target_jt[:,13]*self.target_jt_scale)+torch.abs(self.dof_pos[:,17] - self.target_jt[:,17]*self.target_jt_scale))) #* (torch.norm(self.commands[:, :2], dim=1) < 0.1) #* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
 
     def _reward_shoulder_roll(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,12] - self.default_dof_pos[:,12])+torch.abs(self.dof_pos[:,16] - self.default_dof_pos[:,16]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)  #* (self.commands[:, 2].abs() < 0.2)
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,12] - self.target_jt[:,12]*self.target_jt_scale)+torch.abs(self.dof_pos[:,16] - self.target_jt[:,16]*self.target_jt_scale))) #* (torch.norm(self.commands[:, :2], dim=1) < 0.1)  #* (self.commands[:, 2].abs() < 0.2)
 
     def _reward_shoulder_pitch(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,11] - self.default_dof_pos[:,11])+torch.abs(self.dof_pos[:,15] - self.default_dof_pos[:,15]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1) #* (self.commands[:, 2].abs() < 0.2)#*
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,11] - self.target_jt[:,11]*self.target_jt_scale)+torch.abs(self.dof_pos[:,15] - self.target_jt[:,15]*self.target_jt_scale))) #* (torch.norm(self.commands[:, :2], dim=1) < 0.1) #* (self.commands[:, 2].abs() < 0.2)#*
         
     def _reward_elbow(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,14] - self.default_dof_pos[:,14])+torch.abs(self.dof_pos[:,18] - self.default_dof_pos[:,18]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)
+        return torch.exp(-4 * (torch.abs(self.dof_pos[:,14] - self.target_jt[:,14]*self.target_jt_scale)+torch.abs(self.dof_pos[:,18] - self.target_jt[:,18]*self.target_jt_scale))) #* (torch.norm(self.commands[:, :2], dim=1) < 0.1)
 
     def _reward_joint_pos(self):
         """
@@ -1245,9 +1256,9 @@ class H1Robot(BaseTask):
         """
         joint_pos = self.dof_pos.clone() - self.default_dof_pos
         pos_target = self.ref_dof_pos.clone()
-        diff = joint_pos - pos_target
+        diff = joint_pos[:,:10] - pos_target[:,:10]
         r = torch.exp(-2 * torch.norm(diff, dim=1)) - 0.2 * torch.norm(diff, dim=1).clamp(0, 0.5)
-        return r * (torch.abs(self.commands[:, 2]) < 0.2)#* (torch.norm(self.base_lin_vel[:, :2], dim=1) > 0.1)
+        return r #* (torch.norm(self.base_lin_vel[:, :2], dim=1) > 0.1)
         
     def _reward_foot_slip(self):
         """
@@ -1271,7 +1282,7 @@ class H1Robot(BaseTask):
         #if self.status == 'standing':
         #    stance_mask[:] = 1
         reward = torch.where(contact == stance_mask, 1, -0.3)
-        return torch.mean(reward, dim=1)# * (torch.abs(self.base_lin_vel[:, :2], dim=1) > 0.1)
+        return torch.mean(reward, dim=1)# * (torch.norm(self.base_lin_vel[:, :2], dim=1) > 0.1)
         
     def _reward_feet_clearance(self):
         """
@@ -1295,6 +1306,13 @@ class H1Robot(BaseTask):
         rew_pos = torch.sum(rew_pos * swing_mask, dim=1)
         self.feet_height *= ~contact
         return rew_pos #* (torch.norm(self.base_lin_vel[:, :2], dim=1) > 0.1)
+        
+    def _reward_feet_symmetry(self):
+        left_foot = self.rigid_body_states[:, self.feet_indices[0], :3] - self.base_pos                       # left ankle
+        right_foot = self.rigid_body_states[:, self.feet_indices[1], :3] - self.base_pos                       # right ankle
 
+        left_foot_y = quat_rotate_inverse(self.base_quat, left_foot)[:,1]
+        right_foot_y = quat_rotate_inverse(self.base_quat, right_foot)[:,1]
 
-
+        feet_distance = (torch.abs(left_foot_y) - torch.abs(right_foot_y))**2
+        return feet_distance

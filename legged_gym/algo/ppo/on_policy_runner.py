@@ -83,7 +83,8 @@ class OnPolicyRunner:
             ).to(self.device)
 
         if self.policy_cfg["architecture"] == 'Mix':
-            self.teaching_actorcritic = TActorCritic(39*3, 42*3, self.env.num_actions,self.env.frame_stack, **self.policy_cfg)
+            self.teaching_actorcritic = ActorCritic(87, 90*3, self.env.num_actions, self.env.frame_stack, **self.policy_cfg).to(self.device)
+            #TActorCritic(39*3, 42*3, self.env.num_actions,self.env.frame_stack, **self.policy_cfg)
             print('Loading Pretrained Teaching Model')
             self.teaching_actorcritic.load_state_dict(torch.load(self.policy_cfg["teaching_model_path"], map_location='cuda:0')["model_state_dict"])
             print('Pretrained Teaching Model Loaded')
@@ -162,7 +163,7 @@ class OnPolicyRunner:
 
         if self.log_dir is not None and self.writer is None:
             wandb.init(
-                project="X1",
+                project="WBC_loc",
                 sync_tensorboard=True,
                 name=self.wandb_run_name,
                 config=self.all_cfg,
@@ -291,7 +292,7 @@ class OnPolicyRunner:
             if self.cfg["render"] and it % int(self.save_interval/2) == 0:
                 video.release()
 
-            mean_value_loss, mean_surrogate_loss, mean_imitation_loss = self.alg.update()
+            mean_value_loss, mean_surrogate_loss, mean_imitation_loss, mean_supervised_loss = self.alg.update()
             stop = time.time()
             learn_time = stop - start
             if self.log_dir is not None:
@@ -346,6 +347,9 @@ class OnPolicyRunner:
         self.writer.add_scalar(
             "Loss/imitation", locs["mean_imitation_loss"], locs["it"]
         )
+        self.writer.add_scalar(
+            "Loss/supervised", locs["mean_supervised_loss"], locs["it"]
+        )
         self.writer.add_scalar("Loss/learning_rate", self.alg.learning_rate, locs["it"])
         self.writer.add_scalar("Policy/mean_noise_std", mean_std.item(), locs["it"])
         self.writer.add_scalar("Perf/total_fps", fps, locs["it"])
@@ -385,6 +389,7 @@ class OnPolicyRunner:
                 f"""{'Value function loss:':>{pad}} {locs['mean_value_loss']:.4f}\n"""
                 f"""{'Surrogate loss:':>{pad}} {locs['mean_surrogate_loss']:.4f}\n"""
                 f"""{'Imitation loss:':>{pad}} {locs['mean_imitation_loss']:.4f}\n"""
+                f"""{'Supervised loss:':>{pad}} {locs['mean_supervised_loss']:.4f}\n"""
                 f"""{'Mean action noise std:':>{pad}} {mean_std.item():.2f}\n"""
                 f"""{'Mean reward:':>{pad}} {statistics.mean(locs['rewbuffer']):.2f}\n"""
                 f"""{'Mean episode length:':>{pad}} {statistics.mean(locs['lenbuffer']):.2f}\n"""
@@ -400,6 +405,7 @@ class OnPolicyRunner:
                 f"""{'Value function loss:':>{pad}} {locs['mean_value_loss']:.4f}\n"""
                 f"""{'Surrogate loss:':>{pad}} {locs['mean_surrogate_loss']:.4f}\n"""
                 f"""{'Imitation loss:':>{pad}} {locs['mean_imitation_loss']:.4f}\n"""
+                f"""{'Supervised loss:':>{pad}} {locs['mean_supervised_loss']:.4f}\n"""
                 f"""{'Mean action noise std:':>{pad}} {mean_std.item():.2f}\n"""
             )
             #   f"""{'Mean reward/step:':>{pad}} {locs['mean_reward']:.2f}\n"""
@@ -428,7 +434,7 @@ class OnPolicyRunner:
         )
 
     def load(self, path, load_optimizer=True):
-        loaded_dict = torch.load(path, map_location='cuda:0')
+        loaded_dict = torch.load(path, map_location='cuda:7')
         self.alg.actor_critic.load_state_dict(loaded_dict["model_state_dict"])
         if load_optimizer:
             self.alg.optimizer.load_state_dict(loaded_dict["optimizer_state_dict"])
