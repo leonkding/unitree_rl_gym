@@ -199,11 +199,11 @@ class H1RoughCfg( LeggedRobotCfg ):
             action_smoothness = -0.01 * 1
             energy = -3e-7
             torques = 0.0
-            dof_pos_limits = -10.0
-            dof_vel_limits = -10.0
+            # dof_pos_limits = -10.0
+            # dof_vel_limits = -10.0
             torque_limits = -10.0
             stand_still = -1.0 * 4
-            default_joint_pos = 0.5
+            default_joint_pos = 0.5 * 0.
             target_jt = 1 * 0.
             target_lower_body = 1.
             hip_yaw = 1.
@@ -211,11 +211,11 @@ class H1RoughCfg( LeggedRobotCfg ):
             hip_pitch = 1.
             knee = 1.
             ankle = 1.
-            torso = 1.
-            shoulder_yaw = 1.
-            shoulder_roll = 1.
-            shoulder_pitch = 1.
-            elbow = 1.
+            torso = 10.
+            shoulder_yaw = 10.
+            shoulder_roll = 10.
+            shoulder_pitch = 10.
+            elbow = 10.
     
     class normalization:
         class obs_scales:

@@ -56,6 +56,7 @@ class H1Robot(BaseTask):
 
     def _init_target_jt(self):
         self.target_jt_seq, self.target_jt_seq_len = load_target_jt(self.device, self.cfg.human.filename, self.default_dof_pos)
+        # self.target_jt_seq = self.target_jt_seq[:10] # only follow one target joint sequence
         self.num_target_jt_seq, self.max_target_jt_seq_len, self.dim_target_jt = self.target_jt_seq.shape
         print(f"Loaded target joint trajectories of shape {self.target_jt_seq.shape}")
         #assert(self.dim_target_jt == self.num_dofs)
@@ -116,7 +117,7 @@ class H1Robot(BaseTask):
             assert (curr_target_idx >= 0).all(), "the action inx must not be negative"
             
             self.actions_c = self.action_buffer[torch.arange(self.num_envs, device=self.device).unsqueeze(-1),
-                                           curr_target_idx,].squeeze()
+                                                curr_target_idx,].squeeze()
             self.torques = self._compute_torques(self.actions_c).view(self.torques.shape)
             self.gym.set_dof_actuation_force_tensor(self.sim, gymtorch.unwrap_tensor(self.torques))
             self.gym.simulate(self.sim)
@@ -239,9 +240,11 @@ class H1Robot(BaseTask):
         self.rew_buf[:] = 0.
         for i in range(len(self.reward_functions)):
             name = self.reward_names[i]
-            rew = self.reward_functions[i]() * self.reward_scales[name]
-            self.rew_buf += rew
-            self.episode_sums[name] += rew
+            # rew = self.reward_functions[i]() * self.reward_scales[name]
+            # self.rew_buf += rew
+            rew = self.reward_functions[i]()
+            self.rew_buf += rew * self.reward_scales[name]
+            self.episode_sums[name] += rew * self.dt * (1. if self.reward_scales[name] >= 0. else -1.)  # record reward without scaling
         if self.cfg.rewards.only_positive_rewards:
             self.rew_buf[:] = torch.clip(self.rew_buf[:], min=0.)
         # add termination reward after clipping
@@ -326,6 +329,7 @@ class H1Robot(BaseTask):
                                     self.command_input,
                                     (self.dof_pos[:,:10] - self.default_dof_pos[:,:10]) * self.obs_scales.dof_pos,
                                     (self.dof_pos[:,10:] - self.default_dof_pos[:,10:]) * self.obs_scales.dof_pos,
+                                    # (self.dof_pos[:, 10:] - self.target_jt[:, 10:]) * self.obs_scales.dof_pos,
                                     #random_pos[:,:9].cuda() * self.obs_scales.dof_pos,
                                     self.dof_vel * self.obs_scales.dof_vel,
                                     #random_vel.cuda() * self.obs_scales.dof_vel,
@@ -342,6 +346,7 @@ class H1Robot(BaseTask):
                                     self.command_input,
                                     (self.dof_pos[:,:10] - self.default_dof_pos[:,:10]) * self.obs_scales.dof_pos,
                                     (self.dof_pos[:,10:] - self.default_dof_pos[:,10:]) * self.obs_scales.dof_pos,
+                                    # (self.dof_pos[:,10:] - self.target_jt[:,10:]) * self.obs_scales.dof_pos,
                                     #random_pos[:,:9].cuda(),
                                     self.dof_vel * self.obs_scales.dof_vel,
                                     #random_vel.cuda(),
@@ -1218,22 +1223,54 @@ class H1Robot(BaseTask):
         # Penalize motion at zero commands
         return torch.exp(-4 * (torch.abs(self.dof_pos[:,4] - self.default_dof_pos[:,4])+torch.abs(self.dof_pos[:,9] - self.default_dof_pos[:,9]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
 
+    # Constrain upper body joints to default pose
+    # def _reward_torso(self):
+    #     # Penalize motion at zero commands
+    #     return torch.exp(-4 * (torch.abs(self.dof_pos[:,10] - self.default_dof_pos[:,10]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)
+        
+    # def _reward_shoulder_yaw(self):
+    #     # Penalize motion at zero commands
+    #     return torch.exp(-4 * (torch.abs(self.dof_pos[:,13] - self.default_dof_pos[:,13])+torch.abs(self.dof_pos[:,17] - self.default_dof_pos[:,17]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1) #* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
+
+    # def _reward_shoulder_roll(self):
+    #     # Penalize motion at zero commands
+    #     return torch.exp(-4 * (torch.abs(self.dof_pos[:,12] - self.default_dof_pos[:,12])+torch.abs(self.dof_pos[:,16] - self.default_dof_pos[:,16]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)  #* (self.commands[:, 2].abs() < 0.2)
+
+    # def _reward_shoulder_pitch(self):
+    #     # Penalize motion at zero commands
+    #     return torch.exp(-4 * (torch.abs(self.dof_pos[:,11] - self.default_dof_pos[:,11])+torch.abs(self.dof_pos[:,15] - self.default_dof_pos[:,15]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1) #* (self.commands[:, 2].abs() < 0.2)#*
+        
+    # def _reward_elbow(self):
+    #     # Penalize motion at zero commands
+    #     return torch.exp(-4 * (torch.abs(self.dof_pos[:,14] - self.default_dof_pos[:,14])+torch.abs(self.dof_pos[:,18] - self.default_dof_pos[:,18]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)
+
+    # Reward upper body joints to target pose
     def _reward_torso(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,10] - self.default_dof_pos[:,10]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)#* (self.commands[:, 2].abs() < 0.2)
+        return torch.exp(-4 * (
+            torch.abs(self.dof_pos[:,10] - self.target_jt[:,10])
+        )) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)
         
     def _reward_shoulder_yaw(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,13] - self.default_dof_pos[:,13])+torch.abs(self.dof_pos[:,17] - self.default_dof_pos[:,17]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1) #* (self.commands[:, 2].abs() < 0.2)#* (torch.norm(self.commands[:, :2], dim=1) < 0.1) * (self.commands[:, 2].abs() > 0.1)
+        return torch.exp(-4 * (
+            torch.abs(self.dof_pos[:,13] - self.target_jt[:,13]) + torch.abs(self.dof_pos[:,17] - self.target_jt[:,17])
+        )) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)
 
     def _reward_shoulder_roll(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,12] - self.default_dof_pos[:,12])+torch.abs(self.dof_pos[:,16] - self.default_dof_pos[:,16]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)  #* (self.commands[:, 2].abs() < 0.2)
+        return torch.exp(-4 * (
+            torch.abs(self.dof_pos[:,12] - self.target_jt[:,12]) + torch.abs(self.dof_pos[:,16] - self.target_jt[:,16])
+        )) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)
 
     def _reward_shoulder_pitch(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,11] - self.default_dof_pos[:,11])+torch.abs(self.dof_pos[:,15] - self.default_dof_pos[:,15]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1) #* (self.commands[:, 2].abs() < 0.2)#*
+        return torch.exp(-4 * (
+            torch.abs(self.dof_pos[:,11] - self.target_jt[:,11]) + torch.abs(self.dof_pos[:,15] - self.target_jt[:,15])
+        )) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)
         
     def _reward_elbow(self):
         # Penalize motion at zero commands
-        return torch.exp(-4 * (torch.abs(self.dof_pos[:,14] - self.default_dof_pos[:,14])+torch.abs(self.dof_pos[:,18] - self.default_dof_pos[:,18]))) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)
+        return torch.exp(-4 * (
+            torch.abs(self.dof_pos[:,14] - self.target_jt[:,14]) + torch.abs(self.dof_pos[:,18] - self.target_jt[:,18])
+        )) * (torch.norm(self.commands[:, :2], dim=1) < 0.1)

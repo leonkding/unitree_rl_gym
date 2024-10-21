@@ -229,7 +229,7 @@ class LeggedRobotCfgPPO(BaseConfig):
         num_learning_epochs = 5
         num_mini_batches = 4 # mini batch size = num_envs*nsteps / nminibatches
         learning_rate = 1.e-4 #5.e-4
-        schedule = 'fixed' # could be adaptive, fixed
+        schedule = 'adaptive' # could be adaptive, fixed
         gamma = 0.99
         lam = 0.95
         desired_kl = 0.01
@@ -242,7 +242,7 @@ class LeggedRobotCfgPPO(BaseConfig):
         max_iterations = 15000 # number of policy updates
 
         # logging
-        save_interval = 200 # check for potential saves every this many iterations
+        save_interval = 5000 # check for potential saves every this many iterations
         experiment_name = 'test'
         run_name = ''
         # load and resume
