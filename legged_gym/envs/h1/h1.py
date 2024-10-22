@@ -44,7 +44,7 @@ class H1Robot(BaseTask):
         self.height_samples = None
         self.debug_viz = False
         self.init_done = False
-        self.target_jt_scale = 0.6
+        self.target_jt_scale = 0.5
         self._parse_cfg(self.cfg)
         super().__init__(self.cfg, sim_params, physics_engine, sim_device, headless)
 

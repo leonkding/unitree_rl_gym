@@ -289,7 +289,7 @@ class H1RoughCfgPPO( LeggedRobotCfgPPO ):
         experiment_name = 'h1'
         run_name = ''
         # load and resume
-        resume = True
+        resume = False
         load_run = 'Oct21_01-56-26_0.3'#'Oct19_12-01-54_all100' # -1 = last run
         checkpoint = -1 # -1 = last saved model
         resume_path = None # updated from load_run and chkpt
