@@ -165,7 +165,7 @@ class OnPolicyRunner:
         if self.log_dir is not None and self.writer is None:
             wandb.init(
                 project="X1",
-                sync_tensorboard=True,
+                # sync_tensorboard=True,
                 name=self.wandb_run_name,
                 config=self.all_cfg,
             )
@@ -300,7 +300,7 @@ class OnPolicyRunner:
             stop = time.time()
             learn_time = stop - start
             if self.log_dir is not None:
-                self.log(locals())
+                self.log(locals(), it - self.current_learning_iteration)
             if it % self.save_interval == 0:
                 self.save(os.path.join(self.log_dir, "model_{}.pt".format(it)))
             ep_infos.clear()
@@ -314,7 +314,7 @@ class OnPolicyRunner:
         )
 
 
-    def log(self, locs, width=80, pad=35):
+    def log(self, locs, iteration, width=80, pad=35):
         self.tot_timesteps += self.num_steps_per_env * self.env.num_envs
         self.tot_time += locs["collection_time"] + locs["learn_time"]
         iteration_time = locs["collection_time"] + locs["learn_time"]
@@ -334,7 +334,8 @@ class OnPolicyRunner:
                         ep_info[key] = ep_info[key].unsqueeze(0)
                     infotensor = torch.cat((infotensor, ep_info[key].to(self.device)))
                 value = torch.mean(infotensor)
-                self.writer.add_scalar("Episode/" + key, value, locs["it"])
+                # self.writer.add_scalar("Episode/" + key, value, locs["it"])
+                wandb.log({"Episode/" + key: value}, step=iteration)
                 ep_string += f"""{f'Mean episode {key}:':>{pad}} {value:.4f}\n"""
         if locs["step_infos"]:
             for key in locs["step_infos"][0]:
@@ -347,7 +348,8 @@ class OnPolicyRunner:
                         step_info[key] = step_info[key].unsqueeze(0)
                     infotensor = torch.cat((infotensor, step_info[key].to(self.device)))
                 value = torch.mean(infotensor)
-                self.writer.add_scalar("Step/" + key, value, locs["it"])
+                # self.writer.add_scalar("Step/" + key, value, locs["it"])
+                wandb.log({"Step/" + key: value}, step=iteration)
                 ep_string += f"""{f'Mean step {key}:':>{pad}} {value:.4f}\n"""
         mean_std = self.alg.actor_critic.std.mean()
         fps = int(
@@ -356,45 +358,58 @@ class OnPolicyRunner:
             / (locs["collection_time"] + locs["learn_time"])
         )
 
-        self.writer.add_scalar(
-            "Loss/value_function", locs["mean_value_loss"], locs["it"]
-        )
-        self.writer.add_scalar(
-            "Loss/surrogate", locs["mean_surrogate_loss"], locs["it"]
-        )
-        self.writer.add_scalar(
-            "Loss/imitation", locs["mean_imitation_loss"], locs["it"]
-        )
-        self.writer.add_scalar(
-            "Loss/KL", locs["mean_kl_loss"], locs["it"]
-        )
-        self.writer.add_scalar("Loss/learning_rate", self.alg.learning_rate, locs["it"])
-        self.writer.add_scalar("Policy/mean_noise_std", mean_std.item(), locs["it"])
-        self.writer.add_scalar("Perf/total_fps", fps, locs["it"])
-        self.writer.add_scalar(
-            "Perf/collection time", locs["collection_time"], locs["it"]
-        )
-        self.writer.add_scalar("Perf/learning_time", locs["learn_time"], locs["it"])
+        # self.writer.add_scalar(
+        #     "Loss/value_function", locs["mean_value_loss"], locs["it"]
+        # )
+        # self.writer.add_scalar(
+        #     "Loss/surrogate", locs["mean_surrogate_loss"], locs["it"]
+        # )
+        # self.writer.add_scalar(
+        #     "Loss/imitation", locs["mean_imitation_loss"], locs["it"]
+        # )
+        # self.writer.add_scalar(
+        #     "Loss/KL", locs["mean_kl_loss"], locs["it"]
+        # )
+        # self.writer.add_scalar("Loss/learning_rate", self.alg.learning_rate, locs["it"])
+        # self.writer.add_scalar("Policy/mean_noise_std", mean_std.item(), locs["it"])
+        # self.writer.add_scalar("Perf/total_fps", fps, locs["it"])
+        # self.writer.add_scalar(
+        #     "Perf/collection time", locs["collection_time"], locs["it"]
+        # )
+        # self.writer.add_scalar("Perf/learning_time", locs["learn_time"], locs["it"])
+        # if len(locs["rewbuffer"]) > 0:
+        #     self.writer.add_scalar(
+        #         "Train/mean_reward", statistics.mean(locs["rewbuffer"]), locs["it"]
+        #     )
+        #     self.writer.add_scalar(
+        #         "Train/mean_episode_length",
+        #         statistics.mean(locs["lenbuffer"]),
+        #         locs["it"],
+        #     )
+        #     self.writer.add_scalar(
+        #         "Train/mean_reward/time",
+        #         statistics.mean(locs["rewbuffer"]),
+        #         self.tot_time,
+        #     )
+        #     self.writer.add_scalar(
+        #         "Train/mean_episode_length/time",
+        #         statistics.mean(locs["lenbuffer"]),
+        #         self.tot_time,
+        #     )
+        wandb.log({"Loss/value_function": locs["mean_value_loss"]}, step=iteration)
+        wandb.log({"Loss/surrogate": locs["mean_surrogate_loss"]}, step=iteration)
+        wandb.log({"Loss/imitation": locs["mean_imitation_loss"]}, step=iteration)
+        wandb.log({"Loss/KL": locs["mean_kl_loss"]}, step=iteration)
+        wandb.log({"Loss/learning_rate": self.alg.learning_rate}, step=iteration)
+        wandb.log({"Policy/mean_noise_std": mean_std.item()}, step=iteration)
+        wandb.log({"Perf/total_fps": fps}, step=iteration)
+        wandb.log({"Perf/collection time": locs["collection_time"]}, step=iteration)
+        wandb.log({"Perf/learning_time": locs["learn_time"]}, step=iteration)
         if len(locs["rewbuffer"]) > 0:
-            self.writer.add_scalar(
-                "Train/mean_reward", statistics.mean(locs["rewbuffer"]), locs["it"]
-            )
-            self.writer.add_scalar(
-                "Train/mean_episode_length",
-                statistics.mean(locs["lenbuffer"]),
-                locs["it"],
-            )
-            self.writer.add_scalar(
-                "Train/mean_reward/time",
-                statistics.mean(locs["rewbuffer"]),
-                self.tot_time,
-            )
-            self.writer.add_scalar(
-                "Train/mean_episode_length/time",
-                statistics.mean(locs["lenbuffer"]),
-                self.tot_time,
-            )
-
+            wandb.log({"Train/mean_reward": statistics.mean(locs["rewbuffer"])}, step=iteration)
+            wandb.log({"Train/mean_episode_length": statistics.mean(locs["lenbuffer"])}, step=iteration)
+            wandb.log({"Train/mean_reward/time": statistics.mean(locs["rewbuffer"])}, step=self.tot_time)
+            wandb.log({"Train/mean_episode_length/time": statistics.mean(locs["lenbuffer"])}, step=self.tot_time)
 
         str = f" \033[1m Learning iteration {locs['it']}/{self.current_learning_iteration + locs['num_learning_iterations']} \033[0m "
 
