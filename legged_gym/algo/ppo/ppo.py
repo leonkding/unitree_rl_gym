@@ -49,7 +49,8 @@ class PPO:
                  lam=0.95,
                  value_loss_coef=1.0,
                  entropy_coef=0.0,
-                 imitation_coef = 0.02,
+                 imitation_coef=0.02,
+                 action_scale=1.0,
                  learning_rate=1e-3,
                  min_learning_rate=7e-5,
                  max_learning_rate=1e-2,
@@ -91,6 +92,8 @@ class PPO:
         self.max_grad_norm = max_grad_norm
         self.use_clipped_value_loss = use_clipped_value_loss
         self.use_imitation_loss = use_imitation_loss
+
+        self.action_scale = action_scale
 
     def init_storage(self, num_envs, num_transitions_per_env, actor_obs_shape, critic_obs_shape, action_shape):
         self.storage = RolloutStorage(num_envs, num_transitions_per_env, actor_obs_shape, critic_obs_shape, action_shape, self.device)
@@ -178,15 +181,23 @@ class PPO:
                 else:
                     value_loss = (returns_batch - value_batch).pow(2).mean()
 
-                # Imitation Loss
-                #teaching_distribution = self.teaching_actor_critic.distribution
-                #distribution = self.actor_critic.distribution
-                #teaching_stddev = teaching_distribution.stddev.detach().clone()
-                #teaching_mean = teaching_distribution.mean.detach().clone()
-                #imitation_loss = torch.mean(torch.log(teaching_stddev/distribution.stddev) + (distribution.stddev**2 + (distribution.mean - teaching_mean)**2) / (2*teaching_stddev**2) - 0.5)
-                imitation_loss = torch.tensor(0)
+                loss = surrogate_loss + self.value_loss_coef * value_loss - self.entropy_coef * entropy_batch.mean()
 
-                loss = surrogate_loss + self.value_loss_coef * value_loss - self.entropy_coef * entropy_batch.mean() + self.imitation_coef * imitation_loss
+                # Imitation Loss
+                if self.use_imitation_loss:
+                    #teaching_distribution = self.teaching_actor_critic.distribution
+                    distribution = self.actor_critic.distribution
+                    #teaching_stddev = teaching_distribution.stddev.detach().clone()
+                    #teaching_mean = teaching_distribution.mean.detach().clone()
+                    #imitation_loss = torch.mean(torch.log(teaching_stddev/distribution.stddev) + (distribution.stddev**2 + (distribution.mean - teaching_mean)**2) / (2*teaching_stddev**2) - 0.5)
+                    # imitation_loss = torch.tensor(0)
+                    upper_body_action = distribution.mean[:, 10:] * self.action_scale
+                    upper_body_target = obs_batch.detach()[:,-9:]
+                    imitation_loss = F.mse_loss(upper_body_action, upper_body_target)
+
+                    loss += self.imitation_coef * imitation_loss
+                else:
+                    imitation_loss = torch.tensor(0)
 
                 # Gradient step
                 self.optimizer.zero_grad()

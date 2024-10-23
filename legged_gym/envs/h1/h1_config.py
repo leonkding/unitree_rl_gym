@@ -128,7 +128,8 @@ class H1RoughCfg( LeggedRobotCfg ):
         added_mass_range = [-3., 1.]
         push_robots = True
         push_interval_s = 10
-        max_push_vel_xy = 0.5
+        max_push_vel_xy = 1
+        max_push_ang_vel = 0.4
         
         randomize_gravity = False
         gravity_range = [-1.0, 1.0]
@@ -203,7 +204,7 @@ class H1RoughCfg( LeggedRobotCfg ):
             # dof_vel_limits = -10.0
             torque_limits = -10.0
             stand_still = -1.0 * 4
-            default_joint_pos = 0.5 * 0.
+            default_joint_pos = 0.5
             target_jt = 1 * 0.
             target_lower_body = 1.
             hip_yaw = 1.
@@ -211,11 +212,11 @@ class H1RoughCfg( LeggedRobotCfg ):
             hip_pitch = 1.
             knee = 1.
             ankle = 1.
-            torso = 10.
-            shoulder_yaw = 10.
-            shoulder_roll = 10.
-            shoulder_pitch = 10.
-            elbow = 10.
+            torso = 1.
+            shoulder_yaw = 1.
+            shoulder_roll = 1.
+            shoulder_pitch = 1.
+            elbow = 1.
     
     class normalization:
         class obs_scales:
@@ -225,7 +226,7 @@ class H1RoughCfg( LeggedRobotCfg ):
             dof_vel = 0.05
             height_measurements = 5.0
         clip_observations = 18.
-        clip_actions = 18.
+        clip_actions = 100.
 
     class sim(LeggedRobotCfg.sim):
         dt = 0.002  # 500 Hz
@@ -246,13 +247,14 @@ class H1RoughCfgPPO( LeggedRobotCfgPPO ):
         rnn_num_layers = 1
     class algorithm( LeggedRobotCfgPPO.algorithm ):
         entropy_coef = 0.01
-        learning_rate = 1e-4
+        learning_rate = 1e-4 #5.e-4
+        schedule = 'adaptive'
         num_learning_epochs = 2
         gamma = 0.99
         lam = 0.95
         num_mini_batches = 4
         use_imitation_loss = True
-        imitation_coef = 100.0
+        imitation_coef = 0.5
     class runner( LeggedRobotCfgPPO.runner ):
         run_name = ''
         experiment_name = 'h1'

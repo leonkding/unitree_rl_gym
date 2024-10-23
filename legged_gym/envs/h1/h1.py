@@ -212,15 +212,19 @@ class H1Robot(BaseTask):
         self.last_dof_vel[env_ids] = 0.
         self.feet_air_time[env_ids] = 0.
         self.single_contact_time[env_ids] = 0.
-        self.episode_length_buf[env_ids] = 0
+        # self.episode_length_buf[env_ids] = 0
         self.reset_buf[env_ids] = 1
         self.obs_hist_buffer[env_ids] = 0.
         self.privileged_obs_hist_buffer[env_ids] = 0.
         # fill extras
         self.extras["episode"] = {}
+        self.extras["step"] = {}
         for key in self.episode_sums.keys():
             self.extras["episode"]['rew_' + key] = torch.mean(self.episode_sums[key][env_ids]) / self.max_episode_length_s
+            self.extras["step"]["rew_" + key] = torch.mean(self.episode_sums[key][env_ids] / 
+                                                           (self.episode_length_buf[env_ids] + 1e-8)) / self.dt
             self.episode_sums[key][env_ids] = 0.
+        self.episode_length_buf[env_ids] = 0
         if self.cfg.commands.curriculum:
             self.extras["episode"]["max_command_x"] = self.command_ranges["lin_vel_x"][1]
         # send timeout info to the algorithm
@@ -627,11 +631,19 @@ class H1Robot(BaseTask):
         self.gym.set_sim_params(self.sim, sim_params)
     
     def _push_robots(self):
-        """ Random pushes the robots. Emulates an impulse by setting a randomized base velocity. 
+        """ Random pushes the robots. Emulates an impulse by setting a randomized base velocity.
         """
         max_vel = self.cfg.domain_rand.max_push_vel_xy
-        self.root_states[:, 7:9] = torch_rand_float(-max_vel, max_vel, (self.num_envs, 2), device=self.device) # lin vel x/y
-        self.gym.set_actor_root_state_tensor(self.sim, gymtorch.unwrap_tensor(self.root_states))
+        max_push_angular = self.cfg.domain_rand.max_push_ang_vel
+  
+        self.root_states[:, 7:9] = torch_rand_float(
+            -max_vel, max_vel, (self.num_envs, 2), device=self.device)  # lin vel x/y
+
+        # self.root_states[:, 10:13] = torch_rand_float(
+        #     -max_push_angular, max_push_angular, (self.num_envs, 3), device=self.device)
+
+        self.gym.set_actor_root_state_tensor(
+            self.sim, gymtorch.unwrap_tensor(self.root_states))
 
     def update_command_curriculum(self, env_ids):
         """ Implements a curriculum of increasing commands
@@ -1110,7 +1122,7 @@ class H1Robot(BaseTask):
         Calculates the reward for keeping joint positions close to default positions, with a focus 
         on penalizing deviation in yaw and roll directions. Excludes yaw and roll from the main penalty.
         """
-        joint_diff = self.dof_pos - self.default_dof_pos
+        joint_diff = self.dof_pos[:, :10] - self.default_dof_pos[:, :10]
         left_yaw_roll = joint_diff[:, :2]
         right_yaw_roll = joint_diff[:, 5: 7]
         yaw_roll = torch.norm(left_yaw_roll, dim=1) + torch.norm(right_yaw_roll, dim=1)

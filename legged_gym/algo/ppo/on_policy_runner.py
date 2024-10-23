@@ -83,7 +83,8 @@ class OnPolicyRunner:
             ).to(self.device)
 
         if self.policy_cfg["architecture"] == 'Mix':
-            self.teaching_actorcritic = TActorCritic(39*3, 42*3, self.env.num_actions,self.env.frame_stack, **self.policy_cfg)
+            self.teaching_actorcritic = ActorCritic(87, 90*3, self.env.num_actions, self.env.frame_stack, **self.policy_cfg).to(self.device)
+            #TActorCritic(39*3, 42*3, self.env.num_actions,self.env.frame_stack, **self.policy_cfg)
             print('Loading Pretrained Teaching Model')
             self.teaching_actorcritic.load_state_dict(torch.load(self.policy_cfg["teaching_model_path"], map_location='cuda:0')["model_state_dict"])
             print('Pretrained Teaching Model Loaded')
@@ -100,6 +101,7 @@ class OnPolicyRunner:
             self.moving_actorcritic = None
 
         alg_class = eval(self.cfg["algorithm_class_name"])  # PPO
+        self.alg_cfg["action_scale"] = self.env.cfg.control.action_scale
         self.alg: PPO = alg_class(actor_critic, self.teaching_actorcritic, device=self.device, **self.alg_cfg)
         self.num_steps_per_env = self.cfg["num_steps_per_env"]
         self.save_interval = self.cfg["save_interval"]
@@ -181,6 +183,7 @@ class OnPolicyRunner:
         #self.teaching_actorcritic.test()
 
         ep_infos = []
+        step_infos = []
         rewbuffer = deque(maxlen=100)
         lenbuffer = deque(maxlen=100)
         cur_reward_sum = torch.zeros(
@@ -268,6 +271,8 @@ class OnPolicyRunner:
                         # Book keeping
                         if "episode" in infos:
                             ep_infos.append(infos["episode"])
+                        if "step" in infos:
+                            step_infos.append(infos["step"])
                         cur_reward_sum += rewards
                         cur_episode_length += 1
                         new_ids = (dones > 0).nonzero(as_tuple=False)
@@ -299,6 +304,7 @@ class OnPolicyRunner:
             if it % self.save_interval == 0:
                 self.save(os.path.join(self.log_dir, "model_{}.pt".format(it)))
             ep_infos.clear()
+            step_infos.clear()
 
         self.current_learning_iteration += num_learning_iterations
         self.save(
@@ -330,6 +336,19 @@ class OnPolicyRunner:
                 value = torch.mean(infotensor)
                 self.writer.add_scalar("Episode/" + key, value, locs["it"])
                 ep_string += f"""{f'Mean episode {key}:':>{pad}} {value:.4f}\n"""
+        if locs["step_infos"]:
+            for key in locs["step_infos"][0]:
+                infotensor = torch.tensor([], device=self.device)
+                for step_info in locs["step_infos"]:
+                    # handle scalar and zero dimensional tensor infos
+                    if not isinstance(step_info[key], torch.Tensor):
+                        step_info[key] = torch.Tensor([step_info[key]])
+                    if len(step_info[key].shape) == 0:
+                        step_info[key] = step_info[key].unsqueeze(0)
+                    infotensor = torch.cat((infotensor, step_info[key].to(self.device)))
+                value = torch.mean(infotensor)
+                self.writer.add_scalar("Step/" + key, value, locs["it"])
+                ep_string += f"""{f'Mean step {key}:':>{pad}} {value:.4f}\n"""
         mean_std = self.alg.actor_critic.std.mean()
         fps = int(
             self.num_steps_per_env
