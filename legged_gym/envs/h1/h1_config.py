@@ -6,8 +6,7 @@ class H1RoughCfg( LeggedRobotCfg ):
         delay = 0.0 # delay in seconds
         freq = 30
         resample_on_env_reset = True
-        filename = '/home/ps/Documents/codes/wbc_code/legged_gym/data/h1_res.pkl'
-        #filename = '/home/ps/humanplus/HST/legged_gym/ACCAD_walk_10fps.npy'
+        filename = 'h1_res.pkl'
 
     class init_state( LeggedRobotCfg.init_state ):
         pos = [0.0, 0.0, 1.0] # x,y,z [m]
@@ -202,8 +201,8 @@ class H1RoughCfg( LeggedRobotCfg ):
             torques = 0.0
             # dof_pos_limits = -10.0
             # dof_vel_limits = -10.0
-            torque_limits = -10.0
-            stand_still = -1.0 * 4
+            torque_limits = -1.0
+            stand_still = -1.0 * 0
             default_joint_pos = 0.5
             target_jt = 1 * 0.
             target_lower_body = 1.
@@ -235,9 +234,9 @@ class H1RoughCfg( LeggedRobotCfg ):
 class H1RoughCfgPPO( LeggedRobotCfgPPO ):
     class policy( LeggedRobotCfgPPO.policy ):
         policy_type = 'moving' # standing, moving, and steering
-        architecture = 'Trans' # choose from 'Mix', 'Trans', 'MLP', and 'RNN'
-        teaching_model_path = '/home/ziluoding/unitree_rl_gym/logs/Sep06_19-03-45_/model_13000.pt'#'/home/ps/unitree_rl_gym_o/legged_gym/model/Aug29_17-48-05_h1/model_10000.pt'
-        moving_model_path = '/home/ziluoding/humanoid-gym/logs/h1/Jul11_16-30-02_/model_12000.pt'
+        architecture = 'Mix' # choose from 'Mix', 'Trans', 'MLP', and 'RNN'
+        teaching_model_path = 'logs/h1/Oct16_20-57-40_/model_15000.pt'
+        moving_model_path = 'logs/h1/Jul11_16-30-02_/model_12000.pt'
         init_noise_std = 1.0
         actor_hidden_dims = [512, 256, 128]
         critic_hidden_dims = [512, 256, 128]
@@ -253,8 +252,10 @@ class H1RoughCfgPPO( LeggedRobotCfgPPO ):
         gamma = 0.99
         lam = 0.95
         num_mini_batches = 4
+        rl_coef = 1.0
         use_imitation_loss = True
-        imitation_coef = 0.5
+        imitation_coef = 10.0
+        teaching_coef = 10.0
     class runner( LeggedRobotCfgPPO.runner ):
         run_name = ''
         experiment_name = 'h1'

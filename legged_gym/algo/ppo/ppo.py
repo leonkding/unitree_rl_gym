@@ -37,6 +37,12 @@ import torch.nn.functional as F
 from .actor_critic import ActorCritic
 from .rollout_storage import RolloutStorage
 
+
+def kl_div(p_mean: torch.Tensor, p_std: torch.Tensor, 
+           q_mean: torch.Tensor, q_std: torch.Tensor) -> torch.Tensor:
+    return torch.mean(torch.log(q_std / p_std) + (p_std**2 + (p_mean - q_mean)**2) / (2*q_std**2) - 0.5)
+
+
 class PPO:
     actor_critic: ActorCritic
     def __init__(self,
@@ -47,9 +53,11 @@ class PPO:
                  clip_param=0.2,
                  gamma=0.998,
                  lam=0.95,
+                 rl_coef=1.0,
                  value_loss_coef=1.0,
                  entropy_coef=0.0,
                  imitation_coef=0.02,
+                 teaching_coef=1.0,
                  action_scale=1.0,
                  learning_rate=1e-3,
                  min_learning_rate=7e-5,
@@ -77,13 +85,15 @@ class PPO:
         self.optimizer = optim.Adam(self.actor_critic.parameters(), lr=learning_rate)
         self.transition = RolloutStorage.Transition()
         self.teaching_actor_critic = teaching_actor_critic
-        if self.teaching_actor_critic != None:
+        if self.teaching_actor_critic is not None:
             self.teaching_actor_critic.to(self.device)
+        self.teaching_coef = teaching_coef
 
         # PPO parameters
         self.clip_param = clip_param
         self.num_learning_epochs = num_learning_epochs
         self.num_mini_batches = num_mini_batches
+        self.rl_coef = rl_coef
         self.value_loss_coef = value_loss_coef
         self.imitation_coef = imitation_coef
         self.entropy_coef = entropy_coef
@@ -133,16 +143,19 @@ class PPO:
         self.storage.compute_returns(last_values, self.gamma, self.lam)
 
     def update(self):
-        mean_value_loss = 0
-        mean_surrogate_loss = 0
-        mean_imitation_loss = 0
+        mean_value_loss = 0.
+        mean_surrogate_loss = 0.
+        mean_imitation_loss = 0.
+        mean_kl_loss = 0.
 
         generator = self.storage.mini_batch_generator(self.num_mini_batches, self.num_learning_epochs)
         for obs_batch, critic_obs_batch, actions_batch, target_values_batch, advantages_batch, returns_batch, old_actions_log_prob_batch, \
             old_mu_batch, old_sigma_batch, hid_states_batch, masks_batch in generator:
 
                 self.actor_critic.act(obs_batch, masks=masks_batch, hidden_states=hid_states_batch[0])
-                #self.teaching_actor_critic.act(obs_batch, masks=masks_batch, hidden_states=hid_states_batch[0])
+                if self.teaching_actor_critic is not None:
+                    with torch.no_grad():
+                        self.teaching_actor_critic.act(obs_batch, masks=masks_batch, hidden_states=hid_states_batch[0])
                 actions_log_prob_batch = self.actor_critic.get_actions_log_prob(actions_batch)
                 value_batch = self.actor_critic.evaluate(critic_obs_batch, masks=masks_batch, hidden_states=hid_states_batch[1])
                 mu_batch = self.actor_critic.action_mean
@@ -182,10 +195,10 @@ class PPO:
                     value_loss = (returns_batch - value_batch).pow(2).mean()
 
                 loss = surrogate_loss + self.value_loss_coef * value_loss - self.entropy_coef * entropy_batch.mean()
+                loss *= self.rl_coef
 
                 # Imitation Loss
                 if self.use_imitation_loss:
-                    #teaching_distribution = self.teaching_actor_critic.distribution
                     distribution = self.actor_critic.distribution
                     #teaching_stddev = teaching_distribution.stddev.detach().clone()
                     #teaching_mean = teaching_distribution.mean.detach().clone()
@@ -197,7 +210,19 @@ class PPO:
 
                     loss += self.imitation_coef * imitation_loss
                 else:
-                    imitation_loss = torch.tensor(0)
+                    imitation_loss = torch.tensor(0.)
+
+                if self.teaching_actor_critic is not None:
+                    teaching_distribution = self.teaching_actor_critic.distribution
+                    lower_body_action = (distribution.mean[:, :10], distribution.stddev[:, :10])
+                    lower_body_target = (teaching_distribution.mean[:, :10].detach(),
+                                         teaching_distribution.stddev[:, :10].detach())
+                    kl_loss = kl_div(lower_body_action[0], lower_body_action[1],
+                                     lower_body_target[0], lower_body_target[1])
+                    
+                    loss += self.teaching_coef * kl_loss
+                else:
+                    kl_loss = torch.tensor(0.)
 
                 # Gradient step
                 self.optimizer.zero_grad()
@@ -208,12 +233,13 @@ class PPO:
                 mean_value_loss += value_loss.item()
                 mean_surrogate_loss += surrogate_loss.item()
                 mean_imitation_loss += imitation_loss.item()
+                mean_kl_loss += kl_loss.item()
 
         num_updates = self.num_learning_epochs * self.num_mini_batches
         mean_value_loss /= num_updates
         mean_surrogate_loss /= num_updates
         mean_imitation_loss /= num_updates
-        #mean_imitation_loss = 0
+        mean_kl_loss /= num_updates
         self.storage.clear()
 
-        return mean_value_loss, mean_surrogate_loss, mean_imitation_loss
+        return mean_value_loss, mean_surrogate_loss, mean_imitation_loss, mean_kl_loss
