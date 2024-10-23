@@ -213,6 +213,7 @@ class PPO:
                     imitation_loss = torch.tensor(0.)
 
                 if self.teaching_actor_critic is not None:
+                    distribution = self.actor_critic.distribution
                     teaching_distribution = self.teaching_actor_critic.distribution
                     lower_body_action = (distribution.mean[:, :10], distribution.stddev[:, :10])
                     lower_body_target = (teaching_distribution.mean[:, :10].detach(),

@@ -164,7 +164,7 @@ class OnPolicyRunner:
 
         if self.log_dir is not None and self.writer is None:
             wandb.init(
-                project="X1",
+                project="X1_1",
                 # sync_tensorboard=True,
                 name=self.wandb_run_name,
                 config=self.all_cfg,
@@ -408,8 +408,6 @@ class OnPolicyRunner:
         if len(locs["rewbuffer"]) > 0:
             wandb.log({"Train/mean_reward": statistics.mean(locs["rewbuffer"])}, step=iteration)
             wandb.log({"Train/mean_episode_length": statistics.mean(locs["lenbuffer"])}, step=iteration)
-            wandb.log({"Train/mean_reward/time": statistics.mean(locs["rewbuffer"])}, step=self.tot_time)
-            wandb.log({"Train/mean_episode_length/time": statistics.mean(locs["lenbuffer"])}, step=self.tot_time)
 
         str = f" \033[1m Learning iteration {locs['it']}/{self.current_learning_iteration + locs['num_learning_iterations']} \033[0m "
 

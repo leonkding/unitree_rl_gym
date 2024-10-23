@@ -248,7 +248,8 @@ class H1Robot(BaseTask):
             # self.rew_buf += rew
             rew = self.reward_functions[i]()
             self.rew_buf += rew * self.reward_scales[name]
-            self.episode_sums[name] += rew * self.dt * (1. if self.reward_scales[name] >= 0. else -1.)  # record reward without scaling
+            self.episode_sums[name] += rew * self.reward_scales[name]
+            # self.episode_sums[name] += rew * self.dt * (1. if self.reward_scales[name] >= 0. else -1.)  # record reward without scaling
         if self.cfg.rewards.only_positive_rewards:
             self.rew_buf[:] = torch.clip(self.rew_buf[:], min=0.)
         # add termination reward after clipping
