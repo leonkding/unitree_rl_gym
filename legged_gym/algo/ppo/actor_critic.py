@@ -36,6 +36,11 @@ from legged_gym.algo.models.decision_transformer import DecisionTransformer
 from legged_gym.algo.models.model import PPOTransformerModel
 
 
+OBS_DIM = 87
+LOWER_BODY_ACT_DIM = 10
+UPPER_BODY_ACT_DIM = 9
+
+
 # a BERT-style transformer block
 class Transformer_Block(nn.Module):
     def __init__(self, latent_dim, num_head, dropout_rate) -> None:
@@ -105,6 +110,7 @@ class ActorCritic(nn.Module):
                         init_noise_std=1.0,
                         architecture='MLP',
                         activation = 'elu',
+                        independ_policy = False,
                         **kwargs):
         if kwargs:
             print("ActorCritic.__init__ got unexpected arguments, which will be ignored: " + str([key for key in kwargs.keys()]))
@@ -126,6 +132,19 @@ class ActorCritic(nn.Module):
             }}
             self.actor = PPOTransformerModel(config, mlp_input_dim_a, num_actions)
             #self.actor = DecisionTransformer(mlp_input_dim_a, num_actions, hidden_size = 192)
+            
+            self.upper_body_actor = None
+            if independ_policy:
+                actor_layers = []
+                actor_layers.append(nn.Linear(mlp_input_dim_a, actor_hidden_dims[0]))
+                actor_layers.append(activation)
+                for l in range(len(actor_hidden_dims)):
+                    if l == len(actor_hidden_dims) - 1:
+                        actor_layers.append(nn.Linear(actor_hidden_dims[l], UPPER_BODY_ACT_DIM))
+                    else:
+                        actor_layers.append(nn.Linear(actor_hidden_dims[l], actor_hidden_dims[l + 1]))
+                        actor_layers.append(activation)
+                self.upper_body_actor = nn.Sequential(*actor_layers)
         else:
             actor_layers = []
             actor_layers.append(nn.Linear(mlp_input_dim_a, actor_hidden_dims[0]))
@@ -138,8 +157,6 @@ class ActorCritic(nn.Module):
                     actor_layers.append(activation)
             self.actor = nn.Sequential(*actor_layers)
         
-
-
         # Value function
         critic_layers = []
         critic_layers.append(nn.Linear(mlp_input_dim_c, critic_hidden_dims[0]))
@@ -155,6 +172,8 @@ class ActorCritic(nn.Module):
 
         print(f"Actor T: {self.actor}")
         print(f"Critic MLP: {self.critic}")
+        if self.upper_body_actor is not None:
+            print(f"Upper Body Actor: {self.upper_body_actor}")
 
         # Action noise
         self.std = nn.Parameter(init_noise_std * torch.ones(num_actions))
@@ -191,8 +210,10 @@ class ActorCritic(nn.Module):
 
     def update_distribution(self, observations):
         mean = self.actor(observations, self.obs_context_len)
-        mean = mean#[:,:10]
-        std = self.std#[:10]
+        if self.upper_body_actor is not None:
+            upper_body_mean = self.upper_body_actor(observations[:, -OBS_DIM:])
+            mean[:, LOWER_BODY_ACT_DIM:] = upper_body_mean
+        std = self.std
         return Normal(mean, mean*0. + std)
 
     def act(self, observations, **kwargs):
@@ -204,7 +225,9 @@ class ActorCritic(nn.Module):
 
     def act_inference(self, observations):
         actions_mean = self.actor(observations, self.obs_context_len)
-        actions_mean = actions_mean#[:,:10]
+        if self.upper_body_actor is not None:
+            upper_body_mean = self.upper_body_actor(observations[:, -OBS_DIM:])
+            actions_mean[:, LOWER_BODY_ACT_DIM:] = upper_body_mean
         return actions_mean
 
     def evaluate(self, critic_observations, **kwargs):

@@ -86,7 +86,8 @@ class OnPolicyRunner:
             self.teaching_actorcritic = ActorCritic(87, 90*3, self.env.num_actions, self.env.frame_stack, **self.policy_cfg).to(self.device)
             #TActorCritic(39*3, 42*3, self.env.num_actions,self.env.frame_stack, **self.policy_cfg)
             print('Loading Pretrained Teaching Model')
-            self.teaching_actorcritic.load_state_dict(torch.load(self.policy_cfg["teaching_model_path"], map_location='cuda:0')["model_state_dict"])
+            self.teaching_actorcritic.load_state_dict(torch.load(
+                self.policy_cfg["teaching_model_path"], map_location='cuda:0')["model_state_dict"], strict=False)
             print('Pretrained Teaching Model Loaded')
         else:
             self.teaching_actorcritic = None
@@ -466,9 +467,9 @@ class OnPolicyRunner:
 
     def load(self, path, load_optimizer=True):
         loaded_dict = torch.load(path, map_location='cuda:0')
-        self.alg.actor_critic.load_state_dict(loaded_dict["model_state_dict"])
-        if load_optimizer:
-            self.alg.optimizer.load_state_dict(loaded_dict["optimizer_state_dict"])
+        self.alg.actor_critic.load_state_dict(loaded_dict["model_state_dict"], strict=False)
+        # if load_optimizer:
+        #     self.alg.optimizer.load_state_dict(loaded_dict["optimizer_state_dict"])
         self.current_learning_iteration = loaded_dict["iter"]
         return loaded_dict["infos"]
 

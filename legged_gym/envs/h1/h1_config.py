@@ -201,7 +201,7 @@ class H1RoughCfg( LeggedRobotCfg ):
             torques = 0.0
             # dof_pos_limits = -10.0
             # dof_vel_limits = -10.0
-            torque_limits = -1.0
+            torque_limits = -1.0 * 1
             stand_still = -1.0 * 0
             default_joint_pos = 0.5
             target_jt = 1 * 0.
@@ -244,6 +244,8 @@ class H1RoughCfgPPO( LeggedRobotCfgPPO ):
         rnn_type = 'lstm'
         rnn_hidden_size = 512
         rnn_num_layers = 1
+        # Independent policy for upper body
+        independ_policy = True
     class algorithm( LeggedRobotCfgPPO.algorithm ):
         entropy_coef = 0.01
         learning_rate = 1e-4 #5.e-4
