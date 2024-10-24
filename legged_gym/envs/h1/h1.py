@@ -59,6 +59,7 @@ class H1Robot(BaseTask):
         # self.target_jt_seq = self.target_jt_seq[:10] # only follow one target joint sequence
         self.num_target_jt_seq, self.max_target_jt_seq_len, self.dim_target_jt = self.target_jt_seq.shape
         print(f"Loaded target joint trajectories of shape {self.target_jt_seq.shape}")
+        self.target_jt_seq *= self.cfg.human.scale
         #assert(self.dim_target_jt == self.num_dofs)
         self.target_jt_i = torch.randint(0, self.num_target_jt_seq, (self.num_envs,), device=self.device)
         self.target_jt_j = torch.zeros(self.num_envs, dtype=torch.long, device=self.device)

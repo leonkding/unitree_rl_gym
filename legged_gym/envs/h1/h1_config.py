@@ -3,6 +3,7 @@ from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobot
 class H1RoughCfg( LeggedRobotCfg ):
 
     class human:
+        scale =  1.0
         delay = 0.0 # delay in seconds
         freq = 30
         resample_on_env_reset = True
